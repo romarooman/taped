@@ -1,0 +1,33 @@
+.sectionB {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  background-color: #fffafaff;
+  margin: 0;
+  padding: 0 2rem;
+}
+
+.contentsB {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.fontB {
+  color: #303030;
+}
+
+.iconB {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  bottom: 2rem;
+}
+
+.arrowIconB {
+  padding: 1rem 0 1rem 0;
+}

@@ -1,0 +1,6 @@
+img.image {
+  height: auto;
+  width: clamp(10rem, 50vw, 60rem);
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
