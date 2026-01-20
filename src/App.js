@@ -1,12 +1,12 @@
 import "./App.css";
 import HorizontalScroll from "./Components/HorizontalScroll/HorizontalScroll";
-import Section from "./Components/Section/Section";
+import Navbar from "./Components/Navbar/Navbar";
 import Bottom from "./Components/Bottom/Bottom";
 
 function App() {
   return (
     <div className="App">
-      <Section title="NavBar" />
+      <Navbar title="NavBar" />
       <HorizontalScroll />
       <Bottom title="here content bottom" />
       <Bottom title="here content bottom" />

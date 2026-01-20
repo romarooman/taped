@@ -17,7 +17,7 @@ const HorizontalScroll = () => {
     <div className="carousel" ref={targetRef}>
       <div className="contentContainer">
         <motion.div className="images" style={{ x }}>
-          <div className="imageItem">
+       <div className="imageItem fullscreen">
             <ImageContainer imageSource={One} description={"june"} />
           </div>
 

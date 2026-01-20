@@ -4,7 +4,7 @@
 }
 
 .contentContainer {
-  height: 100vh;
+  height: 70vh;
   position: sticky;
   top: 0;
   display: flex;
@@ -19,7 +19,7 @@
 .images {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: 2fr;
   grid-gap: 3vw;
   padding: 0 4rem 0 4rem;
   
