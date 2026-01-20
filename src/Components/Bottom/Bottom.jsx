@@ -1,7 +1,7 @@
 import React from "react";
 import "./bottom.css";
 import Arrow from "../../images/arrow-icon.svg";
-
+//dd
 const Bottom = ({ title }) => {
     return (
         <div className="sectionB">
