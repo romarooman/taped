@@ -1,37 +1,53 @@
 import React, { useRef } from "react";
 import "./horizontalscroll.css";
-import One from "../../images/item 01.png";
-import Two from "../../images/Mask group.png";
-import Thhree from "../../images/Rectangle 68.png";
-import Four from "../../images/Mask group2.png";
+import One from "../../images/1.png";
+import Three from "../../images/3.png";
+import Two from "../../images/4.png";
+import Four from "../../images/green.png";
 import { motion, useScroll, useTransform } from "framer-motion";
-import ImageContainer from "../ImageContainer/ImageContainer";
+import ImagecontainerHorizont from "../ImageHorizont/ImageHorizont";
+
+const images = [One];
 
 const HorizontalScroll = () => {
   const targetRef = useRef(null);
 
-  const { scrollYProgress } = useScroll({ target: targetRef });
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-55%"]);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start start", "end end"],
+  });
+
+  const x = useTransform(
+    scrollYProgress,
+    [0, 1],
+    // ["0%", `-${(images.length - 1) * 100}%`],
+    ["0%", `-${(3 - 1) * 100}%`],
+  );
 
   return (
-    <div className="carousel" ref={targetRef}>
-      <div className="contentContainer">
-        <motion.div className="images" style={{ x }}>
-       <div className="imageItem fullscreen">
-            <ImageContainer imageSource={One} description={"june"} />
+    <section className="carousel" ref={targetRef}>
+      <div className="sticky">
+        <motion.div className="track" style={{ x }}>
+          {images.map((img, i) => (
+            <div className="slide" key={i}>
+              <div className="image-wrapper">
+                <img src={img} alt="" />
+              </div>
+            </div>
+          ))}
+          <div className="slide" key={12}>
+            <div className="image-wrapper">
+              <ImagecontainerHorizont fimage={Three} simage={Four} />
+            </div>
           </div>
-
-          <div className="imageItem">
-            <ImageContainer imageSource={Two} description={"june2"} />
-            <ImageContainer imageSource={Thhree} description={"june3"} />
-          </div>
-          <div className="imageItem">
-            <ImageContainer imageSource={Four} description={"june2"} />
-            <ImageContainer imageSource={Thhree} description={"june3"} />
+          <div className="slide" key={13}>
+            <div className="image-wrapper">
+              <ImagecontainerHorizont fimage={Four} simage={Two} />
+            </div>
           </div>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

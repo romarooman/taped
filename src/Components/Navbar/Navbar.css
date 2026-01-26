@@ -7,7 +7,7 @@
 
 .nav-list {
   display: flex;
-  justify-content: space-between; /* ✅ распределение по ширине */
+  justify-content: space-between;
   align-items: center;
   gap: 32px;
   width: 100%;
