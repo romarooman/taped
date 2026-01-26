@@ -1,5 +1,5 @@
 .carousel {
-  height: 400vh;
+  height: 300vh; /* 3 слайда = 3 экрана */
   background-color: #fffafa;
 }
 
@@ -22,7 +22,7 @@
 .slide {
   min-width: 100vw;
   height: calc(100vh - var(--nav-h));
-  display: flex;
+  flex: 0 0 100vw; /* ✅ фиксируем ширину слайда */
 }
 
 .image-wrapper {

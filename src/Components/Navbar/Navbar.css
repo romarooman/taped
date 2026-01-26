@@ -3,6 +3,12 @@
   padding: 16px 40px;
   width: 100%;
   box-sizing: border-box;
+
+  position: sticky;
+  top: 0;
+  z-index: 9999; /* выше карусели и контента */
+
+
 }
 
 .nav-list {
@@ -17,7 +23,6 @@
 }
 
 .nav-item {
-
   position: relative;
   color: #303030;
   font-family: "DM Sans", sans-serif;

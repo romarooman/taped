@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./horizontalscroll.css";
 import One from "../../images/1.png";
 import Three from "../../images/3.png";
@@ -7,18 +7,28 @@ import Four from "../../images/green.png";
 import { motion, useScroll, useTransform } from "framer-motion";
 import ImagecontainerHorizont from "../ImageHorizont/ImageHorizont";
 
+const slidesCount = 3;
+
 const HorizontalScroll = () => {
   const targetRef = useRef(null);
+  const [vw, setVw] = useState(() => window.innerWidth);
+
+  useEffect(() => {
+    const onResize = () => setVw(window.innerWidth);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start start", "end end"],
   });
 
+  // сдвиг = (кол-во слайдов - 1) * ширина окна
   const x = useTransform(
     scrollYProgress,
     [0, 1],
-    ["0%", `-${(3 - 1) * 100}%`],
+    [0, -((slidesCount - 1) * vw)],
   );
 
   return (
