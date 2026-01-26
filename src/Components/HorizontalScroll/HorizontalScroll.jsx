@@ -7,8 +7,6 @@ import Four from "../../images/green.png";
 import { motion, useScroll, useTransform } from "framer-motion";
 import ImagecontainerHorizont from "../ImageHorizont/ImageHorizont";
 
-const images = [One];
-
 const HorizontalScroll = () => {
   const targetRef = useRef(null);
 
@@ -20,7 +18,6 @@ const HorizontalScroll = () => {
   const x = useTransform(
     scrollYProgress,
     [0, 1],
-    // ["0%", `-${(images.length - 1) * 100}%`],
     ["0%", `-${(3 - 1) * 100}%`],
   );
 
@@ -28,13 +25,12 @@ const HorizontalScroll = () => {
     <section className="carousel" ref={targetRef}>
       <div className="sticky">
         <motion.div className="track" style={{ x }}>
-          {images.map((img, i) => (
-            <div className="slide" key={i}>
-              <div className="image-wrapper">
-                <img src={img} alt="" />
-              </div>
+          <div className="slide" key={11}>
+            <div className="image-wrapper">
+              <img src={One} alt="" />
             </div>
-          ))}
+          </div>
+
           <div className="slide" key={12}>
             <div className="image-wrapper">
               <ImagecontainerHorizont fimage={Three} simage={Four} />
