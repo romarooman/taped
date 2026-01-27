@@ -4,8 +4,12 @@ import One from "../../images/1.png";
 import Three from "../../images/3.png";
 import Two from "../../images/4.png";
 import Four from "../../images/green.png";
+import brands from "../../images/brands.png";
+
 import { motion, useScroll, useTransform } from "framer-motion";
 import ImagecontainerHorizont from "../ImageHorizont/ImageHorizont";
+import ChatPill from "../ChatPill/ChatPill";
+import BookAShootButton from "../BookAShootButton/BookAShootButton";
 
 const slidesCount = 3;
 
@@ -36,8 +40,23 @@ const HorizontalScroll = () => {
       <div className="sticky">
         <motion.div className="track" style={{ x }}>
           <div className="slide" key={11}>
-            <div className="image-wrapper">
-              <img src={One} alt="" />
+            <div className="image-wrapper hero">
+              <img className="hero-bg" src={One} alt="" />
+
+              <div className="hero-text">
+                <div className="hero-title">
+                  full-service studio
+                  <br />
+                  for actors, creatives & professionals
+                </div>
+                <div className="hero-row-bottom">
+                  <img className="hero-badge" src={brands} alt="" />
+                  <div className="hero-actions">
+                    <BookAShootButton targetId="book" />
+                    <ChatPill />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 

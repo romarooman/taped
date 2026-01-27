@@ -1,0 +1,145 @@
+.chatWrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  pointer-events: auto;
+}
+
+/* PNG-кнопка */
+.chatPngBtn {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chatPngBtn img {
+  width: 180px; /* под твой дизайн */
+  height: auto;
+  display: block;
+}
+
+/* popup поверх PNG */
+.chatPopup {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translateY(-6px);
+
+  width: 340px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 16px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  pointer-events: auto;
+}
+
+.chatTitle {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-transform: lowercase;
+  color: #000000;
+}
+
+.chatDivider {
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.chatInputRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.chatInput {
+  flex: 1;
+  resize: none;
+
+  border-radius: 14px;
+  border: none;
+  padding: 10px 12px;
+  box-sizing: border-box;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+
+.chatSendIcon {
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chatSendIcon img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.chatSvgBtn {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SVG форма */
+.chatSvgBg {
+  width: 165px;
+  height: auto;
+  display: block;
+}
+
+/* ТЕКСТ ПОВЕРХ SVG */
+.chatSvgLabel {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "DM Sans", sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 1;
+  text-transform: lowercase;
+  transform: translateY(-7px);
+  color: #000; /* или #fff — под дизайн */
+  pointer-events: none;
+}
+
+/* когда чат открыт — SVG "прячется", но место остаётся */
+.chatSvgBtn.hidden {
+  opacity: 0;
+  visibility: hidden;
+}

@@ -1,10 +1,10 @@
+:root {
+  --nav-h: 64px;
+}
+
 .carousel {
   height: 300vh; /* 3 слайда = 3 экрана */
   background-color: #fffafa;
-}
-
-:root {
-  --nav-h: 64px;
 }
 
 .sticky {
@@ -17,14 +17,16 @@
 .track {
   display: flex;
   height: 100%;
+  will-change: transform;
 }
 
 .slide {
+  flex: 0 0 100vw; /* каждый слайд = ширина экрана */
   min-width: 100vw;
   height: calc(100vh - var(--nav-h));
-  flex: 0 0 100vw; /* ✅ фиксируем ширину слайда */
 }
 
+/* общий wrapper для всех слайдов */
 .image-wrapper {
   padding-left: 39px;
   padding-right: 39px;
@@ -34,14 +36,111 @@
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  display: flex;
-  align-items: flex-start;
 }
 
-.image-wrapper img {
-  border-radius: 16px;
+/* ===== HERO (первый слайд с текстом и png) ===== */
+
+.image-wrapper.hero {
+  position: relative;
+  display: block; /* не flex, чтобы ничего не ужималось */
+}
+
+/* большая фоновая картинка */
+.hero-bg {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 16px;
   display: block;
+}
+
+/* слой с текстом + png поверх картинки */
+.hero-text {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 58px;
+  justify-content: flex-end; /* прижимаем блок вниз */
+
+  text-align: center;
+  pointer-events: none;
+
+  font-family: "DM Sans", sans-serif;
+  font-weight: 900;
+  font-size: clamp(36px, 8vw, 128px);
+  line-height: 80%;
+  text-transform: lowercase;
+  color: #ffffff;
+  padding-top: 64px;
+  padding-bottom: 78px; /* отступ от нижнего края картинки */
+}
+
+.hero-title {
+  padding-left: 278px;
+  padding-right: 278px;
+}
+
+/* PNG под текстом */
+.hero-badge {
+  max-width: calc(100% - 796px);
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.hero-bottomRow {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+
+  /* чтобы row был в пределах картинки (с учётом внутренних паддингов wrapper) */
+  box-sizing: border-box;
+  padding-left: 278px;
+  padding-right: 278px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px; /* расстояние между двумя овалами */
+  align-items: flex-end;
+}
+.hero-row-bottom {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-item: center;
+  gap: 32px;
+}
+
+/* ===== Адаптация ===== */
+
+@media (max-width: 1024px) {
+  .hero-text {
+    font-size: 72px;
+    gap: 24px;
+  }
+
+  .hero-badge {
+    max-width: calc(100% - 200px);
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-text {
+    font-size: 42px;
+    gap: 16px;
+  }
+
+  .hero-badge {
+    max-width: calc(100% - 80px);
+    margin-bottom: 24px;
+  }
 }
