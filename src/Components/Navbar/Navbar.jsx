@@ -5,7 +5,7 @@ import "./Navbar.css";
 const navItems = ["We are", "Service", "Community", "Contacts"];
 
 const Navbar = () => {
-  const [activeItem, setActiveItem] = useState(null);
+  const [activeItem, setActiveItem] = useState("We are");
   const [hoveredItem, setHoveredItem] = useState(null);
 
   return (

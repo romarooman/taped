@@ -1,0 +1,117 @@
+.imagesCol {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  width: 100%;
+  height: 100%;
+}
+
+/* карточка */
+.imgCard {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* картинка */
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* серый блок */
+.grayCard {
+  background: #cccccc;
+}
+
+/* центрированный текст */
+.imgCenterText {
+  position: absolute;
+  inset: 0;
+
+  display: block;
+  text-align: center;
+
+  pointer-events: none;
+
+  font-family: "DM Sans", sans-serif;
+  font-weight: 900;
+  font-size: clamp(28px, 4vw, 64px);
+  line-height: 110%;
+  text-transform: lowercase;
+
+  /* 🔥 нужные отступы */
+  padding-left: 400px;
+  padding-right: 400px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  box-sizing: border-box;
+}
+
+.imgCenterText.dark {
+  color: #000000;
+}
+
+/* PNG со словом "taped" */
+.tapedWord {
+  display: inline-block;
+
+  height: 1.7em; /* 🔥 больше, чем текст */
+  width: auto;
+
+  vertical-align: bottom;
+
+  /* 🔥 наслаивание */
+  margin-left: -0.15em;
+  margin-right: -0.15em;
+
+  transform: translateY(0.42em);
+}
+
+/* кнопки справа снизу */
+.colActions {
+  position: absolute;
+  right: 39px;
+  bottom: 39px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-end;
+
+  pointer-events: auto;
+}
+
+@media (max-width: 1400px) {
+  .imgCenterText {
+    padding-left: 240px;
+    padding-right: 240px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .imgCenterText {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+}
+
+@media (max-width: 600px) {
+  .imgCenterText {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .tapedWord {
+    height: 1.1em;
+    margin-left: -0.05em;
+    margin-right: -0.05em;
+  }
+}

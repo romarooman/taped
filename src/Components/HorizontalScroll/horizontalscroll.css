@@ -62,25 +62,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 58px;
-  justify-content: flex-end; /* прижимаем блок вниз */
+  justify-content: flex-end;
+
+  gap: clamp(12px, 2vw, 58px);
+  padding-top: 64px;
+  padding-bottom: 78px;
 
   text-align: center;
   pointer-events: none;
 
   font-family: "DM Sans", sans-serif;
   font-weight: 900;
-  font-size: clamp(36px, 8vw, 128px);
+  font-size: clamp(32px, 6vw, 128px); /* ✅ адаптив */
   line-height: 80%;
   text-transform: lowercase;
   color: #ffffff;
-  padding-top: 64px;
-  padding-bottom: 78px; /* отступ от нижнего края картинки */
 }
 
+/* ✅ адаптивные отступы текста слева/справа */
 .hero-title {
-  padding-left: 278px;
-  padding-right: 278px;
+  padding-left: clamp(24px, 8vw, 278px);
+  padding-right: clamp(24px, 8vw, 278px);
 }
 
 /* PNG под текстом */
@@ -104,19 +106,23 @@
   padding-right: 278px;
 }
 
-.hero-actions {
+.hero-actions-fixed {
+  position: absolute;
+  right: 69px;
+  bottom: 71px;
+
   display: flex;
   flex-direction: column;
-  gap: 14px; /* расстояние между двумя овалами */
+  gap: 18px;
   align-items: flex-end;
+
+  pointer-events: auto; /* чтобы клики работали, т.к. hero-text = none */
 }
 .hero-row-bottom {
-  position: relative;
   width: 100%;
   display: flex;
   justify-content: center;
-  align-item: center;
-  gap: 32px;
+  align-items: center;
 }
 
 /* ===== Адаптация ===== */

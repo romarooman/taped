@@ -1,0 +1,87 @@
+.imagesRow {
+  position: relative; /* чтобы actions позиционировались внутри */
+  display: flex;
+  gap: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+/* каждая “карточка” картинки */
+.imgCard {
+  position: relative;
+  flex: 1 1 0;
+  height: 100%;
+  min-width: 0; /* важно для flex, чтобы не было overflow */
+}
+
+/* сама картинка */
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+
+/* текст по центру первой картинки */
+.imgCenterText {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  pointer-events: none;
+  gap: 24px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 900;
+  font-size: clamp(4px, 4vw, 34px);
+  line-height: 100%;
+  text-transform: lowercase;
+
+  color: #121212; /* если нужно чёрный — поменяй */
+
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: 240px;
+  padding-bottom: 240px;
+  box-sizing: border-box;
+}
+
+.titleText {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 900;
+  font-size: clamp(28px, 4vw, 64px);
+  line-height: 100%;
+  text-transform: lowercase;
+  color: #121212;
+}
+
+.subtitleText {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 900; /* Black */
+  font-size: clamp(4px, 3.5vw, 20px);
+  line-height: 108%;
+  letter-spacing: 0%;
+  text-transform: lowercase;
+  text-align: center;
+
+  color: #121212;
+}
+
+/* кнопки справа снизу */
+.rowActions {
+  position: absolute;
+  right: 39px;
+  bottom: 39px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px; /* ✅ как ты хотел */
+  align-items: flex-end;
+
+  pointer-events: auto; /* чтобы клики работали */
+}
