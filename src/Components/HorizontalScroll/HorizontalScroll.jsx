@@ -102,7 +102,7 @@ and beautifully crafted."
             </div>
           </div>
 
-          <div className="slide" key={13}>
+          <div className="slide" key={14}>
             <div className="image-wrapper">
               <ImagesListRow
                 textOn="first"
@@ -116,7 +116,7 @@ and beautifully crafted."
             </div>
           </div>
 
-          <div className="slide" key={13}>
+          <div className="slide" key={15}>
             <div className="image-wrapper">
               <ImagesListRow
                 title="Mateu Parellada"

@@ -9,7 +9,7 @@ const ImagesListRow = ({
   title,
   subtitle,
   order = "image-first",
-  subtitleSize = "clamp(24px, 3.5vw, 60px)",
+  subtitleSize = "clamp(24px, 3.5vw, 24px)",
 }) => {
   const isImageFirst = order === "image-first";
 

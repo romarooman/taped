@@ -76,7 +76,7 @@
 .rowActions {
   position: absolute;
   right: 39px;
-  bottom: 39px;
+  bottom: 9px;
 
   display: flex;
   flex-direction: column;
