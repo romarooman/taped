@@ -86,13 +86,17 @@
   pointer-events: auto; /* чтобы клики работали */
 }
 
-
 /* ===== Mobile: stack layout ===== */
 @media (max-width: 600px) {
   /* 🔥 меняем направление */
   .imagesRow {
     flex-direction: column;
     gap: 12px;
+  }
+
+  .colActions,
+  .rowActions {
+    display: none !important;
   }
 
   /* каждый блок — половина высоты */
@@ -133,4 +137,3 @@
     gap: 12px;
   }
 }
-

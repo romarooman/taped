@@ -105,41 +105,73 @@
 
 /* ===== Mobile ===== */
 @media (max-width: 600px) {
+  /* делим слайд ровно на 2 части */
   .imagesCol {
+    height: 100%;
     gap: 12px;
   }
+  
+    .colActions,
+  .rowActions {
+    display: none !important;
+  }
 
-  /* картинка полностью видна */
+  .imgCard {
+    flex: 1 1 0; /* ✅ каждый блок одинаковой высоты */
+    min-height: 0;
+  }
+
+  /* верхняя картинка полностью видна */
   .img {
-    object-fit: contain;     /* ✅ главное */
-    background: #ffffff;     /* чтобы поля выглядели аккуратно */
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* ✅ полностью */
+    object-position: center;
+    background: #ffffff;
+    display: block;
   }
 
   /* текст по центру */
-  .imgCenterText {
-    display: flex;           /* ✅ центрирование без магии */
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.imgCenterText {
+  position: absolute;
+  inset: 0;
 
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 24px;
-    padding-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    font-size: clamp(16px, 4.8vw, 22px);
-    line-height: 120%;
-  }
+  pointer-events: none;
 
-  /* taped чуть меньше и аккуратнее на мобилке */
-  .tapedWord {
-    height: 0.2em;
-    margin-left: -0.05em;
-    margin-right: -0.05em;
-    transform: translateY(0.18em);
-  }
+  /* 🔥 ключевое */
+  text-align: center;
+  max-width: 100%;
+  padding: 20px;
 
-  /* кнопки ближе к краям */
+  font-family: "DM Sans", sans-serif;
+  font-weight: 900;
+  font-size: clamp(20px, 4vw, 34px);
+  line-height: 110%;
+  text-transform: lowercase;
+
+  box-sizing: border-box;
+}
+
+
+  /* taped корректно уменьшается */
+.tapedWord {
+  display: inline-block;   /* 🔥 как буква */
+  height: 1.4em !important;
+  width: auto ;
+
+  vertical-align: middle;
+  object-fit: contain;
+
+  margin: 0 -0.1em;          /* лёгкое наложение */
+  transform: translateY(0.25em);
+}
+
+
+  /* кнопки ближе к краю */
   .colActions {
     right: 16px;
     bottom: 16px;
