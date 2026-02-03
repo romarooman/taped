@@ -103,15 +103,46 @@
   }
 }
 
+/* ===== Mobile ===== */
 @media (max-width: 600px) {
-  .imgCenterText {
-    padding-left: 24px;
-    padding-right: 24px;
+  .imagesCol {
+    gap: 12px;
   }
 
+  /* картинка полностью видна */
+  .img {
+    object-fit: contain;     /* ✅ главное */
+    background: #ffffff;     /* чтобы поля выглядели аккуратно */
+  }
+
+  /* текст по центру */
+  .imgCenterText {
+    display: flex;           /* ✅ центрирование без магии */
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+
+    font-size: clamp(16px, 4.8vw, 22px);
+    line-height: 120%;
+  }
+
+  /* taped чуть меньше и аккуратнее на мобилке */
   .tapedWord {
-    height: 1.1em;
+    height: 0.2em;
     margin-left: -0.05em;
     margin-right: -0.05em;
+    transform: translateY(0.18em);
+  }
+
+  /* кнопки ближе к краям */
+  .colActions {
+    right: 16px;
+    bottom: 16px;
+    gap: 12px;
   }
 }

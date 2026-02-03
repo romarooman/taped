@@ -85,3 +85,52 @@
 
   pointer-events: auto; /* чтобы клики работали */
 }
+
+
+/* ===== Mobile: stack layout ===== */
+@media (max-width: 600px) {
+  /* 🔥 меняем направление */
+  .imagesRow {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* каждый блок — половина высоты */
+  .imgCard {
+    height: 50%;
+  }
+
+  /* картинка полностью видна */
+  .img {
+    object-fit: contain;
+    background: #ffffff; /* аккуратные поля */
+  }
+
+  /* текст по центру и без огромных отступов */
+  .imgCenterText {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+
+    gap: 12px;
+  }
+
+  .titleText {
+    font-size: clamp(18px, 6vw, 32px);
+    line-height: 110%;
+  }
+
+  .subtitleText {
+    font-size: clamp(14px, 4.5vw, 20px);
+    line-height: 120%;
+  }
+
+  /* кнопки — компактно внизу */
+  .rowActions {
+    right: 16px;
+    bottom: 16px;
+    gap: 12px;
+  }
+}
+

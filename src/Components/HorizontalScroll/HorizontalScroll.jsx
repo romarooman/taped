@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./horizontalscroll.css";
+import styles from "./Horizontalscroll.module.css";
 import One from "../../images/1.png";
 import Two from "../../images/2.png";
 import Three from "../../images/3.png";
@@ -40,39 +40,39 @@ const HorizontalScroll = () => {
   );
 
   return (
-    <section className="carousel" ref={targetRef}>
-      <div className="sticky">
-        <motion.div className="track" style={{ x }}>
-          <div className="slide" key={11}>
-            <div className="image-wrapper hero">
-              <img className="hero-bg" src={One} alt="" />
+    <section className={`${styles.carousel}`} ref={targetRef}>
+      <div className={`${styles.sticky}`}>
+        <motion.div className={`${styles.track}`} style={{ x }}>
+          <div className={`${styles.slide}`} key={11}>
+            <div className={`${styles.imageWrapper} ${styles.hero}`}>
+              <img className={`${styles.heroBg}`} src={One} alt="" />
 
-              <div className="hero-text">
-                <div className="hero-title">
+              <div className={`${styles.heroText}`}>
+                <div className={`${styles.heroTitle}`}>
                   full-service studio
                   <br />
                   for actors, creatives & professionals
                 </div>
 
-                <div className="hero-row-bottom">
-                  <img className="hero-badge" src={brands} alt="" />
+                <div className={`${styles.heroRowBottom}`}>
+                  <img className={`${styles.heroBadge}`} src={brands} alt="" />
                 </div>
               </div>
 
-              <div className="hero-actions-fixed">
+              <div className={`${styles.heroActionsFixed}`}>
                 <BookAShootButton targetId="book" />
                 <ChatPill />
               </div>
             </div>
           </div>
-          <div className="slide" key={10}>
-            <div className="image-wrapper">
+          <div className={`${styles.slide}`} key={10}>
+            <div className={`${styles.imageWrapper}`}>
               <ImagesListColumn fimage={Two} />
             </div>
           </div>
 
-          <div className="slide" key={12}>
-            <div className="image-wrapper">
+          <div className={`${styles.slide}`} key={12}>
+            <div className={`${styles.imageWrapper}`}>
               <ImagesListRow
                 subtitle="our mission is to build
 a one-stop service
@@ -86,8 +86,8 @@ personal branding"
               />
             </div>
           </div>
-          <div className="slide" key={13}>
-            <div className="image-wrapper">
+          <div className={`${styles.slide}`} key={13}>
+            <div className={`${styles.imageWrapper}`}>
               <ImagesListRow
                 subtitle="We aim to support
 talent by creating
@@ -102,8 +102,8 @@ and beautifully crafted."
             </div>
           </div>
 
-          <div className="slide" key={14}>
-            <div className="image-wrapper">
+          <div className={`${styles.slide}`} key={14}>
+            <div className={`${styles.imageWrapper}`}>
               <ImagesListRow
                 textOn="first"
                 fimage={Five}
@@ -116,8 +116,8 @@ and beautifully crafted."
             </div>
           </div>
 
-          <div className="slide" key={15}>
-            <div className="image-wrapper">
+          <div className={`${styles.slide}`} key={15}>
+            <div className={`${styles.imageWrapper}`}>
               <ImagesListRow
                 title="Mateu Parellada"
                 subtitle="is an actor from Barcelona, now

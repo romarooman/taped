@@ -9,7 +9,7 @@ const ImagesListColumn = ({ fimage }) => {
     <div className={styles.imagesCol}>
       {/* 1-й блок — картинка */}
       <div className={`${styles.imgCard}`}>
-        <img className="img" src={fimage} alt="img" />
+        <img className={`${styles.img}`} src={fimage} alt="img" />
       </div>
 
       {/* 2-й блок — серый фон + текст */}
