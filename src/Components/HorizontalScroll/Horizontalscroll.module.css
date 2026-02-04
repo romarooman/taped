@@ -40,7 +40,7 @@
 
 /* mobile layout */
 @media (max-width: 480px) {
-.sticky {
+  .sticky {
     height: calc(100svh - var(--nav-h));
   }
 
@@ -54,6 +54,3 @@
     padding-bottom: 16px;
   }
 }
-
-
-
