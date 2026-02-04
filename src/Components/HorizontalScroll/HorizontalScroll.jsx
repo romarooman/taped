@@ -14,6 +14,7 @@ import ImagesListRow from "../ImagesListRow/ImagesListRow";
 import ChatPill from "../ChatPill/ChatPill";
 import BookAShootButton from "../BookAShootButton/BookAShootButton";
 import ImagesListColumn from "../ImagesListColumn/ImagesListColumn";
+import ImagesOnly from "../ImagesOnly/ImagesOnly";
 
 const slidesCount = 6;
 
@@ -45,24 +46,7 @@ const HorizontalScroll = () => {
         <motion.div className={`${styles.track}`} style={{ x }}>
           <div className={`${styles.slide}`} key={11}>
             <div className={`${styles.imageWrapper} ${styles.hero}`}>
-              <img className={`${styles.heroBg}`} src={One} alt="" />
-
-              <div className={`${styles.heroText}`}>
-                <div className={`${styles.heroTitle}`}>
-                  full-service studio
-                  <br />
-                  for actors, creatives & professionals
-                </div>
-
-                <div className={`${styles.heroRowBottom}`}>
-                  <img className={`${styles.heroBadge}`} src={brands} alt="" />
-                </div>
-              </div>
-
-              <div className={`${styles.heroActionsFixed}`}>
-                <BookAShootButton targetId="book" />
-                <ChatPill />
-              </div>
+              <ImagesOnly one={One} brands={brands} />
             </div>
           </div>
           <div className={`${styles.slide}`} key={10}>

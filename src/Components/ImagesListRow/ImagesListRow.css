@@ -106,7 +106,7 @@
 
   /* картинка полностью видна */
   .img {
-    object-fit: contain;
+    object-fit: cover;
     background: #ffffff; /* аккуратные поля */
   }
 

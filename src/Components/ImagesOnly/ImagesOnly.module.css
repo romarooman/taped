@@ -1,0 +1,129 @@
+/* контейнер слайда */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* фоновая картинка */
+.heroBg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 16px;
+  display: block;
+}
+
+/* текст поверх картинки */
+.heroText {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: clamp(12px, 2vw, 58px);
+  padding-top: 64px;
+  padding-bottom: 78px;
+
+  text-align: center;
+  pointer-events: none;
+
+  font-family: "DM Sans", sans-serif;
+  font-weight: 900;
+  font-size: clamp(32px, 6vw, 128px);
+  line-height: 80%;
+  text-transform: lowercase;
+  color: #ffffff;
+}
+
+.heroTitle {
+  padding-left: clamp(24px, 8vw, 278px);
+  padding-right: clamp(24px, 8vw, 278px);
+}
+
+.heroRowBottom {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+   padding-left: 40px;
+  padding-right: 40px;
+  box-sizing: border-box;
+}
+
+.heroBadge {
+  max-width: calc(100% - 796px);
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* кнопки */
+.heroActionsFixed {
+  position: absolute;
+  right: 69px;
+  bottom: 41px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-end;
+}
+
+/* ===== адаптив ===== */
+
+@media (max-width: 1024px) {
+  .heroText {
+    font-size: 72px;
+    gap: 24px;
+  }
+
+  .heroBadge {
+    max-width: calc(100% - 200px);
+  }
+}
+
+@media (max-width: 600px) {
+  .heroText {
+    font-size: 42px;
+    gap: 16px;
+  }
+
+  .heroActionsFixed {
+    display: none;
+  }
+
+  .heroBadge {
+    max-width: calc(100% - 80px);
+  }
+}
+
+@media (max-width: 480px) {
+  .heroText {
+    padding-top: 32px;
+    padding-bottom: 56px;
+    gap: 12px;
+    font-size: clamp(22px, 8vw, 42px);
+  }
+
+  .heroTitle {
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-bottom:15px
+  }
+
+  .heroBadge {
+    max-width: calc(100% - 32px);
+  }
+
+  .heroActionsFixed {
+    right: 16px;
+    bottom: 16px;
+    gap: 12px;
+  }
+}

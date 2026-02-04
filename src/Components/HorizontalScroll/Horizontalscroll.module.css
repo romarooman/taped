@@ -3,17 +3,16 @@
 }
 
 .carousel {
-  height: 600vh; /* 6 слайда = 6 экрана */
+  height: 600vh;
   background-color: #fffafa;
 }
 
 .sticky {
   position: sticky;
-  top: var(--nav-h);  
+  top: var(--nav-h);
   height: calc(100vh - var(--nav-h));
   overflow: hidden;
 }
-
 
 .track {
   display: flex;
@@ -22,12 +21,12 @@
 }
 
 .slide {
-  flex: 0 0 100vw; /* каждый слайд = ширина экрана */
+  flex: 0 0 100vw;
   min-width: 100vw;
   height: calc(100vh - var(--nav-h));
 }
 
-/* общий wrapper для всех слайдов */
+/* wrapper для ВСЕХ слайдов */
 .imageWrapper {
   padding-left: 39px;
   padding-right: 39px;
@@ -39,127 +38,8 @@
   box-sizing: border-box;
 }
 
-/* ===== HERO (первый слайд с текстом и png) ===== */
-
-.imageWrapper.hero {
-  position: relative;
-  display: block; /* не flex, чтобы ничего не ужималось */
-}
-
-/* большая фоновая картинка */
-.heroBg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position:center;
-  border-radius: 16px;
-  display: block;
-}
-
-/* слой с текстом + png поверх картинки */
-.heroText {
-  position: absolute;
-  inset: 0;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-
-  gap: clamp(12px, 2vw, 58px);
-  padding-top: 64px;
-  padding-bottom: 78px;
-
-  text-align: center;
-  pointer-events: none;
-
-  font-family: "DM Sans", sans-serif;
-  font-weight: 900;
-  font-size: clamp(32px, 6vw, 128px); /* ✅ адаптив */
-  line-height: 80%;
-  text-transform: lowercase;
-  color: #ffffff;
-}
-
-/* ✅ адаптивные отступы текста слева/справа */
-.heroTitle {
-  padding-left: clamp(24px, 8vw, 278px);
-  padding-right: clamp(24px, 8vw, 278px);
-}
-
-/* PNG под текстом */
-.heroBadge {
-  max-width: calc(100% - 796px);
-  height: auto;
-  object-fit: contain;
-  display: block;
-}
-
-.hero-bottomRow {
-  width: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
-
-  /* чтобы row был в пределах картинки (с учётом внутренних паддингов wrapper) */
-  box-sizing: border-box;
-  padding-left: 278px;
-  padding-right: 278px;
-}
-
-.heroActionsFixed {
-  position: absolute;
-  right: 69px;
-  bottom: 41px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  align-items: flex-end;
-
-  pointer-events: auto; /* чтобы клики работали, т.к. heroText = none */
-}
-.heroRowBottom {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* ===== Адаптация ===== */
-
-@media (max-width: 1024px) {
-  .heroText {
-    font-size: 72px;
-    gap: 24px;
-  }
-
-  .heroBadge {
-    max-width: calc(100% - 200px);
-    margin-bottom: 32px;
-  }
-}
-
-@media (max-width: 600px) {
-  .heroText {
-    font-size: 42px;
-    gap: 16px;
-  }
-
-  .heroBadge {
-    max-width: calc(100% - 80px);
-    margin-bottom: 24px;
-  }
-}
-
-/* ===== iPhone / Mobile ===== */
+/* mobile layout */
 @media (max-width: 480px) {
-  :root {
-    --nav-h: 64px; /* если на мобилке другая высота navbar — поменяй */
-  }
-
-  /* iOS: используем динамический viewport, чтобы "1 экран" был реально 1 экран */
   .sticky {
     height: calc(100dvh - var(--nav-h));
   }
@@ -172,49 +52,8 @@
     padding-left: 16px;
     padding-right: 16px;
     padding-bottom: 16px;
-    padding-top: 0;
-  }
-
-  /* на мобилке картинка обязана занимать весь доступный экран */
-  .heroBg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 16px;
-  }
-
-  /* если внутри слайдов есть другие img — тоже cover на весь блок */
-  .imageWrapper img,
-  .img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  /* кнопки в правом нижнем углу — но ближе к краю */
-  .heroActionsFixed {
-    right: 16px;
-    bottom: 16px;
-    gap: 12px;
-  }
-
-  /* текст и бренды — компактнее */
-  .heroText {
-    padding-top: 32px;
-    padding-bottom: 56px;
-    gap: 12px;
-    font-size: clamp(22px, 8vw, 42px);
-  }
-
-  .heroTitle {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .heroBadge {
-    max-width: calc(100% - 32px);
   }
 }
+
+
 

@@ -125,10 +125,11 @@
   .img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* ✅ полностью */
+    object-fit: cover; 
     object-position: center;
     background: #ffffff;
     display: block;
+    
   }
 
   /* текст по центру */
