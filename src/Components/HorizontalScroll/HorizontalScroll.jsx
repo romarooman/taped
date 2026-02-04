@@ -11,8 +11,6 @@ import brands from "../../images/brands.png";
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import ImagesListRow from "../ImagesListRow/ImagesListRow";
-import ChatPill from "../ChatPill/ChatPill";
-import BookAShootButton from "../BookAShootButton/BookAShootButton";
 import ImagesListColumn from "../ImagesListColumn/ImagesListColumn";
 import ImagesOnly from "../ImagesOnly/ImagesOnly";
 
