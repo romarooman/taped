@@ -3,10 +3,14 @@ import styles from "./ImagesListColumn.module.css";
 import ChatPill from "../ChatPill/ChatPill";
 import BookAShootButton from "../BookAShootButton/BookAShootButton";
 import tapedPng from "../../images/taped_world.png"; // PNG со словом "taped"
+import MobileCta from "../MobileCta/MobileCta";
 
 const ImagesListColumn = ({ fimage }) => {
   return (
     <div className={styles.imagesCol}>
+      <div className={styles.mobileCtaWrap}>
+        <MobileCta targetId="book" />
+      </div>
       {/* 1-й блок — картинка */}
       <div className={`${styles.imgCard}`}>
         <img className={`${styles.img}`} src={fimage} alt="img" />

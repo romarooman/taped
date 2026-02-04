@@ -2,6 +2,7 @@ import React from "react";
 import "./ImagesListRow.css";
 import ChatPill from "../ChatPill/ChatPill";
 import BookAShootButton from "../BookAShootButton/BookAShootButton";
+import MobileCta from "../MobileCta/MobileCta";
 
 const ImagesListRow = ({
   fimage,
@@ -26,6 +27,9 @@ const ImagesListRow = ({
 
   return (
     <div className="imagesRow">
+      <div className="mobileCtaWrap">
+        <MobileCta targetId="book" />
+      </div>
       {isImageFirst ? (
         <>
           {/* картинка */}

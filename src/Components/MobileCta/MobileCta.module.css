@@ -1,0 +1,29 @@
+.mobileCta {
+  width: 100%;
+  height: 25px;
+
+  border: 0;
+  border-radius: 999px;
+
+  background: #daff3e;
+  color: #000;
+
+  font-family: "DM Sans", sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 100%;
+  text-transform: lowercase;
+
+  display: none; /* по умолчанию скрыта */
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .mobileCta {
+    display: flex; /* ✅ только на mobile */
+    top: 16px; 
+  }
+}

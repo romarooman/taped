@@ -51,7 +51,7 @@
   justify-content: center;
   align-items: center;
 
-   padding-left: 40px;
+  padding-left: 40px;
   padding-right: 40px;
   box-sizing: border-box;
 }
@@ -73,6 +73,10 @@
   flex-direction: column;
   gap: 18px;
   align-items: flex-end;
+}
+
+.mobileCtaWrap {
+  display: none;
 }
 
 /* ===== адаптив ===== */
@@ -104,6 +108,14 @@
 }
 
 @media (max-width: 480px) {
+  .mobileCtaWrap {
+    display: block;
+
+    left: 16px;
+    right: 16px;
+    top: 16px;
+    z-index: 5;
+  }
   .heroText {
     padding-top: 32px;
     padding-bottom: 56px;
@@ -114,7 +126,7 @@
   .heroTitle {
     padding-left: 16px;
     padding-right: 16px;
-    margin-bottom:15px
+    margin-bottom: 15px;
   }
 
   .heroBadge {

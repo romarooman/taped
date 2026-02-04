@@ -40,12 +40,12 @@
 
 /* mobile layout */
 @media (max-width: 480px) {
-  .sticky {
-    height: calc(100dvh - var(--nav-h));
+.sticky {
+    height: calc(100svh - var(--nav-h));
   }
 
   .slide {
-    height: calc(100dvh - var(--nav-h));
+    height: calc(100svh - var(--nav-h));
   }
 
   .imageWrapper {

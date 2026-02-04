@@ -85,9 +85,20 @@
 
   pointer-events: auto; /* чтобы клики работали */
 }
+.mobileCtaWrap {
+  display: none;
+}
 
 /* ===== Mobile: stack layout ===== */
 @media (max-width: 600px) {
+  .mobileCtaWrap {
+    display: block;
+
+    left: 16px;
+    right: 16px;
+    top: 16px;
+    z-index: 5;
+  }
   /* 🔥 меняем направление */
   .imagesRow {
     flex-direction: column;

@@ -89,6 +89,10 @@
   pointer-events: auto;
 }
 
+.mobileCtaWrap {
+  display: none;
+}
+
 @media (max-width: 1400px) {
   .imgCenterText {
     padding-left: 240px;
@@ -105,13 +109,21 @@
 
 /* ===== Mobile ===== */
 @media (max-width: 600px) {
+    .mobileCtaWrap {
+    display: block;
+
+    left: 16px;
+    right: 16px;
+    top: 16px;
+    z-index: 5;
+  }
   /* делим слайд ровно на 2 части */
   .imagesCol {
     height: 100%;
     gap: 12px;
   }
-  
-    .colActions,
+
+  .colActions,
   .rowActions {
     display: none !important;
   }
@@ -125,52 +137,49 @@
   .img {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover;
     object-position: center;
     background: #ffffff;
     display: block;
-    
   }
 
   /* текст по центру */
-.imgCenterText {
-  position: absolute;
-  inset: 0;
+  .imgCenterText {
+    position: absolute;
+    inset: 0;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  pointer-events: none;
+    pointer-events: none;
 
-  /* 🔥 ключевое */
-  text-align: center;
-  max-width: 100%;
-  padding: 20px;
+    /* 🔥 ключевое */
+    text-align: center;
+    max-width: 100%;
+    padding: 20px;
 
-  font-family: "DM Sans", sans-serif;
-  font-weight: 900;
-  font-size: clamp(20px, 4vw, 34px);
-  line-height: 110%;
-  text-transform: lowercase;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 900;
+    font-size: clamp(20px, 4vw, 34px);
+    line-height: 110%;
+    text-transform: lowercase;
 
-  box-sizing: border-box;
-}
-
+    box-sizing: border-box;
+  }
 
   /* taped корректно уменьшается */
-.tapedWord {
-  display: inline-block;   /* 🔥 как буква */
-  height: 1.4em !important;
-  width: auto ;
+  .tapedWord {
+    display: inline-block; /* 🔥 как буква */
+    height: 1.4em !important;
+    width: auto;
 
-  vertical-align: middle;
-  object-fit: contain;
+    vertical-align: middle;
+    object-fit: contain;
 
-  margin: 0 -0.1em;          /* лёгкое наложение */
-  transform: translateY(0.25em);
-}
-
+    margin: 0 -0.1em; /* лёгкое наложение */
+    transform: translateY(0.25em);
+  }
 
   /* кнопки ближе к краю */
   .colActions {
