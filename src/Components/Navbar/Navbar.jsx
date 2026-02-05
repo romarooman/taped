@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 const navItems = ["We are", "Service", "Community", "Contacts"];
@@ -7,12 +8,13 @@ const Navbar = () => {
   const [activeItem, setActiveItem] = useState("We are");
   const [hoveredItem, setHoveredItem] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const tapedText =" taped.";
+  const navigate = useNavigate();
+  const tapedText = " taped.";
 
   const handlePick = (item) => {
-    setActiveItem(item);
-    setMenuOpen(false);
+    if (item === "We are") navigate("/");
+    if (item === "Service") navigate("/service");
+    if (item === "Community") navigate("/community");
   };
 
   return (
@@ -29,7 +31,7 @@ const Navbar = () => {
           type="button"
         >
           <span />
-   
+
           <span />
         </button>
       </div>

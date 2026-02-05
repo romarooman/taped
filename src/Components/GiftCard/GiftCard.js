@@ -39,7 +39,7 @@ export default function GiftCard() {
   const active = data[tab];
 
   return (
-    <div className={styles.page}>
+    <div id="giftcard" className={styles.page}>
       <div className={styles.wrap}>
         {/* LEFT */}
         <section className={styles.left}>
