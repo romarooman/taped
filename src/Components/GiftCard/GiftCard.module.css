@@ -239,24 +239,24 @@
   /* типографика мобилки */
   .tabBtn {
     height: 56px;
-    font-size: 28px;
+    font-size: 15px;
   }
 
   .title,
   .price {
-    font-size: 40px;
+    font-size: 20px;
   }
 
   .listItem {
-    font-size: 18px;
-    line-height: 160%;
+    font-size: 12px;
+    line-height: 100%;
     gap: 16px;
   }
 
   .bulletIcon {
     width: 16px;
     height: 16px;
-    margin-top: 8px;
+    margin-top: 1px;
   }
 
   .list {

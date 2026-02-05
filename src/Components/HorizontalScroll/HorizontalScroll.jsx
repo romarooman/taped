@@ -65,6 +65,7 @@ personal branding"
                 bg="#DAFF3E"
                 textOn="second"
                 fimage={Three}
+                subtitleSize="clamp(4px, 3.5vw, 20px)"
               />
             </div>
           </div>
@@ -77,9 +78,11 @@ tools and content that
 are both useful
 and beautifully crafted."
                 textOn="first"
+                title=""
                 fimage={Four}
                 bg="#DAFF3E"
                 order="bg-first"
+                subtitleSize="clamp(4px, 3.5vw, 20px)"
               />
             </div>
           </div>

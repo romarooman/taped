@@ -67,7 +67,7 @@ export default function GiftCard() {
 
           <div className={styles.content}>
             <div className={styles.headerRow}>
-              <h2 className={styles.title}>{active.title}</h2>
+              <div className={styles.title}>{active.title}</div>
               <div className={styles.price}>{active.price}</div>
             </div>
 
