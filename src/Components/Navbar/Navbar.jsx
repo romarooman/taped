@@ -12,6 +12,7 @@ const Navbar = () => {
   const tapedText = " taped.";
 
   const handlePick = (item) => {
+    setActiveItem(item);
     if (item === "We are") navigate("/");
     if (item === "Service") navigate("/service");
     if (item === "Community") navigate("/community");
