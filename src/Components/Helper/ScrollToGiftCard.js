@@ -6,7 +6,7 @@ const ScrollToGiftCard = () => {
 
   useEffect(() => {
     if (location.pathname === "/service") {
-      const el = document.getElementById("giftcard");
+      const el = document.getElementById("service");
       if (el) {
         el.scrollIntoView({ behavior: "smooth" });
       }

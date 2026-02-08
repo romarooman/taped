@@ -5,11 +5,13 @@ import Navbar from "./Components/Navbar/Navbar";
 import Bottom from "./Components/Bottom/Bottom";
 import GiftCard from "./Components/GiftCard/GiftCard";
 import ScrollToGiftCard from "./Components/Helper/ScrollToGiftCard";
+import Service from "./Components/Service/Service";
 
 function Home() {
   return (
     <>
       <HorizontalScroll />
+      <Service/>
       <GiftCard />
       <Bottom title="here content bottom" />
       <Bottom title="here content bottom" />
