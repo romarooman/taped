@@ -1,4 +1,4 @@
-import "./App.css";
+import styles from "./App.module.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HorizontalScroll from "./Components/HorizontalScroll/HorizontalScroll";
 import Navbar from "./Components/Navbar/Navbar";
@@ -6,12 +6,14 @@ import Bottom from "./Components/Bottom/Bottom";
 import GiftCard from "./Components/GiftCard/GiftCard";
 import ScrollToGiftCard from "./Components/Helper/ScrollToGiftCard";
 import Service from "./Components/Service/Service";
+import QA from "./Components/QA/QA";
 
 function Home() {
   return (
     <>
       <HorizontalScroll />
-      <Service/>
+      <Service />
+      <QA height={420} />
       <GiftCard />
       <Bottom title="here content bottom" />
       <Bottom title="here content bottom" />
@@ -34,7 +36,7 @@ function App() {
     // </div>
 
     <BrowserRouter>
-      <div className="App">
+      <div className={styles.App}>
         <Navbar />
         <ScrollToGiftCard />
         <Routes>

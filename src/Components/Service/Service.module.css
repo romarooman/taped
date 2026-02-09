@@ -111,4 +111,10 @@
   .big {
     font-size: 34px;
   }
+
+  .imageWrap {
+
+  padding: 0 10px; /* ← ОТСТУПЫ ДЛЯ КАРТИНКИ */
+
+}
 }

@@ -1,0 +1,167 @@
+.wrap {
+  width: 100%;
+  padding: 28px 0;
+}
+
+.title {
+  text-align: center;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 900;
+  font-size: 28px;
+  margin: 0 0 18px;
+  text-transform: lowercase;
+}
+
+.scrollShell {
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .scrollShell {
+    padding-left: 39px;
+    padding-right: 39px;
+  }
+}
+
+.list {
+  overflow-y: auto;
+  max-height: 420px; /* если height не передаёшь */
+  padding-right: 6px;
+
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* old Edge */
+}
+
+.list::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.item {
+  background: #d5d5d5;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06) inset;
+  overflow: hidden;
+  transition: background 0.2s ease;
+}
+
+.first {
+  background: #d6ff43;
+}
+
+.open {
+  background: #ffffff;
+}
+
+.head {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+
+  padding: 22px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  text-align: left;
+}
+
+.centerText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+.contentTitle {
+  font-size: 22px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 900;
+  text-transform: lowercase;
+  margin-bottom: 12px;
+  color: #000;
+}
+
+.q {
+  font-size: 22px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 900;
+  text-transform: lowercase;
+}
+
+.a {
+  font-size: 14px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.chev {
+  width: 0;
+  height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 10px solid rgba(0, 0, 0, 0.75);
+  transition: transform 0.18s ease;
+  flex: 0 0 auto;
+}
+
+.chevUp {
+  transform: rotate(180deg);
+}
+
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.22s ease;
+}
+
+.open .panel {
+  grid-template-rows: 1fr;
+}
+
+.panelInner {
+  overflow: hidden;
+  padding: 0 18px 18px;
+  color: rgba(0, 0, 0, 0.78);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.panelInner :global(.twoCols) {
+  display: grid;
+  gap: 18px;
+}
+/* Мобилка: отступы 10px */
+.scrollShell {
+  position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media (min-width: 1024px) {
+  .panelInner :global(.twoCols) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.panelInner p {
+  margin: 0;
+}
+
+.fadeBottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 70px;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1)
+  );
+}
