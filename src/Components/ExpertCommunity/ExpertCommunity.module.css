@@ -1,0 +1,179 @@
+/* ExpertCommunity.module.css */
+
+.section {
+  padding-left: 46px;
+  padding-right: 46px;
+  padding-bottom: 178px;
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+/* обе карточки одинаковые */
+.card {
+  flex: 0 0 calc(50% - 2.5px); /* 50/50 с учётом gap:5px */
+  min-width: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* правая картинка */
+.imageCard {
+  padding: 0;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* левая карточка с текстом */
+.textCard {
+  padding: 6px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* ВАЖНО: убрали max-width чтобы не ломало “ощущение” ширины */
+.textTop {
+  max-width: none;
+}
+
+.kicker {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  color: rgba(18, 18, 18, 0.45);
+  margin-bottom: 18px;
+}
+
+.title {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 900;
+  font-size: clamp(34px, 4.6vw, 72px);
+  line-height: 89%;
+  letter-spacing: -0.02em;
+  text-transform: lowercase;
+  color: #303030;
+  margin: 0 0 22px 0;
+}
+
+.desc {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  font-size: clamp(14px, 1.6vw, 18px);
+  line-height: 120%;
+  text-transform: lowercase;
+  color: #303030;
+  margin: 0;
+}
+
+/* mobile картинка внутри текста */
+.mobileImageWrap {
+  display: none;
+}
+
+.mobileImg {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* more (desktop: снизу слева, mobile: кнопка) */
+.more {
+  display: inline-flex;
+  align-items: center;
+
+  font-family: "DM Sans", sans-serif;
+  font-weight: 900;
+  font-size: 60px;
+  line-height: 100%;
+  text-transform: lowercase;
+
+  color: #303030;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.more:hover {
+  opacity: 0.65;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 600px) {
+  .section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* на мобилке карточки на всю ширину */
+  .card {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  /* скрываем правую картинку (чтобы не было 2 картинки) */
+  .imageCard {
+    display: none;
+  }
+
+  .textCard {
+    padding: 6px;
+  }
+
+  .title {
+    font-size: clamp(28px, 9vw, 40px);
+    line-height: 105%;
+    margin-bottom: 14px;
+  }
+
+  .desc {
+    font-size: 16px;
+    line-height: 130%;
+  }
+
+  .mobileImageWrap {
+    display: block;
+    margin-top: 12px;
+  }
+
+  .mobileImg {
+    aspect-ratio: 16 / 10; /* поставь 1/1 если нужен квадрат */
+  }
+
+  .more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 12px;
+    height: 56px;
+    width: 100%;
+
+    background: #d7ff3f;
+    border-radius: 12px;
+
+    font-size: 30px;
+    text-decoration: none;
+  }
+}

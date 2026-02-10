@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import styles from "./QA.module.css";
 
 export default function QA({ items = defaultItems, height = 420 }) {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(-1);
   const listRef = useRef(null);
 
   // опционально: при открытии — немного подскроллить, чтобы пункт был виден

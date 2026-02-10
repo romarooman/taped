@@ -1,7 +1,7 @@
 /* весь экран + нужные отступы */
 .page {
   min-height: 100vh;
-  padding: 200px 46px 94px;
+  padding: 120px 46px 94px;
   box-sizing: border-box;
 }
 
@@ -204,7 +204,7 @@
 }
 @media (max-width: 768px) {
   .page {
-    padding: 120px 20px 40px;
+    padding: 90px 20px 40px;
   }
 
   .wrap {
