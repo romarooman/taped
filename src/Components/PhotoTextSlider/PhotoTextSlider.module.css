@@ -1,0 +1,190 @@
+.root {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #111;
+  user-select: none;
+  touch-action: pan-y;
+
+  /*  отступы как ты просил */
+  margin-left: 39px;
+  margin-right: 39px;
+
+  /* твой отступ снизу */
+  margin-bottom: 152px;
+
+  /* vars */
+  --slideW: 52%;
+  --gap: 12px;
+  --r: 18px;
+  --i: 1;
+  --t: 1;
+}
+
+.track {
+  height: 100%;
+  display: flex;
+  gap: var(--gap);
+
+  /*  сдвиг “по карточкам” (ширина карточки + gap) */
+  transform: translateX(calc(var(--i) * (var(--slideW) + var(--gap)) * -1));
+
+  /* анимация можно выключать (для мгновенного jump) */
+  transition: transform 380ms ease;
+  transition-duration: calc(var(--t) * 380ms);
+
+  will-change: transform;
+}
+
+.slide {
+  flex: 0 0 var(--slideW);
+  height: 100%;
+  position: relative;
+
+  border-radius: var(--r);
+  overflow: hidden;
+  background: #0b0b0b;
+}
+
+/*  картинка полностью влезает в карточку */
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+/* overlay — строго в пределах слайда */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 22px;
+  box-sizing: border-box;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+
+.overlayOn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.62),
+    rgba(0, 0, 0, 0.12),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.overlayInner {
+  position: relative;
+  width: 100%;
+  color: #fff;
+  z-index: 2;
+}
+
+.quote {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.15;
+  font-weight: 700;
+  max-width: 100%;
+
+  /* ✅ чтобы текст всегда помещался в одном слайде */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+
+.meta {
+  margin-top: 14px;
+  opacity: 0.9;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+}
+
+.role {
+  margin-top: 4px;
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+/* большие кавычки */
+.quoteMarkLeft,
+.quoteMarkRight {
+  position: absolute;
+  top: 18px;
+  font-size: 64px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.quoteMarkLeft {
+  left: 18px;
+}
+
+.quoteMarkRight {
+  right: 18px;
+}
+
+/* dots */
+.dots {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+}
+.dotActive {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 768px) {
+  .root {
+    margin-left: 10px;
+    margin-right: 10px;
+
+    /* на мобилке карточка почти на весь экран */
+    --slideW: 86%;
+    --gap: 10px;
+  }
+
+  .quote {
+    font-size: 18px;
+    -webkit-line-clamp: 5;
+  }
+
+  .quoteMarkLeft,
+  .quoteMarkRight {
+    font-size: 44px;
+  }
+}
