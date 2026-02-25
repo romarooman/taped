@@ -15,6 +15,7 @@ import mapImg from "./images/map.png";
 import PhotoTextSlider from "./Components/PhotoTextSlider/PhotoTextSlider";
 import Img1 from "./images/8.png";
 import Img2 from "./images/9.png";
+import ServiceCard from "./Components/ServiceCard/ServiceCard";
 
 function Home() {
   const slides = [
@@ -89,7 +90,17 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/service" element={<Home />} />
+          <Route
+            path="/service/card"
+            element={
+              <ServiceCard
+                image={Img1}
+                onBook={() => console.log("book clicked")}
+              />
+            }
+          />
           <Route path="/community" element={<Home />} />
+          <Route path="/contacts" element={<Home />} />
         </Routes>
       </div>
     </BrowserRouter>

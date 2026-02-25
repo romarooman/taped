@@ -1,0 +1,138 @@
+.section {
+  width: 100%;
+  padding: 60px 46px;
+  box-sizing: border-box;
+  /* background УБРАН */
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* TOP */
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.left {
+  flex: 1;
+}
+
+.breadcrumbs {
+  font-size: 14px;
+  color: #9a9a9a;
+  margin-bottom: 30px;
+}
+
+/* 🔥 TITLE ОБНОВЛЁН */
+
+.title {
+  display: flex;
+  flex-direction: column;
+
+  font-family: "DM Sans", sans-serif;
+  font-weight: 900;
+  font-size: 100px;
+  line-height: 89%;
+  letter-spacing: 0%;
+}
+
+/* underline полностью удалён */
+.titleLine {
+  width: fit-content;
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.right img {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+/* BOTTOM */
+
+.bottom {
+  margin-top: 50px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  border-top: 1px solid #ccc;
+  padding-top: 25px;
+}
+
+.infoBlock {
+  flex: 1.5;
+}
+
+.label {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 380px;
+}
+
+.metaBlock {
+  display: flex;
+  gap: 80px;
+}
+
+.metaItem .value {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.bookBtn {
+  background: #d4f21f;
+  border: none;
+  padding: 18px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.bookBtn:hover {
+  opacity: 0.85;
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .top {
+    flex-direction: column;
+  }
+
+  .right {
+    justify-content: flex-start;
+  }
+
+  .bottom {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .metaBlock {
+    gap: 40px;
+  }
+
+  .title {
+    font-size: 56px;
+  }
+}

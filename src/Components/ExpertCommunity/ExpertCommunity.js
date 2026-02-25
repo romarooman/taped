@@ -47,7 +47,7 @@ film and photography and brings a calm, focused eye to the work.`,
   );
 
   return (
-    <section className={styles.section}>
+    <section id="community" className={styles.section}>
       <div className={styles.row}>
         {isImageFirst ? (
           <>

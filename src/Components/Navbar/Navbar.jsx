@@ -16,6 +16,8 @@ const Navbar = () => {
     if (item === "We are") navigate("/");
     if (item === "Service") navigate("/service");
     if (item === "Community") navigate("/community");
+    if (item === "Contacts") navigate("/contacts");
+    
   };
 
   return (

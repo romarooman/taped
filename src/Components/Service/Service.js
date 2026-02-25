@@ -6,10 +6,16 @@ import bg from "../../images/service.png";
 const Service = () => {
   const location = useLocation();
 
-  // берём последний сегмент пути
   const title =
     location.pathname.split("/").filter(Boolean).pop()?.replace(/-/g, " ") ||
     "";
+
+  const items = [
+    { big: "headshots", tag: "video" },
+    { big: "video shooting", tag: "photo" },
+    { big: "acting", tag: "video" },
+    { big: "other", tag: "photo" },
+  ];
 
   return (
     <section id="service" className={styles.hero}>
@@ -21,24 +27,19 @@ const Service = () => {
         <div className={styles.textWrap}>
           <div className={styles.top}>{title}</div>
 
-          <Link to="/service" className={styles.bottom}>
-            <div className={styles.line}>
-              <span className={styles.big}>headshots</span>
-              <span className={styles.tag}>video</span>
-            </div>
-            <div className={styles.line}>
-              <span className={styles.big}>video shooting</span>
-              <span className={styles.tag}>photo</span>
-            </div>
-            <div className={styles.line}>
-              <span className={styles.big}>acting</span>
-              <span className={styles.tag}>video</span>
-            </div>
-            <div className={styles.line}>
-              <span className={styles.big}>other</span>
-              <span className={styles.tag}>photo</span>
-            </div>
-          </Link>
+          <div className={styles.bottom}>
+            {items.map((it, idx) => (
+              <Link
+                key={idx}
+                to="/service/card"
+                className={styles.line}
+                aria-label={`${it.big} ${it.tag}`}
+              >
+                <span className={styles.big}>{it.big}</span>
+                <span className={styles.tag}>{it.tag}</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </section>

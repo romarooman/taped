@@ -54,21 +54,50 @@
 }
 
 /* нижний блок */
+/* нижний блок теперь НЕ ссылка, а контейнер */
 .bottom {
-  text-decoration: none;
-  color: inherit;
   width: fit-content;
 }
 
+/* каждая строка — ссылка */
 .line {
   display: flex;
   align-items: baseline;
   gap: 16px;
   white-space: nowrap;
+
+  text-decoration: none;
+  color: inherit;
+
+  cursor: pointer;
+  will-change: transform;
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease;
+  transform: translateY(0);
 }
 
 .line + .line {
   margin-top: 10px;
+}
+
+/* hover: чуть приподнять */
+.line:hover {
+  transform: translateY(-4px);
+  opacity: 0.92;
+}
+
+/* приятный "нажим" при клике */
+.line:active {
+  transform: translateY(-2px);
+  opacity: 0.85;
+}
+
+/* фокус для клавиатуры (важно) */
+.line:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 6px;
+  border-radius: 10px;
 }
 
 .big {
@@ -89,11 +118,9 @@
 
 /* адаптив */
 @media (max-width: 768px) {
-
-    .textWrap {
-  padding-left: 15px; /* ← ВОТ ОН */
-
-    }
+  .textWrap {
+    padding-left: 15px; /* ← ВОТ ОН */
+  }
   .inner {
     padding: 24px 39px;
   }
@@ -113,7 +140,16 @@
   }
 
   .imageWrap {
-
-  padding: 0 10px; 
+    padding: 0 10px;
+  }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .line {
+    transition: none;
+  }
+  .line:hover,
+  .line:active {
+    transform: none;
+  }
 }

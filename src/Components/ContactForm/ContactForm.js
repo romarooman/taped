@@ -18,7 +18,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section className={styles.section}>
+    <section id="contacts" className={styles.section}>
       <div className={styles.container}>
         <h2 className={styles.title}>
           text us and let’s
