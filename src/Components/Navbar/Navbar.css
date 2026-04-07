@@ -1,34 +1,49 @@
 .navbar {
-  background: #fffcfc;
-  padding: 16px 40px;
-  width: 100%;
-  box-sizing: border-box;
-
-position: fixed;   
+  position: fixed;
   top: 0;
   z-index: 9999;
+
+  width: 100%;
+  padding: 16px 40px;
+  box-sizing: border-box;
+  background: #fffcfc;
 }
 
-/* ===== Desktop menu ===== */
+/* Desktop menu */
 .nav-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 32px;
+
   width: 100%;
-  list-style: none;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
-.nav-item {
+/* .nav-item {
   position: relative;
+  cursor: pointer;
+
   color: #303030;
   font-family: "DM Sans", sans-serif;
   font-weight: 900;
-  cursor: pointer;
   font-size: 18px;
   transition: color 0.2s ease;
+} */
+
+.nav-item {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 900;
+  position: relative;
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: 0;
+  cursor: pointer;
+  color: #3a3a3a;
+  transition: color 0.2s ease;
+  text-transform: lowercase;
 }
 
 .nav-item:hover {
@@ -39,31 +54,20 @@ position: fixed;
   color: #303030;
 }
 
+/* PNG sticker on desktop */
 .taped {
   position: absolute;
-  width: fit-content;
+  top: 31px;
+  left: 15px;
 
-  top: 18px;
-  left: -1px;
+  width: 152px;
+  height: auto;
 
-  transform: rotate(-3deg);
-
-  font-family: "DM Sans", sans-serif;
-  font-weight: 900;
-
-  background: #daff3e;
-  color: #000;
-  font-size: 18px;
-  padding: 0px 10px 4px 10px;
-  border-radius: 6px;
-  text-align: center;
-
-  white-space: nowrap;
-  pointer-events: none;
-  box-sizing: border-box;
+  transform: rotate(-1deg);
+  display: block;
 }
 
-/* ===== Mobile header row ===== */
+/* Mobile top row */
 .navbar-mobile {
   display: none;
   align-items: center;
@@ -71,46 +75,39 @@ position: fixed;
   gap: 16px;
 }
 
+/* PNG sticker on mobile */
 .taped-label {
-  display: inline-block;
-  width: fit-content;
-
-  transform: rotate(-3deg);
-
-  font-family: "DM Sans", sans-serif;
-  font-weight: 900;
-
-  background: #daff3e;
-  color: #000;
-  font-size: 18px;
-  padding: 0px 10px 4px 10px;
-  border-radius: 6px;
-
-  white-space: nowrap;
+  display: block;
+  width: 70px;
+  height: auto;
+  transform: rotate(-6deg);
 }
 
 /* Burger button */
 .burger {
-  width: 40px;
-  height: 40px;
-  border: 0;
-  background: transparent;
-  padding: 0;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 8px;
 
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: transparent;
   cursor: pointer;
 }
 
 .burger span {
+  display: block;
   width: 100%;
   height: 2px;
+
   background: #303030;
   border-radius: 2px;
-  transition: transform 0.25s ease, opacity 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
 }
 
 /* burger -> X */
@@ -122,20 +119,24 @@ position: fixed;
   transform: translateY(-5px) rotate(-45deg);
 }
 
-/* Mobile dropdown menu */
+/* Mobile dropdown */
 .mobile-menu {
   display: none;
+  overflow: hidden;
+
   margin-top: 12px;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-6px);
 
   background: #fffcfc;
   border-radius: 12px;
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
 
-  max-height: 0;
-  opacity: 0;
-  transform: translateY(-6px);
-  transition: max-height 0.25s ease, opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    max-height 0.25s ease,
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .mobile-menu.open {
@@ -146,19 +147,17 @@ position: fixed;
 
 .mobile-item {
   width: 100%;
-  text-align: left;
-
+  padding: 16px;
   border: 0;
-  background: transparent;
-  cursor: pointer;
 
-  padding: 16px 16px;
+  background: transparent;
+  color: #303030;
+  text-align: left;
+  cursor: pointer;
 
   font-family: "DM Sans", sans-serif;
   font-weight: 900;
   font-size: 18px;
-
-  color: #303030;
 }
 
 .mobile-item:hover {
@@ -169,18 +168,18 @@ position: fixed;
   background: rgba(218, 255, 62, 0.25);
 }
 
-/* ===== Responsive breakpoints ===== */
-@media (max-width: 768px) {
+/* Responsive */
+@media (max-width: 1068px) {
   .navbar {
-    padding: 16px 16px; /* можно оставить 40, но обычно на мобиле меньше */
+    padding: 16px;
   }
 
   .nav-list {
-    display: none; /* прячем десктоп меню */
+    display: none;
   }
 
   .navbar-mobile {
-    display: flex; /* показываем taped слева + burger справа */
+    display: flex;
   }
 
   .mobile-menu {

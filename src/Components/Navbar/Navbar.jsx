@@ -1,30 +1,29 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import tapedImg from "../../images/logoT.png";
 import "./Navbar.css";
 
-const navItems = ["We are", "Service", "Community", "Contacts"];
+const navItems = ["we are", "service", "community", "contacts"];
 
 const Navbar = () => {
-  const [activeItem, setActiveItem] = useState("We are");
+  const [activeItem, setActiveItem] = useState("we are");
   const [hoveredItem, setHoveredItem] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const tapedText = " taped.";
 
   const handlePick = (item) => {
     setActiveItem(item);
-    if (item === "We are") navigate("/");
-    if (item === "Service") navigate("/service");
-    if (item === "Community") navigate("/community");
-    if (item === "Contacts") navigate("/contacts");
-    
+    if (item === "we are") navigate("/");
+    if (item === "service") navigate("/service");
+    if (item === "community") navigate("/community");
+    if (item === "contacts") navigate("/contacts");
   };
 
   return (
     <nav className="navbar">
       {/* Mobile row: taped слева + burger справа */}
       <div className="navbar-mobile">
-        <span className="taped-label">{tapedText}</span>
+        <img src={tapedImg} alt="taped" className="taped-label" />
 
         <button
           className={`burger ${menuOpen ? "open" : ""}`}
@@ -54,7 +53,9 @@ const Navbar = () => {
               onClick={() => handlePick(item)}
             >
               {item}
-              {(isHovered || isActive) && <span className="taped">taped.</span>}
+              {(isHovered || isActive) && (
+                <img src={tapedImg} alt="taped" className="taped" />
+              )}
             </li>
           );
         })}
