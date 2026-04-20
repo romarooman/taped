@@ -31,7 +31,7 @@ const Service = () => {
             {items.map((it, idx) => (
               <Link
                 key={idx}
-                to="/service/card"
+                to=""
                 className={styles.line}
                 aria-label={`${it.big} ${it.tag}`}
               >

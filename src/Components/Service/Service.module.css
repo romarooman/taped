@@ -17,7 +17,7 @@
 .inner {
   position: relative;
   z-index: 2;
-  min-height: 100vh;
+ 
 
   padding: 28px 39px;
   box-sizing: border-box;
@@ -29,7 +29,6 @@
 .imageWrap {
   position: absolute;
   inset: 0;
-  padding: 0 39px; /* ← ОТСТУПЫ ДЛЯ КАРТИНКИ */
   box-sizing: border-box;
 }
 

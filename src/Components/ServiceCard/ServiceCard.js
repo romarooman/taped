@@ -62,7 +62,7 @@ he brings an understanding of performance and how to make people feel comfortabl
           </div>
         </div>
       </section>
-      <ContactForm />
+     
     </>
   );
 }
