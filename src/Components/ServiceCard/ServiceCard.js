@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./ServiceCard.module.css";
-import ContactForm from "../ContactForm/ContactForm";
 
 export default function ServiceCard({
   breadcrumbs = "main / services / headshots",
