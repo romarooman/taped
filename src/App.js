@@ -121,6 +121,7 @@ and beautifully crafted."
           <ImagesListRow
             textOn="first"
             fimage={Five}
+            padding={0}
             bg="#FFFFFF"
             order="bg-first"
             title="Max Ishchenko"
@@ -132,7 +133,7 @@ and beautifully crafted."
 
       <HorizontalScroll>
         <div className={`${styles.slide}`} key={15}>
-          <div className={`${styles.imageWrapper}`}>
+          <div className={`${styles.imageWrapper2}`}>
             <ImagesListRow
               title="Mateu Parellada"
               subtitle="is an actor from Barcelona, now
@@ -160,7 +161,7 @@ in front of the camera."
           fimage={Seven}
           bg="#FFFFFF"
         />
-             <ExpertCommunity
+        <ExpertCommunity
           kicker="experts"
           title="our dialogues with famous experts"
           subtitle="is an actor from Barcelona, now
