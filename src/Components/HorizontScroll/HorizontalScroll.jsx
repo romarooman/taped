@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import styles from "./HorizontalScroll.module.css";
 
-const NAV_H = 64;
+const NAV_H = 96;
 
 const HorizontalScroll = ({ children, slidesCount }) => {
   const targetRef = useRef(null);

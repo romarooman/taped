@@ -27,7 +27,7 @@ import ImagesListColumn from "./Components/ImagesListColumn/ImagesListColumn";
 import ImagesListRow from "./Components/ImagesListRow/ImagesListRow";
 import HorizontalScroll from "./Components/HorizontScroll/HorizontalScroll";
 import PhotoSlider from "./Components/PhotoSlider/PhotoSlider";
-import MoskData from "./Components/MoskData/MoskData";
+// import MoskData from "./Components/MoskData/MoskData";
 
 const photos = [
   { id: 1, src: One, alt: "photo 1" },
@@ -160,13 +160,7 @@ in front of the camera."
           fimage={Seven}
           bg="#FFFFFF"
         />
-      </HorizontalScroll>
-
-      <MoskData />
-
-      <HorizontalScroll>
-        <MoskData />
-        <ExpertCommunity
+             <ExpertCommunity
           kicker="experts"
           title="our dialogues with famous experts"
           subtitle="is an actor from Barcelona, now
