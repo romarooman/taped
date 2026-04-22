@@ -7,7 +7,6 @@ import Service from "./Components/Service/Service";
 import QA from "./Components/QA/QA";
 import Seven from "./images/7.png";
 import ExpertCommunity from "./Components/ExpertCommunity/ExpertCommunity";
-import ContactForm from "./Components/ContactForm/ContactForm";
 import Location from "./Components/Location/Location";
 import locationImg from "./images/building.png";
 import mapImg from "./images/map.png";
@@ -26,16 +25,17 @@ import brands from "./images/brands.png";
 import ImagesListColumn from "./Components/ImagesListColumn/ImagesListColumn";
 import ImagesListRow from "./Components/ImagesListRow/ImagesListRow";
 import HorizontalScroll from "./Components/HorizontScroll/HorizontalScroll";
-import PhotoSlider from "./Components/PhotoSlider/PhotoSlider";
+// import PhotoSlider from "./Components/PhotoSlider/PhotoSlider";
+// import ContactForm from "./Components/ContactForm/ContactForm";
 // import MoskData from "./Components/MoskData/MoskData";
 
-const photos = [
-  { id: 1, src: One, alt: "photo 1" },
-  { id: 2, src: Two, alt: "photo 2" },
-  { id: 3, src: Three, alt: "photo 3" },
-  { id: 3, src: Five, alt: "photo 3" },
-  { id: 3, src: Six, alt: "photo 3" },
-];
+// const photos = [
+//   { id: 1, src: One, alt: "photo 1" },
+//   { id: 2, src: Two, alt: "photo 2" },
+//   { id: 3, src: Three, alt: "photo 3" },
+//   { id: 3, src: Five, alt: "photo 3" },
+//   { id: 3, src: Six, alt: "photo 3" },
+// ];
 
 function Home() {
   const slides = [
@@ -148,11 +148,15 @@ in front of the camera."
         </div>
         <Service />
       </HorizontalScroll>
-      <ServiceCard image={Img1} onBook={() => console.log("book clicked")} />
+      <QA height={420} />
+      <PhotoTextSlider slides={slides} height={420} />
+
+      {/* new page service */}
+      {/* <ServiceCard image={Img1} onBook={() => console.log("book clicked")} />
       <PhotoSlider title="how it goes:" photos={photos} />
-      <ContactForm />
+      <ContactForm /> */}
       <HorizontalScroll>
-        <Location image={locationImg} mapImage={mapImg} />
+        <GiftCard />
         <ExpertCommunity
           title="yes, we have a taped. community"
           subtitle="is a director from Moscow who based in New York. He works in narrative film and photography and brings a calm, focused eye to the work. "
@@ -161,25 +165,19 @@ in front of the camera."
           fimage={Seven}
           bg="#FFFFFF"
         />
-        <ExpertCommunity
-          kicker="experts"
-          title="our dialogues with famous experts"
-          subtitle="is an actor from Barcelona, now
+      </HorizontalScroll>
+      <ExpertCommunity
+        kicker="experts"
+        title="our dialogues with famous experts"
+        subtitle="is an actor from Barcelona, now
 based in New York. He brings an understanding of performance and how to make people feel comfortable
 in front of the camera."
-          subtitleSize="clamp(4px, 3.5vw, 20px)"
-          textOn="first"
-          order="image-first"
-          fimage={Seven}
-          bg="#FFFFFF"
-        />
-      </HorizontalScroll>
-
-      <QA height={420} />
-      <GiftCard />
-      <PhotoTextSlider slides={slides} height={420} />
-
-      <ContactForm />
+        subtitleSize="clamp(4px, 3.5vw, 20px)"
+        textOn="first"
+        order="image-first"
+        fimage={Seven}
+        bg="#FFFFFF"
+      />
       <Location image={locationImg} mapImage={mapImg} />
     </>
   );

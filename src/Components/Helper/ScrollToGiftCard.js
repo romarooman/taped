@@ -12,20 +12,26 @@ const ScrollToGiftCard = () => {
       }
     }
 
-      if (location.pathname === "/contacts") {
+    if (location.pathname === "/contacts") {
       const el = document.getElementById("contacts");
       if (el) {
         el.scrollIntoView({ behavior: "smooth" });
       }
     }
 
-          if (location.pathname === "/community") {
+    if (location.pathname === "/community") {
       const el = document.getElementById("community");
       if (el) {
         el.scrollIntoView({ behavior: "smooth" });
       }
     }
-    
+
+    if (location.pathname === "/contacts") {
+      const el = document.getElementById("contacts");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
 
     if (location.pathname === "/") {
       window.scrollTo({ top: 0, behavior: "smooth" });

@@ -46,10 +46,7 @@ const Navbar = () => {
             >
               {item}
 
-              {/* ✅ taped ТОЛЬКО у "we are" */}
-              {item === "we are" && (
-                <img src={tapedImg} alt="taped" className="taped" />
-              )}
+              {isActive && <img src={tapedImg} alt="taped" className="taped" />}
             </li>
           );
         })}

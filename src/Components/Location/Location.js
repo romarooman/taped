@@ -17,7 +17,7 @@ export default function Location({
   copyright = "©2025, taped.",
 }) {
   return (
-    <section className={styles.section}>
+    <section id="contacts" className={styles.section}>
       <h2 className={styles.title}>{title}</h2>
 
       <div className={styles.grid}>

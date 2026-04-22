@@ -1,5 +1,5 @@
 import React from "react";
-import "./ImagesListRow.css";
+import styles from "./ImagesListRow.module.css";
 import ChatPill from "../ChatPill/ChatPill";
 import BookAShootButton from "../BookAShootButton/BookAShootButton";
 import MobileCta from "../MobileCta/MobileCta";
@@ -15,10 +15,10 @@ const ImagesListRow = ({
   const isImageFirst = order === "image-first";
 
   const TextBlock = (
-    <div className="imgCenterText">
-      {title && <div className="titleText">{title}</div>}
+    <div className={styles.imgCenterText}>
+      {title && <div className={styles.titleText}>{title}</div>}
       {subtitle && (
-        <div style={{ fontSize: subtitleSize }} className="subtitleText">
+        <div style={{ fontSize: subtitleSize }} className={styles.subtitleText}>
           {subtitle}
         </div>
       )}
@@ -26,38 +26,40 @@ const ImagesListRow = ({
   );
 
   return (
-    <div className="imagesRow">
-      <div className="mobileCtaWrap">
+    <div className={styles.imagesRow}>
+      <div className={styles.mobileCtaWrap}>
         <MobileCta targetId="book" />
       </div>
+
       {isImageFirst ? (
         <>
-          {/* картинка */}
-          <div className="imgCard">
-            <img className="img" src={fimage} alt="img" />
+          <div className={styles.imgCard}>
+            <img className={styles.img} src={fimage} alt="img" />
           </div>
 
-          {/* background */}
-          <div className="imgCard bgCard" style={{ background: bg }}>
+          <div
+            className={`${styles.imgCard} ${styles.bgCard}`}
+            style={{ background: bg }}
+          >
             {TextBlock}
           </div>
         </>
       ) : (
         <>
-          {/* background */}
-          <div className="imgCard bgCard" style={{ background: bg }}>
+          <div
+            className={`${styles.imgCard} ${styles.bgCard}`}
+            style={{ background: bg }}
+          >
             {TextBlock}
           </div>
 
-          {/* картинка */}
-          <div className="imgCard">
-            <img className="img" src={fimage} alt="img" />
+          <div className={styles.imgCard}>
+            <img className={styles.img} src={fimage} alt="img" />
           </div>
         </>
       )}
 
-      {/* кнопки всегда внизу справа */}
-      <div className="rowActions">
+      <div className={styles.rowActions}>
         <BookAShootButton targetId="book" />
         <ChatPill />
       </div>
