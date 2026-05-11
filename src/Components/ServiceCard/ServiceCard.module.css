@@ -6,7 +6,6 @@
 }
 
 .container {
-  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -54,7 +53,6 @@
 
 .right img {
   width: 100%;
-  max-width: 520px;
   border-radius: 14px;
   object-fit: cover;
 }
@@ -62,13 +60,37 @@
 /* BOTTOM */
 
 .bottom {
+  position: sticky;
+  top: 80px;
+
+  z-index: 50;
+
   margin-top: 50px;
+
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+
   gap: 40px;
+
+  padding: 25px 24px;
+
   border-top: 1px solid #ccc;
-  padding-top: 25px;
+
+  background: white;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.stickyActive {
+  background: #d7ff2f;
+  border-top: 1px solid #8ea51a;
+}
+
+.bottom {
+  backdrop-filter: blur(10px);
 }
 
 .infoBlock {

@@ -1,0 +1,98 @@
+.section {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.label {
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: #222;
+}
+
+.teaser {
+  position: relative;
+  width: 100%;
+  height: 520px;
+
+  overflow: hidden;
+  border-radius: 16px;
+
+  background: #ddd;
+}
+
+.preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.playButton {
+  border: none;
+  background: transparent;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 76px;
+  font-weight: 800;
+  color: white;
+
+  cursor: pointer;
+
+  transition: transform 0.2s ease;
+}
+
+.playButton:hover {
+  transform: scale(1.05);
+}
+
+.description {
+  position: absolute;
+  bottom: 26px;
+
+  max-width: 650px;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 110%;
+  text-align: center;
+
+  color: white;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .teaser {
+    height: 360px;
+  }
+
+  .playButton {
+    font-size: 52px;
+  }
+
+  .description {
+    font-size: 14px;
+    max-width: 90%;
+  }
+}

@@ -1,0 +1,55 @@
+.included {
+  width: 100%;
+  padding: 10px 10px 14px;
+  box-sizing: border-box;
+}
+
+.title {
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
+
+.card {
+  min-height: 98px;
+  border-radius: 8px;
+  background: #d9d9d9;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 18px 34px;
+  box-sizing: border-box;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 110%;
+  text-align: center;
+  color: #2f2f2f;
+}
+
+.active {
+  background: #d7ff2f;
+  font-weight: 800;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    min-height: 82px;
+    font-size: 17px;
+  }
+}

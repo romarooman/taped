@@ -1,10 +1,13 @@
 /* ExpertCommunity.module.css */
 
 .section {
+  height: 100%;
+  box-sizing: border-box;
+
   padding-left: 46px;
   padding-right: 46px;
-  padding-bottom: 178px;
-  box-sizing: border-box;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .row {
