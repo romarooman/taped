@@ -40,6 +40,13 @@ he brings an understanding of performance and how to make people feel comfortabl
   const [stuck, setStuck] = useState(false);
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       if (!bottomRef.current) return;
 
