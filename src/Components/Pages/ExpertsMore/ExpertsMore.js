@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import styles from "./ExpertsMore.module.css";
 
@@ -8,17 +8,19 @@ import mapImg from "../../../images/map.png";
 import One from "../../../images/1.png";
 import ContactForm from "../../ContactForm/ContactForm";
 
-
-
 import Five from "../../../images/5.png";
 
 import VimeoTeaser from "../../ServiceCard/VimeoTeaser";
 import Location from "../../Location/Location";
 import ImagesListRow from "../../ImagesListRow/ImagesListRow";
 
-
-
 export default function ExpertsMore() {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
   return (
     <>
       <div className={`${styles.imageWrapper}`}>
