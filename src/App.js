@@ -30,17 +30,7 @@ import GridOfExpertsCommunity from "./Components/Pages/ListOfExpertsCommunity/Gr
 import ExhibitionCard from "./Components/Pages/ExhibitionCard/ExhibitionCard";
 import { expertsData } from "./data/expertsData";
 import { communityData } from "./data/communityData";
-// import PhotoSlider from "./Components/PhotoSlider/PhotoSlider";
-// import ContactForm from "./Components/ContactForm/ContactForm";
-// import MoskData from "./Components/MoskData/MoskData";
 
-// const photos = [
-//   { id: 1, src: One, alt: "photo 1" },
-//   { id: 2, src: Two, alt: "photo 2" },
-//   { id: 3, src: Three, alt: "photo 3" },
-//   { id: 3, src: Five, alt: "photo 3" },
-//   { id: 3, src: Six, alt: "photo 3" },
-// ];
 
 function Home() {
   const slides = [

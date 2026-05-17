@@ -2,8 +2,8 @@
 
 .wrapper {
   width: 100%;
-  padding: 24px 12px 40px;
-  background: #d9d9d9;
+  padding: 24px 48px 40px;
+  background: #f1f1f1;
   box-sizing: border-box;
 }
 
@@ -24,7 +24,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 5px;
 }
 
 .card {

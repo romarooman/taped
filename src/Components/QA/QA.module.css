@@ -28,7 +28,7 @@
 .list {
   overflow-y: auto;
   max-height: 420px; /* если height не передаёшь */
-  padding-right: 6px;
+
 
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* old Edge */
