@@ -6,47 +6,23 @@ const NAV_H = 96;
 
 const HorizontalScroll = ({ children, slidesCount }) => {
   const targetRef = useRef(null);
-  const slideContentRefs = useRef([]);
   const [vw, setVw] = useState(() => window.innerWidth);
-  const [contentHeight, setContentHeight] = useState(0);
+  const [vh, setVh] = useState(() => window.innerHeight);
 
   const slides = useMemo(() => React.Children.toArray(children), [children]);
   const totalSlides = slidesCount ?? slides.length;
 
   useEffect(() => {
-    const onResize = () => setVw(window.innerWidth);
+    const onResize = () => {
+      setVw(window.innerWidth);
+      setVh(window.innerHeight);
+    };
+
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  useEffect(() => {
-    const measure = () => {
-      const heights = slideContentRefs.current.map((el) =>
-        el ? el.scrollHeight : 0
-      );
-      const maxHeight = Math.max(...heights, 0);
-      setContentHeight(maxHeight);
-    };
-
-    measure();
-
-    const observer = new ResizeObserver(measure);
-    slideContentRefs.current.forEach((el) => {
-      if (el) observer.observe(el);
-    });
-
-    window.addEventListener("resize", measure);
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("resize", measure);
-    };
-  }, [slides]);
-
-  const viewportHeight =
-    typeof window !== "undefined" ? window.innerHeight - NAV_H : 0;
-
-  const finalHeight = Math.max(contentHeight, viewportHeight);
+  const finalHeight = vh - NAV_H;
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -65,10 +41,7 @@ const HorizontalScroll = ({ children, slidesCount }) => {
       ref={targetRef}
       style={{ height: `${finalHeight * totalSlides}px` }}
     >
-      <div
-        className={styles.sticky}
-        style={{ height: `${finalHeight}px` }}
-      >
+      <div className={styles.sticky} style={{ height: `${finalHeight}px` }}>
         <motion.div className={styles.track} style={{ x }}>
           {slides.map((slide, index) => (
             <div
@@ -76,13 +49,7 @@ const HorizontalScroll = ({ children, slidesCount }) => {
               key={index}
               style={{ height: `${finalHeight}px` }}
             >
-              <div
-                className={styles.imageWrapper}
-                ref={(el) => {
-                  slideContentRefs.current[index] = el;
-                }}
-                style={{ height: `${finalHeight}px` }}
-              >
+              <div className={styles.imageWrapper}>
                 {slide}
               </div>
             </div>
