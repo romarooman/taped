@@ -60,6 +60,14 @@
   transform: rotate(-3deg);
 }
 
+.card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
 .labelPast {
   background: white;
 }

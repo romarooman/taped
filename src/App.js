@@ -28,6 +28,8 @@ import HorizontalScroll from "./Components/HorizontScroll/HorizontalScroll";
 import ExpertsMore from "./Components/Pages/ExpertsMore/ExpertsMore";
 import GridOfExpertsCommunity from "./Components/Pages/ListOfExpertsCommunity/GridOfExpertsCommunity";
 import ExhibitionCard from "./Components/Pages/ExhibitionCard/ExhibitionCard";
+import { expertsData } from "./data/expertsData";
+import { communityData } from "./data/communityData";
 // import PhotoSlider from "./Components/PhotoSlider/PhotoSlider";
 // import ContactForm from "./Components/ContactForm/ContactForm";
 // import MoskData from "./Components/MoskData/MoskData";
@@ -167,7 +169,7 @@ in front of the camera."
           textOn="first"
           fimage={Seven}
           bg="#FFFFFF"
-          moreTo="/community/more"
+          moreTo="/community/grid"
         />
       </HorizontalScroll>
       <ExpertCommunity
@@ -181,7 +183,7 @@ in front of the camera."
         order="image-first"
         fimage={Seven}
         bg="#FFFFFF"
-        moreTo="/experts/more"
+        moreTo="/experts/grid"
       />
       <Location image={locationImg} mapImage={mapImg} />
     </>
@@ -206,99 +208,31 @@ function App() {
               />
             }
           />
-          <Route
-            path="/community/more"
-            element={
-              <ExhibitionCard
-                image={Img1}
-          
-              />
-            }
-          />
-          <Route
-            path="/experts/more"
-            element={
-              <ExpertsMore
-                image={Img1}
-                onBook={() => console.log("book clicked")}
-              />
-            }
-          />
+
           <Route
             path="/experts/grid"
             element={
-              <GridOfExpertsCommunity
-                title="experts"
-                items={[
-                  {
-                    image: One,
-                    label: "upcoming",
-                    name: "anton volodin exibition",
-                    description:
-                      "is a director from moscow who based in new york. he works in narrative film and photography and brings a calm, focused eye to the work.",
-                  },
-                  {
-                    image: Two,
-                    label: "past",
-                    name: "anton volodin exibition",
-                    description:
-                      "is a director from moscow who based in new york. he works in narrative film and photography and brings a calm, focused eye to the work.",
-                  },
-                  {
-                    image: One,
-                    label: "past",
-                    name: "anton volodin exibition",
-                    description:
-                      "is a director from moscow who based in new york. he works in narrative film and photography and brings a calm, focused eye to the work.",
-                  },
-                  {
-                    image: One,
-                    label: "upcoming",
-                    name: "anton volodin exibition",
-                    description:
-                      "is a director from moscow who based in new york. he works in narrative film and photography and brings a calm, focused eye to the work.",
-                  },
-                ]}
-              />
+              <GridOfExpertsCommunity title="experts" items={expertsData} />
             }
+          />
+          <Route
+            path="/experts/:slug"
+            element={<ExpertsMore items={expertsData} />}
           />
           <Route
             path="/community/grid"
             element={
               <GridOfExpertsCommunity
                 title="community"
-                items={[
-                  {
-                    image: One,
-                    label: "upcoming",
-                    name: "anton volodin exibition",
-                    description:
-                      "is a director from moscow who based in new york. he works in narrative film and photography and brings a calm, focused eye to the work.",
-                  },
-                  {
-                    image: Two,
-                    label: "past",
-                    name: "anton volodin exibition",
-                    description:
-                      "is a director from moscow who based in new york. he works in narrative film and photography and brings a calm, focused eye to the work.",
-                  },
-                  {
-                    image: One,
-                    label: "past",
-                    name: "anton volodin exibition",
-                    description:
-                      "is a director from moscow who based in new york. he works in narrative film and photography and brings a calm, focused eye to the work.",
-                  },
-                  {
-                    image: One,
-                    label: "upcoming",
-                    name: "anton volodin exibition",
-                    description:
-                      "is a director from moscow who based in new york. he works in narrative film and photography and brings a calm, focused eye to the work.",
-                  },
-                ]}
+                items={communityData}
+                basePath="/community"
               />
             }
+          />
+
+          <Route
+            path="/community/:slug"
+            element={<ExhibitionCard items={communityData} />}
           />
 
           <Route path="/community" element={<Home />} />
