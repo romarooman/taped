@@ -1,8 +1,7 @@
-/* ExhibitionCard.module.css */
-
 .wrapper {
   width: 100%;
   height: calc(100vh - 80px);
+  overflow: hidden;
 
   background: #f1f1f1;
 
@@ -16,8 +15,11 @@
 .breadcrumbs {
   font-size: clamp(12px, 0.9vw, 18px);
   color: #8d8d8d;
-
   margin-bottom: 73px;
+}
+
+.mobileTitle {
+  display: none;
 }
 
 .content {
@@ -25,7 +27,6 @@
 
   display: flex;
   justify-content: space-between;
-
   gap: 143px;
 
   min-height: 0;
@@ -33,21 +34,23 @@
 
 .left {
   flex: 1;
+  min-width: 0;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  min-width: 0;
+  overflow: hidden;
 }
 
 .right {
   flex: 1;
+  min-width: 0;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
-
-  min-width: 0;
 }
 
 .title {
@@ -63,13 +66,10 @@
 .secondText {
   font-family: "DM Sans", sans-serif;
   font-weight: 500;
-  font-style: Medium;
 
-  font-size: clamp(36px, 1.9vw, 36px);
-
+  font-size: clamp(28px, 1.9vw, 36px);
   line-height: 100%;
   letter-spacing: 0;
-  leading-trim: NONE;
   text-transform: lowercase;
 
   color: #2f2f2f;
@@ -82,6 +82,7 @@
   display: flex;
   gap: 3vw;
   align-items: flex-start;
+  justify-content: space-between;
 }
 
 .price {
@@ -124,18 +125,15 @@
   margin-top: 0.5vh;
 
   height: 16%;
+  flex-shrink: 0;
 
   background: #d5f72a;
 
   border-radius: 0 0 24px 24px;
 
-  position: relative;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  flex-shrink: 0;
 }
 
 .visit {
@@ -146,68 +144,216 @@
   text-transform: lowercase;
 }
 
-.buttons {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+/* =========================
+   TABLET
+========================= */
 
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.button {
-  position: relative;
-
-  border: 2px solid #2b2b2b;
-  background: #f6f6f1;
-
-  border-radius: 999px;
-
-  padding: 0.5vw 1vw;
-
-  font-size: clamp(12px, 1vw, 20px);
-  font-weight: 700;
-
-  color: #2b2b2b;
-
-  cursor: pointer;
-  text-transform: lowercase;
-}
-
-.tail {
-  position: absolute;
-  right: 10px;
-  bottom: -7px;
-
-  width: 14px;
-  height: 14px;
-
-  background: #f6f6f1;
-
-  border-right: 2px solid #2b2b2b;
-  border-bottom: 2px solid #2b2b2b;
-
-  transform: rotate(45deg);
-}
-
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .wrapper {
     height: auto;
-    flex-direction: column;
+    min-height: calc(100vh - 80px);
+
+    padding: 24px 32px 32px;
     overflow: visible;
   }
 
-  .left,
-  .right {
-    width: 100%;
+  .breadcrumbs {
+    margin-bottom: 48px;
   }
 
-  .imageWrap {
-    height: 60vh;
+  .content {
+    gap: 48px;
+  }
+
+  .description,
+  .secondText {
+    font-size: clamp(20px, 2.5vw, 28px);
+  }
+
+  .bottom {
+    gap: 32px;
   }
 
   .cta {
     min-height: 120px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  .wrapper {
+    height: auto;
+    min-height: calc(100vh - 80px);
+    overflow: visible;
+
+    padding: 12px 6px 16px;
+  }
+
+  .breadcrumbs {
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+
+  .mobileTitle {
+    display: block;
+
+    font-size: 26px;
+    line-height: 0.95;
+    font-weight: 900;
+
+    margin: 0 0 14px;
+
+    color: #333;
+    text-transform: lowercase;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .left {
+    display: contents;
+  }
+
+  .right {
+    display: contents;
+  }
+
+  .title {
+    display: none;
+  }
+
+  .imageWrap {
+    order: 1;
+
+    width: 100%;
+    height: 125px;
+    min-height: 125px;
+    flex: none;
+
+    border-radius: 6px;
+  }
+
+  .description {
+    order: 2;
+
+    font-size: 15px;
+    line-height: 1;
+    margin: 0;
+  }
+
+  .secondText {
+    order: 3;
+
+    font-size: 15px;
+    line-height: 1;
+    margin: 0;
+  }
+
+  .bottom {
+    order: 4;
+
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 0;
+
+    width: 100%;
+
+    border-top: 1px solid #777;
+    border-bottom: 1px solid #777;
+
+    padding: 14px 0;
+  }
+
+  .price {
+    font-size: 24px;
+    line-height: 1;
+    font-weight: 900;
+  }
+
+  .info {
+    gap: 28px;
+  }
+
+  .date,
+  .location {
+    font-size: 22px;
+    line-height: 0.95;
+    font-weight: 900;
+  }
+
+  .cta {
+    order: 5;
+
+    width: 100%;
+    height: 56px;
+    min-height: 56px;
+    margin-top: 0;
+
+    border-radius: 7px;
+  }
+
+  .visit {
+    font-size: 26px;
+    line-height: 1;
+    font-weight: 900;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 12px 6px 16px;
+  }
+
+  .info {
+    font-family: DM Sans;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 25px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-transform: lowercase;
+  }
+
+  .mobileTitle {
+    font-size: 26px;
+  }
+
+  .description,
+  .secondText {
+    font-size: 15px;
+  }
+
+  .imageWrap {
+    height: 125px;
+    min-height: 125px;
+  }
+
+  .price {
+    font-size: 24px;
+  }
+
+  .date,
+  .location {
+    font-size: 22px;
+  }
+
+  .cta {
+    height: 56px;
+    min-height: 56px;
+  }
+
+  .visit {
+    font-size: 26px;
   }
 }

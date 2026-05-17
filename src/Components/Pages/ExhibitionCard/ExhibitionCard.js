@@ -24,6 +24,8 @@ export default function ExhibitionCard({ items = [] }) {
     <section className={styles.wrapper}>
       <div className={styles.breadcrumbs}>main / community</div>
 
+      <h1 className={styles.mobileTitle}>{data.title || item.name}</h1>
+
       <div className={styles.content}>
         <div className={styles.left}>
           <h1 className={styles.title}>{data.title || item.name}</h1>
