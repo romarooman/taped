@@ -22,43 +22,45 @@ export default function ExhibitionCard({ items = [] }) {
 
   return (
     <section className={styles.wrapper}>
-      <div className={styles.left}>
-        <div className={styles.breadcrumbs}>main / community</div>
+      <div className={styles.breadcrumbs}>main / community</div>
 
-        <h1 className={styles.title}>{data.title || item.name}</h1>
+      <div className={styles.content}>
+        <div className={styles.left}>
+          <h1 className={styles.title}>{data.title || item.name}</h1>
 
-        <p className={styles.description}>
-          {data.description || item.description}
-        </p>
+          <p className={styles.description}>
+            {data.description || item.description}
+          </p>
 
-        <p className={styles.secondText}>{data.secondText}</p>
+          <p className={styles.secondText}>{data.secondText}</p>
 
-        <div className={styles.bottom}>
-          <div className={styles.price}>{data.price}</div>
+          <div className={styles.bottom}>
+            <div className={styles.price}>{data.price}</div>
 
-          <div className={styles.info}>
-            <div className={styles.date}>{data.date}</div>
+            <div className={styles.info}>
+              <div className={styles.date}>{data.date}</div>
 
-            <div className={styles.location}>
-              {(data.location || "").split("\n").map((line, index) => (
-                <div key={index}>{line}</div>
-              ))}
+              <div className={styles.location}>
+                {(data.location || "").split("\n").map((line, index) => (
+                  <div key={index}>{line}</div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className={styles.right}>
-        <div className={styles.imageWrap}>
-          <img
-            src={item.image}
-            alt={data.title || item.name}
-            className={styles.image}
-          />
-        </div>
+        <div className={styles.right}>
+          <div className={styles.imageWrap}>
+            <img
+              src={item.image}
+              alt={data.title || item.name}
+              className={styles.image}
+            />
+          </div>
 
-        <div className={styles.cta}>
-          <div className={styles.visit}>visit</div>
+          <div className={styles.cta}>
+            <div className={styles.visit}>visit</div>
+          </div>
         </div>
       </div>
     </section>

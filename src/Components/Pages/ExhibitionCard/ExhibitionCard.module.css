@@ -2,33 +2,12 @@
 
 .wrapper {
   width: 100%;
-  height: calc(100vh - 80px); /* если navbar 80px */
-  overflow: hidden;
+  height: calc(100vh - 80px);
 
-  background: #d9d9d9;
+  background: #f1f1f1;
 
-  display: flex;
-  justify-content: space-between;
-  gap: 2vw;
-
-  padding: 1.5vw;
+  padding: 24px 48px 40px;
   box-sizing: border-box;
-}
-
-.left {
-  width: 42%;
-  height: 100%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  overflow: hidden;
-}
-
-.right {
-  width: 58%;
-  height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -37,7 +16,38 @@
 .breadcrumbs {
   font-size: clamp(12px, 0.9vw, 18px);
   color: #8d8d8d;
-  margin-bottom: 1.5vh;
+
+  margin-bottom: 73px;
+}
+
+.content {
+  flex: 1;
+
+  display: flex;
+  justify-content: space-between;
+
+  gap: 143px;
+
+  min-height: 0;
+}
+
+.left {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-width: 0;
+}
+
+.right {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
 }
 
 .title {
@@ -53,13 +63,13 @@
 .secondText {
   font-family: "DM Sans", sans-serif;
   font-weight: 500;
-  font-style: normal;
+  font-style: Medium;
 
-  font-size: clamp(18px, 1.9vw, 36px);
+  font-size: clamp(36px, 1.9vw, 36px);
 
   line-height: 100%;
   letter-spacing: 0;
-
+  leading-trim: NONE;
   text-transform: lowercase;
 
   color: #2f2f2f;
