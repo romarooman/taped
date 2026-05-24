@@ -19,7 +19,7 @@
 .heroText {
   position: absolute;
   inset: 0;
-
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,6 +65,7 @@
 
 /* кнопки */
 .heroActionsFixed {
+  z-index: 4;
   position: absolute;
   right: 69px;
   bottom: 41px;

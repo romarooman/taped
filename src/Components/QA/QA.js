@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./QA.module.css";
 
-export default function QA({ items = defaultItems, height = 420 }) {
+export default function QA({ items = defaultItems, height = 720 }) {
   const [openIndex, setOpenIndex] = useState(-1);
   const listRef = useRef(null);
 
@@ -104,6 +104,42 @@ const defaultItems = [
       <div className="twoCols">
         <p>
           is an actor from Barcelona, now based in New York. He brings an
+          understanding of performance and how to make people feel comfortable
+          in front of the camera.
+        </p>
+        <p>
+          our mission is to build a one-stop service that covers every aspect of
+          an actor’s presentation and personal branding.
+        </p>
+      </div>
+    ),
+    contentTitle: "for who?",
+  },
+  {
+    q: "for who?",
+    a: "taped is made for actors who want to level up their presentation.",
+    content: (
+      <div className="twoCols">
+        <p>
+          is an actor from barcelona, now based in new york. he brings an
+          understanding of performance and how to make people feel comfortable
+          in front of the camera.
+        </p>
+        <p>
+          our mission is to build a one-stop service that covers every aspect of
+          an actor’s presentation and personal branding.
+        </p>
+      </div>
+    ),
+    contentTitle: "for who?",
+  },
+  {
+    q: "for who?",
+    a: "taped is made for actors who want to level up their presentation.",
+    content: (
+      <div className="twoCols">
+        <p>
+          is an actor from barcelona, now based in new york. he brings an
           understanding of performance and how to make people feel comfortable
           in front of the camera.
         </p>

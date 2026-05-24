@@ -1,54 +1,52 @@
-body {
+:global(:root) {
+  --nav-h: 96px;
+}
+
+:global(html) {
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: var(--nav-h);
+  scroll-behavior: smooth;
+}
+
+:global(body) {
   margin: 0;
+  overflow-x: hidden;
 }
 
 .App {
-  padding: 0rem;
-  margin: 0rem;
+  padding: 0;
+  margin: 0;
 }
 
-.slide {
-  flex: 0 0 100vw;
-  min-width: 100vw;
+.verticalSlide {
+  width: 100%;
   height: calc(100vh - var(--nav-h));
-}
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 
-/* wrapper для ВСЕХ слайдов */
-.imageWrapper {
+  box-sizing: border-box;
   padding-left: 39px;
   padding-right: 39px;
   padding-bottom: 30px;
-  padding-top: 0;
+}
 
+.verticalSlide > * {
   width: 100%;
   height: 100%;
-  box-sizing: border-box;
 }
 
-.imageWrapper2 {
- 
-  padding-right: 39px;
-  padding-bottom: 30px;
-  padding-top: 0;
 
-  width: 97%;
-  height: 100%;
-  box-sizing: border-box;
-}
 
 @media (max-width: 480px) {
-  .sticky {
-    height: calc(100svh - var(--nav-h));
+  :global(:root) {
+    --nav-h: 80px;
   }
 
-  .slide {
+  .verticalSlide {
     height: calc(100svh - var(--nav-h));
-  }
-
-  .imageWrapper {
     padding-left: 16px;
-    padding-top: 23px;
     padding-right: 16px;
+    padding-top: 23px;
     padding-bottom: 16px;
   }
 }

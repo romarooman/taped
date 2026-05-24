@@ -31,8 +31,11 @@ import ExhibitionCard from "./Components/Pages/ExhibitionCard/ExhibitionCard";
 import { expertsData } from "./data/expertsData";
 import { communityData } from "./data/communityData";
 
-
 function Home() {
+  const VerticalSlide = ({ children }) => (
+    <section className={styles.verticalSlide}>{children}</section>
+  );
+
   const slides = [
     {
       id: 1,
@@ -65,91 +68,79 @@ function Home() {
 
   return (
     <>
-      <div className={`${styles.slide}`} key={10}>
-        <div className={`${styles.imageWrapper}`}>
-          <ImagesOnly one={One} brands={brands} />
-        </div>
-      </div>
-      <div className={`${styles.slide}`} key={11}>
-        <div className={`${styles.imageWrapper}`}>
-          <ImagesListColumn fimage={Two} />
-        </div>
-      </div>
+      <VerticalSlide>
+        <ImagesOnly one={One} brands={brands} />
+      </VerticalSlide>
 
-      <div className={`${styles.slide}`} key={12}>
-        <div className={`${styles.imageWrapper}`}>
-          <ImagesListRow
-            subtitle="our mission is to build
+      <VerticalSlide>
+        <ImagesListColumn fimage={Two} />
+      </VerticalSlide>
+
+      <VerticalSlide>
+        <ImagesListRow
+          subtitle="our mission is to build
 a one-stop service
 that covers every aspect
 of an actor’s visual
 presentationand
 personal branding"
-            bg="#DAFF3E"
-            textOn="second"
-            fimage={Three}
-            subtitleSize="clamp(4px, 3.5vw, 20px)"
-          />
-        </div>
-      </div>
+          bg="#DAFF3E"
+          textOn="second"
+          fimage={Three}
+          subtitleSize="clamp(4px, 3.5vw, 20px)"
+        />
+      </VerticalSlide>
 
-      <div className={`${styles.slide}`} key={13}>
-        <div className={`${styles.imageWrapper}`}>
-          <ImagesListRow
-            subtitle="We aim to support
+      <VerticalSlide>
+        <ImagesListRow
+          subtitle="We aim to support
 talent by creating
 tools and content that
 are both useful
 and beautifully crafted."
-            textOn="first"
-            title=""
-            fimage={Four}
-            bg="#DAFF3E"
-            order="bg-first"
-            subtitleSize="clamp(4px, 3.5vw, 20px)"
-          />
-        </div>
-      </div>
+          textOn="first"
+          title=""
+          fimage={Four}
+          bg="#DAFF3E"
+          order="bg-first"
+          subtitleSize="clamp(4px, 3.5vw, 20px)"
+        />
+      </VerticalSlide>
 
-      <div className={`${styles.slide}`} key={14}>
-        <div className={`${styles.imageWrapper}`}>
-          <ImagesListRow
-            textOn="first"
-            fimage={Five}
-            padding={0}
-            bg="#FFFFFF"
-            order="bg-first"
-            title="Max Ishchenko"
-            subtitle="is a director from Moscow who based in New York. He works in narrative film and photography and brings a calm, focused eye to the work."
-            subtitleSize="clamp(4px, 3.5vw, 20px)"
-          />
-        </div>
-      </div>
+      <VerticalSlide>
+        <ImagesListRow
+          textOn="first"
+          fimage={Five}
+          bg="#FFFFFF"
+          order="bg-first"
+          title="Max Ishchenko"
+          subtitle="is a director from Moscow who based in New York. He works in narrative film and photography and brings a calm, focused eye to the work."
+          subtitleSize="clamp(4px, 3.5vw, 20px)"
+        />
+      </VerticalSlide>
 
       <HorizontalScroll>
-        <div className={`${styles.slide}`} key={15}>
-          <div className={`${styles.imageWrapper2}`}>
-            <ImagesListRow
-              title="Mateu Parellada"
-              subtitle="is an actor from Barcelona, now
+        <ImagesListRow
+          title="Mateu Parellada"
+          subtitle="is an actor from Barcelona, now
 based in New York. He brings an understanding of performance and how to make people feel comfortable
 in front of the camera."
-              subtitleSize="clamp(4px, 3.5vw, 20px)"
-              textOn="first"
-              fimage={Six}
-              bg="#FFFFFF"
-            />
-          </div>
-        </div>
+          subtitleSize="clamp(4px, 3.5vw, 20px)"
+          textOn="first"
+          fimage={Six}
+          bg="#FFFFFF"
+        />
         <Service />
       </HorizontalScroll>
-      <QA height={420} />
-      <PhotoTextSlider slides={slides} height={420} />
 
-      {/* new page service */}
-      {/* <ServiceCard image={Img1} onBook={() => console.log("book clicked")} />
-      <PhotoSlider title="how it goes:" photos={photos} />
-      <ContactForm /> */}
+      <VerticalSlide>
+        <QA  />
+      </VerticalSlide>
+
+      <VerticalSlide>
+        <PhotoTextSlider slides={slides} />
+      </VerticalSlide>
+
       <HorizontalScroll>
         <GiftCard />
         <ExpertCommunity
@@ -162,20 +153,26 @@ in front of the camera."
           moreTo="/community/grid"
         />
       </HorizontalScroll>
-      <ExpertCommunity
-        kicker="experts"
-        title="our dialogues with famous experts"
-        subtitle="is an actor from Barcelona, now
+
+      <VerticalSlide>
+        <ExpertCommunity
+          kicker="experts"
+          title="our dialogues with famous experts"
+          subtitle="is an actor from Barcelona, now
 based in New York. He brings an understanding of performance and how to make people feel comfortable
 in front of the camera."
-        subtitleSize="clamp(4px, 3.5vw, 20px)"
-        textOn="first"
-        order="image-first"
-        fimage={Seven}
-        bg="#FFFFFF"
-        moreTo="/experts/grid"
-      />
-      <Location image={locationImg} mapImage={mapImg} />
+          subtitleSize="clamp(4px, 3.5vw, 20px)"
+          textOn="first"
+          order="image-first"
+          fimage={Seven}
+          bg="#FFFFFF"
+          moreTo="/experts/grid"
+        />
+      </VerticalSlide>
+
+      <VerticalSlide>
+        <Location image={locationImg} mapImage={mapImg} />
+      </VerticalSlide>
     </>
   );
 }

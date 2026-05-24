@@ -6,29 +6,30 @@ import MobileCta from "../MobileCta/MobileCta";
 
 const ImagesOnly = ({ one, brands }) => {
   return (
-    <>
+    <div className={styles.hero}>
       <div className={styles.mobileCtaWrap}>
         <MobileCta targetId="book" />
       </div>
-      <img className={`${styles.heroBg}`} src={one} alt="" />
 
-      <div className={`${styles.heroText}`}>
-        <div className={`${styles.heroTitle}`}>
+      <img className={styles.heroBg} src={one} alt="" />
+
+      <div className={styles.heroText}>
+        <div className={styles.heroTitle}>
           full-service studio
           <br />
           for actors, creatives & professionals
         </div>
 
-        <div className={`${styles.heroRowBottom}`}>
-          <img className={`${styles.heroBadge}`} src={brands} alt="" />
+        <div className={styles.heroRowBottom}>
+          <img className={styles.heroBadge} src={brands} alt="" />
         </div>
       </div>
 
-      <div className={`${styles.heroActionsFixed}`}>
+      <div className={styles.heroActionsFixed}>
         <BookAShootButton targetId="book" />
         <ChatPill />
       </div>
-    </>
+    </div>
   );
 };
 
