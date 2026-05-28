@@ -19,6 +19,7 @@ const Service = () => {
 
   return (
     <section id="service" className={styles.hero}>
+      <div className={styles.mobileTitle}>what we do</div>
       <div className={styles.imageWrap}>
         <img className={styles.bg} src={bg} alt="services background" />
       </div>

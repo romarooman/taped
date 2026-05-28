@@ -109,14 +109,33 @@
 }
 
 @media (max-width: 480px) {
+  .hero {
+    height: calc(100% - 37px);
+    margin-bottom: 37px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
   .mobileCtaWrap {
     display: block;
+    position: relative;
 
-    left: 16px;
-    right: 16px;
-    top: 16px;
+    left: auto;
+    right: auto;
+    top: auto;
+
     z-index: 5;
   }
+
+  .heroBg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  object-position: center top;
+  }
+
   .heroText {
     padding-top: 32px;
     padding-bottom: 56px;
@@ -132,11 +151,5 @@
 
   .heroBadge {
     max-width: calc(100% - 32px);
-  }
-
-  .heroActionsFixed {
-    right: 16px;
-    bottom: 16px;
-    gap: 12px;
   }
 }
