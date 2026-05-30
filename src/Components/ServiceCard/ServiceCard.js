@@ -20,8 +20,10 @@ const photos = [
   { id: 1, src: One, alt: "photo 1" },
   { id: 2, src: Two, alt: "photo 2" },
   { id: 3, src: Three, alt: "photo 3" },
-  { id: 3, src: Five, alt: "photo 3" },
-  { id: 3, src: Six, alt: "photo 3" },
+  { id: 4, src: Five, alt: "photo 5" },
+  { id: 5, src: Six, alt: "photo 6" },
+  { id: 6, src: Two, alt: "photo 2" },
+  { id: 7, src: Six, alt: "photo 3" },
 ];
 
 export default function ServiceCard({
@@ -70,11 +72,12 @@ he brings an understanding of performance and how to make people feel comfortabl
               <div className={styles.breadcrumbs}>{breadcrumbs}</div>
 
               <h1 className={styles.title}>
-                {words.map((word, i) => (
-                  <span key={i} className={styles.titleLine}>
-                    {word}
-                  </span>
-                ))}
+                <span className={styles.mobileTitleFirstLine}>
+                  {words.slice(0, 2).join(" ")}
+                </span>
+                <span className={styles.titleLine}>
+                  {words.slice(2).join(" ")}
+                </span>
               </h1>
             </div>
 
@@ -99,7 +102,9 @@ he brings an understanding of performance and how to make people feel comfortabl
             <div className={styles.label}>what’s the price?</div>
             <div className={styles.value}>{price}</div>
           </div>
+        </div>
 
+        <div className={styles.metaBlock}>
           <div className={styles.metaItem}>
             <div className={styles.label}>duration</div>
             <div className={styles.value}>{duration}</div>

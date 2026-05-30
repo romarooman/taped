@@ -45,11 +45,21 @@
 
 @media (max-width: 768px) {
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3px;
   }
 
   .card {
     min-height: 82px;
     font-size: 17px;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    min-height: 76px;
+    font-size: 15px;
+    padding: 12px;
   }
 }

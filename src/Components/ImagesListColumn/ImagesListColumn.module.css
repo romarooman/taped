@@ -30,7 +30,11 @@
 .grayCard {
   background: #cccccc;
 }
-
+.nowrap {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
 /* центрированный текст */
 .imgCenterText {
   position: absolute;
@@ -41,10 +45,9 @@
   text-align: center;
 
   pointer-events: none;
-
   font-family: "DM Sans", sans-serif;
   font-weight: 900;
-  font-size: clamp(24px, 4vw, 24px);
+  font-size: 60px;
   line-height: 110%;
   text-transform: lowercase;
 
@@ -53,8 +56,9 @@
   padding-right: 400px;
   padding-top: 20px;
   padding-bottom: 20px;
-
+  justify-content: center;
   box-sizing: border-box;
+  flex-direction: column;
 }
 
 .imgCenterText.dark {

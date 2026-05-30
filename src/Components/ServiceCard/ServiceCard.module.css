@@ -75,8 +75,6 @@
 
   padding: 25px 24px;
 
-  border-top: 1px solid #ccc;
-
   background: white;
 
   transition:
@@ -95,39 +93,71 @@
 
 .infoBlock {
   flex: 1.5;
+  border-top: 2px solid #303030;
 }
 
 .label {
-  font-size: 14px;
-  color: #777;
+  color: #303030;
   margin-bottom: 10px;
+  margin-top: 11px;
+  font-family: DM Sans;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 108%;
+  letter-spacing: 0%;
+  text-transform: lowercase;
 }
 
 .text {
-  font-size: 14px;
-  line-height: 1.5;
   max-width: 380px;
+
+  color: #303030;
+
+  font-family: DM Sans;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 108%;
+  letter-spacing: 0%;
+  text-transform: lowercase;
 }
 
 .metaBlock {
   display: flex;
   gap: 80px;
+  border-top: 2px solid #303030;
 }
 
 .metaItem .value {
-  font-size: 28px;
+  font-family: DM Sans;
   font-weight: 500;
+  font-style: Medium;
+  font-size: 100px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-transform: lowercase;
 }
 
 .bookBtn {
   background: #d4f21f;
   border: none;
-  padding: 18px 40px;
-  font-size: 18px;
-  font-weight: 600;
+  padding: 28px 40px;
   border-radius: 12px;
   cursor: pointer;
   transition: 0.2s;
+
+  font-family: DM Sans;
+  font-weight: 900;
+  color: #303030;
+  font-size: 60px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  text-transform: lowercase;
 }
 
 .bookBtn:hover {
@@ -137,8 +167,13 @@
 /* Responsive */
 
 @media (max-width: 1024px) {
+  .section {
+    padding: 30px 11px;
+  }
+
   .top {
     flex-direction: column;
+    gap: 10px;
   }
 
   .right {
@@ -148,6 +183,16 @@
   .bottom {
     flex-direction: column;
     gap: 30px;
+    position: static;
+    top: auto;
+    background: #ffffff;
+    border-top: 1px solid #ccc;
+    backdrop-filter: none;
+  }
+
+  .stickyActive {
+    background: #ffffff;
+    border-top: 1px solid #ccc;
   }
 
   .metaBlock {
@@ -155,6 +200,22 @@
   }
 
   .title {
-    font-size: 56px;
+    font-family: DM Sans;
+    font-weight: 900;
+    font-style: black;
+    font-size: 30px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-transform: lowercase;
+  }
+
+  .metaItem .value {
+    font-size: 30px;
+  }
+
+  .bookBtn {
+    font-size: 30px;
+    width: 100%;
   }
 }

@@ -3,7 +3,7 @@ import styles from "./PhotoSlider.module.css";
 
 const PhotoSlider = ({ title = "how it goes:", photos = [] }) => {
   const [startIndex, setStartIndex] = useState(0);
-
+  const touchStartX = React.useRef(0);
   const visibleCount = 3;
   const maxIndex = Math.max(0, photos.length - visibleCount);
 
@@ -13,6 +13,24 @@ const PhotoSlider = ({ title = "how it goes:", photos = [] }) => {
   const handlePrev = () => {
     if (isPrevDisabled) return;
     setStartIndex((prev) => prev - 1);
+  };
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+
+    if (Math.abs(diff) < 50) return;
+
+    if (diff > 0 && !isNextDisabled) {
+      handleNext();
+    }
+
+    if (diff < 0 && !isPrevDisabled) {
+      handlePrev();
+    }
   };
 
   const handleNext = () => {
@@ -55,7 +73,11 @@ const PhotoSlider = ({ title = "how it goes:", photos = [] }) => {
         </div>
       </div>
 
-      <div className={styles.viewport}>
+      <div
+        className={styles.viewport}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <div
           className={styles.track}
           style={{

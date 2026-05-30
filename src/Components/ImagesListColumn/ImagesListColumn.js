@@ -19,11 +19,13 @@ const ImagesListColumn = ({ fimage }) => {
       {/* 2-й блок — серый фон + текст */}
       <div className={`${styles.imgCard} ${styles.grayCard}`}>
         <div className={`${styles.imgCenterText} ${styles.dark}`}>
-          <span>Hello, We’re </span>
-          <img className={styles.tapedWord} src={tapedPng} alt="taped" />
+          <span className={styles.nowrap}>
+            <span>Hello, We’re </span>
+            <img className={styles.tapedWord} src={tapedPng} alt="taped" />
+            <span>— a studio </span>
+          </span>
           <span>
-            — a studio specializing in actor headshots, self-tape videos, and
-            reels.
+            specializing in actor headshots, self-tape videos, and reels.
           </span>
         </div>
       </div>
