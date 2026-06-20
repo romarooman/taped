@@ -3,8 +3,7 @@ import { motion } from "framer-motion";
 import styles from "./HorizontalScroll.module.css";
 
 const NAV_H = 96;
-const THRESHOLD = 200;
-const ANIMATION_TIME = 600;
+const WHEEL_DELAY = 700;
 
 export default function HorizontalScroll({ children }) {
   const slides = useMemo(() => React.Children.toArray(children), [children]);
@@ -14,7 +13,6 @@ export default function HorizontalScroll({ children }) {
   const [index, setIndex] = useState(0);
 
   const targetRef = useRef(null);
-  const accumulatorRef = useRef(0);
   const lockedRef = useRef(false);
 
   const [vw, setVw] = useState(window.innerWidth);
@@ -28,9 +26,7 @@ export default function HorizontalScroll({ children }) {
 
     window.addEventListener("resize", onResize);
 
-    return () => {
-      window.removeEventListener("resize", onResize);
-    };
+    return () => window.removeEventListener("resize", onResize);
   }, []);
 
   const finalHeight = vh - NAV_H;
@@ -40,36 +36,10 @@ export default function HorizontalScroll({ children }) {
 
     if (!el) return;
 
-    const nextSlide = () => {
-      if (index >= totalSlides - 1) return;
-
-      lockedRef.current = true;
-
-      setIndex((prev) => prev + 1);
-
-      setTimeout(() => {
-        lockedRef.current = false;
-      }, ANIMATION_TIME);
-    };
-
-    const prevSlide = () => {
-      if (index <= 0) return;
-
-      lockedRef.current = true;
-
-      setIndex((prev) => prev - 1);
-
-      setTimeout(() => {
-        lockedRef.current = false;
-      }, ANIMATION_TIME);
-    };
-
     const onWheel = (e) => {
       const rect = el.getBoundingClientRect();
 
-      const inView =
-        rect.top <= NAV_H + 5 &&
-        rect.bottom >= finalHeight;
+      const inView = rect.top <= NAV_H + 5 && rect.bottom >= finalHeight;
 
       if (!inView) return;
 
@@ -78,43 +48,38 @@ export default function HorizontalScroll({ children }) {
         return;
       }
 
-      accumulatorRef.current += e.deltaY;
+      const dy = e.deltaY;
 
-      if (
-        accumulatorRef.current > THRESHOLD &&
-        index < totalSlides - 1
-      ) {
+      if (Math.abs(dy) < 1) return;
+
+      // вперед
+      if (dy > 0 && index < totalSlides - 1) {
         e.preventDefault();
 
-        nextSlide();
+        lockedRef.current = true;
 
-        accumulatorRef.current = 0;
+        setIndex((p) => p + 1);
+
+        setTimeout(() => {
+          lockedRef.current = false;
+        }, WHEEL_DELAY);
       }
 
-      if (
-        accumulatorRef.current < -THRESHOLD &&
-        index > 0
-      ) {
+      // назад
+      if (dy < 0 && index > 0) {
         e.preventDefault();
 
-        prevSlide();
+        lockedRef.current = true;
 
-        accumulatorRef.current = 0;
-      }
+        setIndex((p) => p - 1);
 
-      // защита от инерции трекпада macOS
-      if (
-        (index === 0 && accumulatorRef.current < 0) ||
-        (index === totalSlides - 1 &&
-          accumulatorRef.current > 0)
-      ) {
-        accumulatorRef.current = 0;
+        setTimeout(() => {
+          lockedRef.current = false;
+        }, WHEEL_DELAY);
       }
     };
 
-    window.addEventListener("wheel", onWheel, {
-      passive: false,
-    });
+    window.addEventListener("wheel", onWheel, { passive: false });
 
     return () => {
       window.removeEventListener("wheel", onWheel);
@@ -127,6 +92,8 @@ export default function HorizontalScroll({ children }) {
       className={styles.carousel}
       style={{
         height: `${finalHeight}px`,
+        scrollSnapAlign: "start",
+        scrollSnapStop: "always",
       }}
     >
       <div
@@ -153,9 +120,7 @@ export default function HorizontalScroll({ children }) {
                 height: `${finalHeight}px`,
               }}
             >
-              <div className={styles.slideInner}>
-                {slide}
-              </div>
+              <div className={styles.slideInner}>{slide}</div>
             </div>
           ))}
         </motion.div>
