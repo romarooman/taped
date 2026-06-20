@@ -50,7 +50,7 @@ export default function HorizontalScroll({ children }) {
 
       const dy = e.deltaY;
 
-      if (Math.abs(dy) < 10) return;
+      // if (Math.abs(dy) < 10) return;
 
       // вперед
       if (dy > 0 && index < totalSlides - 1) {
