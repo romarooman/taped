@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useReducer, useState } from "react";
-
+import useTouch from "./hooks/useTouch";
 import { motion, AnimatePresence } from "framer-motion";
 
 import styles from "./PageSlider.module.css";
@@ -37,6 +37,11 @@ export default function PageSlider({ children }) {
   const { next, prev, goTo } = useNavigator(state, dispatch, pages);
 
   useWheel({
+    next,
+    prev,
+  });
+
+  useTouch({
     next,
     prev,
   });

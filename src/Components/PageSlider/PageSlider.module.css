@@ -47,3 +47,8 @@
 
   backface-visibility: hidden;
 }
+
+.viewport {
+  touch-action: none;
+  overscroll-behavior: none;
+}
