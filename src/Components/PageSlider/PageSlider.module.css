@@ -1,0 +1,49 @@
+.viewport {
+  position: relative;
+
+  width: 100%;
+
+  height: 100%;
+
+  overflow: hidden;
+}
+
+.page {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  overflow: hidden;
+
+  transform-origin: center center;
+
+  will-change: transform, opacity;
+
+  display: flex;
+}
+
+.horizontalTrack {
+  display: flex;
+
+  height: 100%;
+
+  width: max-content;
+
+  transform-style: preserve-3d;
+}
+
+.slide {
+  flex-shrink: 0;
+
+  height: 100%;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  backface-visibility: hidden;
+}
