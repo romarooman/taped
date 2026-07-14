@@ -4,21 +4,49 @@ import ChatPill from "../ChatPill/ChatPill";
 import BookAShootButton from "../BookAShootButton/BookAShootButton";
 import tapedPng from "../../images/taped_world.png"; // PNG со словом "taped"
 import MobileCta from "../MobileCta/MobileCta";
+import { motion } from "framer-motion";
+
+import usePageAnimation from "../PageSlider/hooks/usePageAnimation";
+
+import {
+  fadeLeft,
+  fadeRight,
+  fadeUp,
+} from "../PageSlider/hooks/PageAnimations";
 
 const ImagesListColumn = ({ fimage }) => {
+  const animationKey = usePageAnimation();
   return (
     <div className={styles.imagesCol}>
       <div className={styles.mobileCtaWrap}>
         <MobileCta targetId="book" />
       </div>
       {/* 1-й блок — картинка */}
-      <div className={`${styles.imgCard}`}>
+      <motion.div
+        key={`${animationKey}-image`}
+        className={styles.imgCard}
+        variants={fadeLeft}
+        initial="hidden"
+        animate="show"
+      >
         <img className={`${styles.img}`} src={fimage} alt="img" />
-      </div>
+      </motion.div>
 
       {/* 2-й блок — серый фон + текст */}
-      <div className={`${styles.imgCard} ${styles.grayCard}`}>
-        <div className={`${styles.imgCenterText} ${styles.dark}`}>
+      <motion.div
+        key={`${animationKey}-card`}
+        className={`${styles.imgCard} ${styles.grayCard}`}
+        variants={fadeRight}
+        initial="hidden"
+        animate="show"
+      >
+        <motion.div
+          key={`${animationKey}-text`}
+          className={`${styles.imgCenterText} ${styles.dark}`}
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+        >
           <span className={styles.nowrap}>
             <span>Hello, We’re </span>
             <img className={styles.tapedWord} src={tapedPng} alt="taped" />
@@ -27,8 +55,8 @@ const ImagesListColumn = ({ fimage }) => {
           <span>
             specializing in actor headshots, self-tape videos, and reels.
           </span>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* кнопки внизу справа */}
       <div className={styles.colActions}>

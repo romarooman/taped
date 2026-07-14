@@ -3,8 +3,12 @@ import styles from "./ImagesOnly.module.css";
 import ChatPill from "../ChatPill/ChatPill";
 import BookAShootButton from "../BookAShootButton/BookAShootButton";
 import MobileCta from "../MobileCta/MobileCta";
+import usePageAnimation from "../PageSlider/hooks/usePageAnimation";
+import { motion } from "framer-motion";
+import { fadeUp } from "../PageSlider/hooks/PageAnimations";
 
 const ImagesOnly = ({ one, brands }) => {
+  const animationKey = usePageAnimation();
   return (
     <div className={styles.hero}>
       <div className={styles.mobileCtaWrap}>
@@ -13,7 +17,14 @@ const ImagesOnly = ({ one, brands }) => {
 
       <img className={styles.heroBg} src={one} alt="" />
 
-      <div className={styles.heroText}>
+      <motion.div
+        key={`${animationKey}-title`}
+        className={styles.heroTitle}
+        variants={fadeUp}
+        initial="hidden"
+        animate="show"
+        className={styles.heroText}
+      >
         <div className={styles.heroTitle}>
           full-service studio
           <br />
@@ -23,12 +34,18 @@ const ImagesOnly = ({ one, brands }) => {
         <div className={styles.heroRowBottom}>
           <img className={styles.heroBadge} src={brands} alt="" />
         </div>
-      </div>
+      </motion.div>
 
-      <div className={styles.heroActionsFixed}>
+      <motion.div
+        className={styles.rowActions}
+        variants={fadeUp}
+        initial="hidden"
+        animate="show"
+        className={styles.heroActionsFixed}
+      >
         <BookAShootButton targetId="book" />
         <ChatPill />
-      </div>
+      </motion.div>
     </div>
   );
 };

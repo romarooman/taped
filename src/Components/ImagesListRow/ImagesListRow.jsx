@@ -85,10 +85,15 @@ const ImagesListRow = ({
         </>
       )}
 
-      <div className={styles.rowActions}>
+      <motion.div
+        className={styles.rowActions}
+        variants={fadeUp}
+        initial="hidden"
+        animate="show"
+      >
         <BookAShootButton targetId="book" />
         <ChatPill />
-      </div>
+      </motion.div>
     </div>
   );
 };
