@@ -66,6 +66,8 @@ export default function PageSlider({ children }) {
 
   const height = vh - NAV_H;
 
+  const animationKey = `${state.pageIndex}-${state.horizontalIndex}`;
+
   return (
     <PageSliderProvider
       value={{
@@ -76,6 +78,7 @@ export default function PageSlider({ children }) {
         prev,
 
         goTo,
+        animationKey,
       }}
     >
       <div

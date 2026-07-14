@@ -3,6 +3,13 @@ import styles from "./ImagesListRow.module.css";
 import ChatPill from "../ChatPill/ChatPill";
 import BookAShootButton from "../BookAShootButton/BookAShootButton";
 import MobileCta from "../MobileCta/MobileCta";
+import { motion } from "framer-motion";
+import usePageAnimation from "../PageSlider/hooks/usePageAnimation";
+import {
+  fadeLeft,
+  fadeRight,
+  fadeUp,
+} from "../PageSlider/hooks/PageAnimations";
 
 const ImagesListRow = ({
   fimage,
@@ -13,29 +20,41 @@ const ImagesListRow = ({
   subtitleSize = "clamp(24px, 3.5vw, 24px)",
 }) => {
   const isImageFirst = order === "image-first";
+  const animationKey = usePageAnimation();
 
   const TextBlock = (
-    <div className={styles.imgCenterText}>
+    <motion.div
+      className={styles.imgCenterText}
+      variants={fadeUp}
+      initial="hidden"
+      animate="show"
+    >
       {title && <div className={styles.titleText}>{title}</div>}
       {subtitle && (
         <div style={{ fontSize: subtitleSize }} className={styles.subtitleText}>
           {subtitle}
         </div>
       )}
-    </div>
+    </motion.div>
   );
 
   return (
-    <div className={styles.imagesRow}>
+    <div className={styles.imagesRow} key={animationKey}>
       <div className={styles.mobileCtaWrap}>
         <MobileCta targetId="book" />
       </div>
 
       {isImageFirst ? (
         <>
-          <div className={styles.imgCard}>
+          <motion.div
+            className={styles.imgCard}
+            key={animationKey}
+            variants={fadeLeft}
+            initial="hidden"
+            animate="show"
+          >
             <img className={styles.img} src={fimage} alt="img" />
-          </div>
+          </motion.div>
 
           <div
             className={`${styles.imgCard} ${styles.bgCard}`}
@@ -48,14 +67,21 @@ const ImagesListRow = ({
         <>
           <div
             className={`${styles.imgCard} ${styles.bgCard}`}
-            style={{ background: bg }}
+            initial="hidden"
+            animate="show"
           >
             {TextBlock}
           </div>
 
-          <div className={styles.imgCard}>
+          <motion.div
+            key={animationKey}
+            variants={fadeRight}
+            className={styles.imgCard}
+            initial="hidden"
+            animate="show"
+          >
             <img className={styles.img} src={fimage} alt="img" />
-          </div>
+          </motion.div>
         </>
       )}
 
