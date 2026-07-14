@@ -97,6 +97,7 @@ and beautifully crafted.`}
         <ImagesListRow
           textOn="first"
           fimage={Five}
+          bg="#FFFFFF"
           title="Max Ishchenko"
           subtitle={`is a director from Moscow
 who based in New York.
@@ -108,8 +109,9 @@ and photography.`}
       <Page id="services" direction="horizontal">
         <ImagesListRow
           title="Mateu Parellada"
-          subtitle={`is an actor from Barcelona,
-now based in New York.`}
+          subtitle={`is an actor from Barcelona, now
+based in New York. He brings an understanding of performance and how to make people feel comfortable
+in front of the camera.`}
           fimage={Six}
           bg="#FFFFFF"
         />
