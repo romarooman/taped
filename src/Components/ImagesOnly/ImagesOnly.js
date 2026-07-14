@@ -19,7 +19,6 @@ const ImagesOnly = ({ one, brands }) => {
 
       <motion.div
         key={`${animationKey}-title`}
-        className={styles.heroTitle}
         variants={fadeUp}
         initial="hidden"
         animate="show"
@@ -37,7 +36,6 @@ const ImagesOnly = ({ one, brands }) => {
       </motion.div>
 
       <motion.div
-        className={styles.rowActions}
         variants={fadeUp}
         initial="hidden"
         animate="show"
