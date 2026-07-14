@@ -165,11 +165,10 @@ export default function PageSlider({ children }) {
                           }}
                           style={{
                             width: `${vw}px`,
-
                             height: "100%",
                           }}
                         >
-                          {slide}
+                          <div className={styles.slideContent}>{slide}</div>
                         </motion.div>
                       );
                     })}
