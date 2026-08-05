@@ -34,6 +34,7 @@ export default function QA({ items = defaultItems, height = 720 }) {
         <div
           ref={listRef}
           className={styles.list}
+          data-inner-scroll="true"
           style={{
             maxHeight: typeof height === "number" ? `${height}px` : height,
           }}

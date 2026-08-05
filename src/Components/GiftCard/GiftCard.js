@@ -2,9 +2,11 @@ import React, { useMemo, useState } from "react";
 import Three from "../../images/3.png";
 import styles from "./GiftCard.module.css";
 import Arrow_list from "../../images/arrow_list.png";
+// import {  useLocation } from "react-router-dom";
 
 export default function GiftCard() {
   const [tab, setTab] = useState("option1");
+  // const location = useLocation();
 
   const data = useMemo(
     () => ({
@@ -37,9 +39,14 @@ export default function GiftCard() {
   );
 
   const active = data[tab];
+  // const title =
+  //   location.pathname.split("/").filter(Boolean).pop()?.replace(/-/g, " ") ||
+  //   "";
 
   return (
     <div id="giftcard" className={styles.page}>
+      {/* <div className={styles.top}>{title}</div>
+      <h2 className={styles.title}>make a gift</h2> */}
       <div className={styles.wrap}>
         {/* LEFT */}
         <section className={styles.left}>
