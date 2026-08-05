@@ -13,8 +13,6 @@ const Service = () => {
   const items = [
     { big: "headshots", tag: "video" },
     { big: "video shooting", tag: "photo" },
-    { big: "acting", tag: "video" },
-    { big: "other", tag: "photo" },
   ];
 
   return (
