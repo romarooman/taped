@@ -20,7 +20,7 @@ const navigation = [
     title: "community",
     path: "/community",
     pageIndex: 8,
-    horizontalIndex: 1,
+    horizontalIndex: 0,
   },
 
   {

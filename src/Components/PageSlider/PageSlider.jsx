@@ -21,20 +21,28 @@ const MOBILE_BREAKPOINT = 600;
 
 export default function PageSlider({ children, header = null }) {
   const pages = useMemo(() => {
-    return React.Children.toArray(children).map((page, index) => {
-      const props = page.props || {};
+    return React.Children.toArray(children)
+      .filter((page) => {
+        return page.props.enabled !== false;
+      })
+      .map((page, pageIndex) => {
+        const props = page.props || {};
 
-      return {
-        id: props.id !== undefined ? props.id : index,
-
-        direction: props.direction || "vertical",
-
-        slides:
+        const slides =
           props.direction === "horizontal"
-            ? React.Children.toArray(props.children)
-            : [props.children],
-      };
-    });
+            ? React.Children.toArray(props.children).filter((slide) => {
+                return slide.props?.enabled !== false;
+              })
+            : [props.children];
+
+        return {
+          id: props.id !== undefined ? props.id : pageIndex,
+
+          direction: props.direction || "vertical",
+
+          slides,
+        };
+      });
   }, [children]);
 
   const [state, dispatch] = useReducer(reducer, initialState);

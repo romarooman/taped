@@ -126,7 +126,7 @@ in front of the camera.`}
       </Page>
 
       <Page id="community" direction="horizontal">
-        <GiftCard />
+        <GiftCard enabled={false}/>
 
         <ExpertCommunity
           title="yes, we have a taped. community"

@@ -137,49 +137,93 @@
 @media (max-width: 480px) {
   .hero {
     position: relative;
+    width: 100%;
     height: 100%;
-    overflow: visible;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+    box-sizing: border-box;
+
+    padding-bottom: 26px;
   }
 
   .mobileTitle {
     display: block;
+
+    flex: 0 0 auto;
+
     font-family: "DM Sans", sans-serif;
     font-weight: 900;
     font-size: 32px;
     line-height: 100%;
     text-transform: lowercase;
     color: #000;
-    margin-bottom: 16px;
+
+    margin: 0 0 16px;
   }
 
   .imageWrap {
     position: relative;
     inset: auto;
-    height: 360px;
+
+    width: 100%;
+    height: auto;
+
+    flex: 1 1 auto;
+    min-height: 0;
+
     padding-left: 5px;
     padding-right: 5px;
+
     box-sizing: border-box;
   }
 
   .bg {
+    width: 100%;
     height: 100%;
+
+    min-height: 0;
+
+    display: block;
+    object-fit: cover;
+    border-radius: 16px;
   }
 
   .inner {
     position: absolute;
+
     left: 5px;
     right: 5px;
-    top: calc(32px + 16px + 16px);
-    height: 360px;
+
+    /*
+      Заголовок 32px + margin-bottom 16px.
+      Поэтому изображение начинается примерно с 48px.
+    */
+    top: 48px;
+
+    /*
+      Нижний край совпадает с padding-bottom .hero.
+    */
+    bottom: 26px;
+
+    height: auto;
+
     z-index: 3;
+
     padding: 20px;
+
     box-sizing: border-box;
   }
 
   .textWrap {
+    width: 100%;
     height: 100%;
+
     display: flex;
     flex-direction: column;
+
     padding-left: 0;
   }
 
