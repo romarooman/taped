@@ -16,25 +16,40 @@ export default function useNavigator(state, dispatch, pages) {
   }, [dispatch, pages]);
 
   const goTo = useCallback(
-    (index) => {
-      if (index < 0 || index >= pages.length) {
+    (pageIndex, horizontalIndex = 0) => {
+      if (
+        typeof pageIndex !== "number" ||
+        pageIndex < 0 ||
+        pageIndex >= pages.length
+      ) {
         return;
+      }
+
+      const targetPage = pages[pageIndex];
+
+      let safeHorizontalIndex = 0;
+
+      if (targetPage && targetPage.direction === "horizontal") {
+        const lastSlideIndex = targetPage.slides.length - 1;
+
+        safeHorizontalIndex = Math.max(
+          0,
+          Math.min(horizontalIndex, lastSlideIndex),
+        );
       }
 
       dispatch({
         type: "GOTO",
-
-        index,
+        pageIndex,
+        horizontalIndex: safeHorizontalIndex,
       });
     },
-    [dispatch, pages.length],
+    [dispatch, pages],
   );
 
   return {
     next,
-
     prev,
-
     goTo,
   };
 }

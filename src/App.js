@@ -2,7 +2,6 @@ import styles from "./App.module.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./Components/Navbar/Navbar";
-import ScrollToGiftCard from "./Components/Helper/ScrollToGiftCard";
 
 import PageSlider, { Page } from "./Components/PageSlider";
 
@@ -45,7 +44,6 @@ function Home() {
       quote: "is an actor from barcelona, now based in new york.",
       name: "mateu parellada",
     },
-
     {
       id: 2,
       image: Img2,
@@ -55,7 +53,7 @@ function Home() {
   ];
 
   return (
-    <PageSlider>
+    <PageSlider header={<Navbar />}>
       <Page id="hero">
         <ImagesOnly one={One} brands={brands} />
       </Page>
@@ -158,10 +156,6 @@ function App() {
   return (
     <BrowserRouter>
       <div className={styles.App}>
-        <Navbar />
-
-        <ScrollToGiftCard />
-
         <Routes>
           <Route path="/" element={<Home />} />
 

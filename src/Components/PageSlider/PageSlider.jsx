@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useReducer, useState } from "react";
-import useTouch from "./hooks/useTouch";
-import { motion, AnimatePresence } from "framer-motion";
+
+import { AnimatePresence, motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 import styles from "./PageSlider.module.css";
 
@@ -9,18 +10,22 @@ import reducer, { initialState } from "./PageSliderReducer";
 import { PageSliderProvider } from "./PageSliderContext";
 
 import useNavigator from "./hooks/useNavigator";
-
 import useWheel from "./hooks/useWheel";
+import useTouch from "./hooks/useTouch";
 
-const NAV_H = 96;
+import navigation from "../../navigation";
 
-export default function PageSlider({ children }) {
+const DESKTOP_NAV_HEIGHT = 96;
+const MOBILE_NAV_HEIGHT = 80;
+const MOBILE_BREAKPOINT = 600;
+
+export default function PageSlider({ children, header = null }) {
   const pages = useMemo(() => {
     return React.Children.toArray(children).map((page, index) => {
-      const props = page.props;
+      const props = page.props || {};
 
       return {
-        id: props.id || index,
+        id: props.id !== undefined ? props.id : index,
 
         direction: props.direction || "vertical",
 
@@ -46,58 +51,80 @@ export default function PageSlider({ children }) {
     prev,
   });
 
-  const [vw, setVw] = useState(window.innerWidth);
+  const [viewport, setViewport] = useState(() => ({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  }));
 
-  const [vh, setVh] = useState(window.innerHeight);
+  const location = useLocation();
 
   useEffect(() => {
-    const resize = () => {
-      setVw(window.innerWidth);
-
-      setVh(window.innerHeight);
+    const handleResize = () => {
+      setViewport({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
     };
 
-    window.addEventListener("resize", resize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("resize", resize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
-  const height = vh - NAV_H;
+  /*
+   * Синхронизация URL со слайдером.
+   *
+   * Например:
+   * /service -> страница services,
+   * horizontalIndex 1 -> компонент Service.
+   */
+  useEffect(() => {
+    const navigationItem = navigation.find(
+      (item) => item.path === location.pathname,
+    );
 
-  const animationKey = `${state.pageIndex}-${state.horizontalIndex}`;
+    if (!navigationItem) {
+      return;
+    }
+
+    goTo(navigationItem.pageIndex, navigationItem.horizontalIndex || 0);
+  }, [location.pathname, goTo]);
+
+  const navHeight =
+    viewport.width <= MOBILE_BREAKPOINT
+      ? MOBILE_NAV_HEIGHT
+      : DESKTOP_NAV_HEIGHT;
+
+  const sliderHeight = Math.max(viewport.height - navHeight, 0);
+
+  const animationKey = [state.pageIndex, state.horizontalIndex].join("-");
 
   return (
     <PageSliderProvider
       value={{
         state,
-
         next,
-
         prev,
-
         goTo,
+        pages,
         animationKey,
       }}
     >
+      {header}
+
       <div
         className={styles.viewport}
         style={{
-          height: `${height}px`,
+          height: `${sliderHeight}px`,
         }}
       >
         <AnimatePresence mode="sync">
           {pages.map((page, pageIndex) => {
-            const active = pageIndex === state.pageIndex;
+            const isActive = pageIndex === state.pageIndex;
 
-            const before = pageIndex < state.pageIndex;
-
-            const after = pageIndex > state.pageIndex;
-
-            if (!active && !before && !after) {
-              return null;
-            }
+            const isBefore = pageIndex < state.pageIndex;
 
             return (
               <motion.section
@@ -105,48 +132,43 @@ export default function PageSlider({ children }) {
                 className={styles.page}
                 initial={{
                   scale: 0.85,
-
                   opacity: 0,
-
                   y: 100,
                 }}
                 animate={{
-                  scale: active ? 1 : 0.65,
-
-                  opacity: active ? 1 : 0,
-
-                  y: active ? 0 : before ? -120 : 120,
+                  scale: isActive ? 1 : 0.85,
+                  opacity: isActive ? 1 : 0,
+                  y: isActive ? 0 : isBefore ? -120 : 120,
+                  pointerEvents: isActive ? "auto" : "none",
                 }}
                 exit={{
                   scale: 0.85,
-
                   opacity: 0,
-
                   y: -120,
                 }}
                 transition={{
                   duration: 0.75,
-
                   ease: [0.22, 1, 0.36, 1],
                 }}
+                aria-hidden={!isActive}
               >
-                {active && (
+                {isActive && (
                   <motion.div
                     className={styles.horizontalTrack}
                     animate={{
                       x:
                         page.direction === "horizontal"
-                          ? -(state.horizontalIndex * vw)
+                          ? -(state.horizontalIndex * viewport.width)
                           : 0,
                     }}
                     transition={{
                       duration: 0.7,
-
                       ease: [0.22, 1, 0.36, 1],
                     }}
                   >
                     {page.slides.map((slide, slideIndex) => {
-                      const slideActive = slideIndex === state.horizontalIndex;
+                      const isSlideActive =
+                        slideIndex === state.horizontalIndex;
 
                       return (
                         <motion.div
@@ -155,16 +177,24 @@ export default function PageSlider({ children }) {
                           animate={{
                             scale:
                               page.direction === "horizontal"
-                                ? slideActive
+                                ? isSlideActive
                                   ? 1
                                   : 0.85
+                                : 1,
+
+                            opacity:
+                              page.direction === "horizontal"
+                                ? isSlideActive
+                                  ? 1
+                                  : 0.7
                                 : 1,
                           }}
                           transition={{
                             duration: 0.7,
+                            ease: [0.22, 1, 0.36, 1],
                           }}
                           style={{
-                            width: `${vw}px`,
+                            width: `${viewport.width}px`,
                             height: "100%",
                           }}
                         >
