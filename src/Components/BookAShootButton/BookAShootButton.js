@@ -1,5 +1,10 @@
 import React from "react";
 import "./BookAShootButton.css";
+import usePageAnimation from "../PageSlider/hooks/usePageAnimation";
+import { motion } from "framer-motion";
+import {
+  fadeLeft,
+} from "../PageSlider/hooks/PageAnimations";
 
 const BookAShootButton = ({ targetId = "book" }) => {
   const onClick = () => {
@@ -8,11 +13,19 @@ const BookAShootButton = ({ targetId = "book" }) => {
 
     el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+  const animationKey = usePageAnimation();
 
   return (
-    <button className="pillBtn" type="button" onClick={onClick}>
-      book a shoot.
-    </button>
+    <motion.div
+      key={`${animationKey}-image`}
+      variants={fadeLeft}
+      initial="hidden"
+      animate="show"
+    >
+      <button className="pillBtn" type="button" onClick={onClick}>
+        book a shoot.
+      </button>
+    </motion.div>
   );
 };
 

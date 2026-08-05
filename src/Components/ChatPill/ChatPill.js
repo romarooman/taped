@@ -2,12 +2,16 @@ import React, { useEffect, useRef, useState } from "react";
 import "./ChatPill.css";
 import sendIcon from "../../images/arrow.png";
 import ChatSvg from "../../images/cloud.svg";
+import usePageAnimation from "../PageSlider/hooks/usePageAnimation";
+import { motion } from "framer-motion";
+import { fadeLeft } from "../PageSlider/hooks/PageAnimations";
 
 const ChatPill = () => {
   const [open, setOpen] = useState(false);
   const [msg, setMsg] = useState("");
   const wrapRef = useRef(null);
   const inputRef = useRef(null);
+  const animationKey = usePageAnimation();
 
   useEffect(() => {
     const onClickOutside = (e) => {
@@ -32,15 +36,24 @@ const ChatPill = () => {
   return (
     <div className="chatWrap" ref={wrapRef}>
       {/* PNG-кнопка всегда в потоке */}
-      <button
-        className={`chatSvgBtn ${open ? "hidden" : ""}`}
-        type="button"
-        onClick={() => setOpen(true)}
-        aria-label="Open chat"
+      <motion.div
+        key={`${animationKey}-image`}
+        variants={fadeLeft}
+        initial="hidden"
+        animate="show"
+        className="chatWrap"
+        ref={wrapRef}
       >
-        <img className="chatSvgBg" src={ChatSvg} alt="" />
-        <span className="chatSvgLabel">or let’s chat.</span>
-      </button>
+        <button
+          className={`chatSvgBtn ${open ? "hidden" : ""}`}
+          type="button"
+          onClick={() => setOpen(true)}
+          aria-label="Open chat"
+        >
+          <img className="chatSvgBg" src={ChatSvg} alt="" />
+          <span className="chatSvgLabel">or let’s chat.</span>
+        </button>
+      </motion.div>
 
       {/* popup поверх PNG */}
       {open && (
