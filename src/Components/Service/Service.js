@@ -2,9 +2,13 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Service.module.css";
 import bg from "../../images/service.png";
+import usePageAnimation from "../PageSlider/hooks/usePageAnimation";
+import { motion } from "framer-motion";
+import { fadeLeft } from "../PageSlider/hooks/PageAnimations";
 
 const Service = () => {
   const location = useLocation();
+  const animationKey = usePageAnimation();
 
   const title =
     location.pathname.split("/").filter(Boolean).pop()?.replace(/-/g, " ") ||
@@ -25,8 +29,13 @@ const Service = () => {
       <div className={styles.inner}>
         <div className={styles.textWrap}>
           <div className={styles.top}>{title}</div>
-
-          <div className={styles.bottom}>
+          <motion.div
+            key={`${animationKey}-image`}
+            variants={fadeLeft}
+            initial="hidden"
+            animate="show"
+            className={styles.bottom}
+          >
             {items.map((it, idx) => (
               <Link
                 key={idx}
@@ -38,7 +47,7 @@ const Service = () => {
                 <span className={styles.tag}>{it.tag}</span>
               </Link>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
