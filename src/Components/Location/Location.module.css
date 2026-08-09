@@ -1,60 +1,94 @@
 .section {
-  padding: 80px 46px;
+  width: 100%;
+  height: 100%;
+
   box-sizing: border-box;
+
+  padding: 24px 46px 26px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
 }
 
 .title {
+  flex: 0 0 auto;
+
   font-size: 48px;
   font-weight: 700;
-  margin-bottom: 40px;
+
+  margin: 0 0 24px;
 }
 
-/* верх: 2 карточки */
+/* ===== картинки ===== */
+
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .imageWrap,
 .mapWrap {
+  position: relative;
+
+  min-width: 0;
+  min-height: 0;
+
   border-radius: 20px;
   overflow: hidden;
-  position: relative;
 }
 
 .imageWrap img,
 .mapWrap img {
+  display: block;
+
   width: 100%;
   height: 100%;
+
   object-fit: cover;
 }
 
 .dot {
   position: absolute;
+
   width: 40px;
   height: 40px;
+
   background: #c6ff00;
   border-radius: 50%;
+
   top: 50%;
   left: 50%;
+
   transform: translate(-50%, -50%);
 }
 
-/* ===== DESKTOP bottom info ===== */
+/* ===== DESKTOP INFO ===== */
+
 .desktopInfo {
-  margin-top: 28px;
+  flex: 0 0 auto;
+
+  margin-top: 20px;
 }
 
 .infoGrid {
   display: grid;
+
   grid-template-columns: 140px 1fr 120px 1fr;
+
   column-gap: 40px;
   row-gap: 18px;
+
   align-items: start;
 
   font-size: 18px;
   font-weight: 500;
+
   color: #111;
 }
 
@@ -73,10 +107,7 @@
   gap: 6px;
 }
 
-.emailLabel {
-  margin-top: 6px;
-}
-
+.emailLabel,
 .emailValue {
   margin-top: 6px;
 }
@@ -86,25 +117,103 @@
   opacity: 0.9;
 }
 
-/* ===== MOBILE ===== */
+/* mobile info по умолчанию скрыт */
+
 .mobileInfo {
   display: none;
 }
 
-@media (max-width: 768px) {
+/* ===== NOTEBOOK ===== */
+
+@media (min-width: 769px) and (max-width: 1440px) {
   .section {
-    padding: 40px 20px;
+    padding-top: 16px;
+    padding-bottom: 20px;
   }
 
   .title {
+    font-size: 38px;
+    margin-bottom: 16px;
+  }
+
+  .grid {
+    flex: 1 1 auto;
+
+    height: auto;
+    min-height: 0;
+    max-height: none;
+  }
+
+  .desktopInfo {
+    margin-top: 14px;
+  }
+
+  .infoGrid {
+    font-size: 15px;
+
+    grid-template-columns:
+      110px
+      1fr
+      90px
+      1fr;
+
+    column-gap: 24px;
+    row-gap: 10px;
+  }
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 768px) {
+  .section {
+    width: 100%;
+    height: 100%;
+
+    padding: 10px 10px 26px;
+
+    overflow: hidden;
+  }
+
+  .title {
+    flex: 0 0 auto;
+
     font-size: 28px;
-    margin-bottom: 20px;
+    line-height: 100%;
+
+    margin: 0 0 12px;
   }
 
   .grid {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+
+    gap: 10px;
+
+    flex: 1 1 auto;
+
+    min-height: 0;
+  }
+
+  .imageWrap {
+    flex: 1.15 1 0;
+
+    height: auto;
+    min-height: 0;
+  }
+
+  .mapWrap {
+    flex: 0.85 1 0;
+
+    height: auto;
+    min-height: 0;
+  }
+
+  .imageWrap img,
+  .mapWrap img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
   }
 
   .desktopInfo {
@@ -113,29 +222,40 @@
 
   .mobileInfo {
     display: block;
-    margin-top: 24px;
-    font-size: 16px;
+
+    flex: 0 0 auto;
+
+    margin-top: 12px;
+
+    font-size: 13px;
+    line-height: 120%;
   }
 
   .social {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 20px;
+    margin-bottom: 6px;
   }
 
-
-
   .address {
-    margin-bottom: 16px;
+    margin-bottom: 6px;
+  }
+
+  .address p {
+    margin: 0;
   }
 
   .email {
-    margin-bottom: 30px;
+    margin-bottom: 6px;
   }
 
   .copy {
-    font-size: 14px;
+    margin: 0;
+
+    font-size: 11px;
     opacity: 0.6;
+  }
+
+  .dot {
+    width: 28px;
+    height: 28px;
   }
 }
