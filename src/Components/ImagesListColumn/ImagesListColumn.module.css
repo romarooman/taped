@@ -33,7 +33,11 @@
 .nowrap {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+
   white-space: nowrap;
+
+  max-width: 100%;
 }
 /* центрированный текст */
 .imgCenterText {
@@ -41,25 +45,33 @@
   inset: 0;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
-  text-align: center;
+  justify-content: center;
 
+  width: 100%;
+  max-width: 100%;
+
+  padding: 20px clamp(80px, 15vw, 400px);
+
+  box-sizing: border-box;
+
+  text-align: center;
   pointer-events: none;
+
   font-family: "DM Sans", sans-serif;
   font-weight: 900;
-  font-size: 60px;
+
+  /* вместо фиксированных 60px */
+  font-size: clamp(32px, 4vw, 60px);
+
   line-height: 110%;
   text-transform: lowercase;
 
-  /* 🔥 нужные отступы */
-  padding-left: 400px;
-  padding-right: 400px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  justify-content: center;
-  box-sizing: border-box;
-  flex-direction: column;
+  overflow: hidden;
 }
+
+
 
 .imgCenterText.dark {
   color: #000000;
@@ -99,17 +111,34 @@
   display: none;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1600px) {
   .imgCenterText {
-    padding-left: 240px;
-    padding-right: 240px;
+    padding-left: 180px;
+    padding-right: 180px;
+
+    font-size: clamp(30px, 3.4vw, 52px);
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1366px) {
   .imgCenterText {
-    padding-left: 120px;
-    padding-right: 120px;
+    padding-left: 100px;
+    padding-right: 100px;
+
+    font-size: clamp(28px, 3.2vw, 44px);
+  }
+
+  .tapedWord {
+    height: 1.5em;
+  }
+}
+
+@media (max-width: 1100px) {
+  .imgCenterText {
+    padding-left: 60px;
+    padding-right: 60px;
+
+    font-size: clamp(26px, 3vw, 38px);
   }
 }
 
