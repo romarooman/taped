@@ -50,6 +50,18 @@ function Home() {
       quote: "is an actor from barcelona, now based in new york.",
       name: "mateu parellada",
     },
+    {
+      id: 3,
+      image: Img1,
+      quote: "is an actor from barcelona, now based in new york.",
+      name: "mateu parellada",
+    },
+    {
+      id: 4,
+      image: Img2,
+      quote: "is an actor from barcelona, now based in new york.",
+      name: "mateu parellada",
+    },
   ];
 
   return (

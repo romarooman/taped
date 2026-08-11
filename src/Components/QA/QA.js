@@ -8,21 +8,62 @@ export default function QA({ items = defaultItems, height = 720 }) {
   // опционально: при открытии — немного подскроллить, чтобы пункт был виден
   useEffect(() => {
     const list = listRef.current;
-    if (!list) return;
-    const el = list.querySelector(`[data-qa-item="${openIndex}"]`);
-    if (!el) return;
 
-    const elTop = el.offsetTop;
-    const elBottom = elTop + el.offsetHeight;
-    const viewTop = list.scrollTop;
-    const viewBottom = viewTop + list.clientHeight;
+    if (!list || openIndex < 0) {
+      return;
+    }
 
-    if (elTop < viewTop) list.scrollTo({ top: elTop - 12, behavior: "smooth" });
-    else if (elBottom > viewBottom)
-      list.scrollTo({
-        top: elBottom - list.clientHeight + 12,
-        behavior: "smooth",
-      });
+    const scrollItemIntoView = () => {
+      const el = list.querySelector(`[data-qa-item="${openIndex}"]`);
+
+      if (!el) {
+        return;
+      }
+
+      const elTop = el.offsetTop;
+      const elBottom = elTop + el.offsetHeight;
+
+      const viewTop = list.scrollTop;
+      const viewBottom = viewTop + list.clientHeight;
+
+      if (elTop < viewTop) {
+        list.scrollTo({
+          top: Math.max(elTop - 12, 0),
+          behavior: "smooth",
+        });
+
+        return;
+      }
+
+      if (elBottom > viewBottom) {
+        const maxScrollTop = list.scrollHeight - list.clientHeight;
+
+        const nextScrollTop = elBottom - list.clientHeight + 12;
+
+        list.scrollTo({
+          top: Math.min(nextScrollTop, maxScrollTop),
+          behavior: "smooth",
+        });
+      }
+    };
+
+    /*
+     * Первый вызов сразу.
+     */
+    scrollItemIntoView();
+
+    /*
+     * Второй вызов после раскрытия panel.
+     * В CSS transition = 0.22s,
+     * поэтому ждём немного дольше.
+     */
+    const timer = setTimeout(() => {
+      scrollItemIntoView();
+    }, 280);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, [openIndex]);
 
   return (

@@ -4,104 +4,115 @@ const THRESHOLD = 80;
 const LOCK_TIME = 800;
 const EDGE_TOLERANCE = 2;
 
-function findInnerScrollElement(target) {
-  let element = target;
-
-  while (
-    element &&
-    element !== document.body &&
-    element !== document.documentElement
-  ) {
-    if (
-      element.getAttribute &&
-      element.getAttribute("data-inner-scroll") === "true"
-    ) {
-      return element;
-    }
-
-    element = element.parentElement;
-  }
-
-  return null;
-}
-
-function canInnerElementScroll(element, deltaY) {
-  if (!element) {
-    return false;
-  }
-
-  const hasOverflow =
-    element.scrollHeight > element.clientHeight + EDGE_TOLERANCE;
-
-  if (!hasOverflow) {
-    return false;
-  }
-
-  const scrollTop = element.scrollTop;
-  const maxScrollTop = element.scrollHeight - element.clientHeight;
-
-  /*
-   * Колесо вниз.
-   * Внутренний список ещё не дошёл до конца.
-   */
-  if (deltaY > 0) {
-    return scrollTop < maxScrollTop - EDGE_TOLERANCE;
-  }
-
-  /*
-   * Колесо вверх.
-   * Внутренний список ещё не дошёл до начала.
-   */
-  if (deltaY < 0) {
-    return scrollTop > EDGE_TOLERANCE;
-  }
-
-  return false;
-}
-
 export default function useWheel({ next, prev }) {
   const accumulator = useRef(0);
   const locked = useRef(false);
-  const unlockTimer = useRef(null);
 
   useEffect(() => {
-    const unlock = () => {
-      locked.current = false;
-    };
+    const findScrollableParent = (target) => {
+      let element = target;
 
-    const lockNavigation = () => {
-      locked.current = true;
+      while (
+        element &&
+        element !== document.body &&
+        element !== document.documentElement
+      ) {
+        if (
+          element.getAttribute &&
+          element.getAttribute("data-inner-scroll") === "true"
+        ) {
+          return element;
+        }
 
-      if (unlockTimer.current) {
-        clearTimeout(unlockTimer.current);
+        element = element.parentElement;
       }
 
-      unlockTimer.current = setTimeout(unlock, LOCK_TIME);
+      return null;
     };
 
-    const handleWheel = (event) => {
-      const delta = event.deltaY;
+    const canScrollDown = (element) => {
+      if (!element) {
+        return false;
+      }
+
+      const maxScrollTop = element.scrollHeight - element.clientHeight;
+
+      return element.scrollTop < maxScrollTop - EDGE_TOLERANCE;
+    };
+
+    const canScrollUp = (element) => {
+      if (!element) {
+        return false;
+      }
+
+      return element.scrollTop > EDGE_TOLERANCE;
+    };
+
+    const lock = () => {
+      locked.current = true;
+
+      setTimeout(() => {
+        locked.current = false;
+      }, LOCK_TIME);
+    };
+
+    const handleWheel = (e) => {
+      const delta = e.deltaY;
 
       if (Math.abs(delta) < 1) {
         return;
       }
 
-      const innerScrollElement = findInnerScrollElement(event.target);
+      const scrollable = findScrollableParent(e.target);
 
       /*
-       * Пока внутренний список может прокручиваться,
-       * PageSlider вообще не вмешивается.
+       * =========================================
+       * ВНУТРЕННИЙ SCROLL
+       * =========================================
        */
-      if (canInnerElementScroll(innerScrollElement, delta)) {
-        accumulator.current = 0;
-        return;
+
+      if (scrollable) {
+        /*
+         * Скроллим вниз.
+         *
+         * Пока QA ещё можно прокручивать вниз —
+         * PageSlider вообще ничего не делает.
+         */
+        if (delta > 0 && canScrollDown(scrollable)) {
+          accumulator.current = 0;
+
+          return;
+        }
+
+        /*
+         * Скроллим вверх.
+         *
+         * Пока QA ещё можно прокручивать вверх —
+         * PageSlider ничего не делает.
+         */
+        if (delta < 0 && canScrollUp(scrollable)) {
+          accumulator.current = 0;
+
+          return;
+        }
       }
 
       /*
-       * Внутреннего скролла нет или он дошёл
-       * до своей границы — управление получает PageSlider.
+       * =========================================
+       * PAGE SLIDER
+       * =========================================
+       *
+       * До этого места доходим только если:
+       *
+       * 1. внутреннего scroll нет
+       *
+       * ИЛИ
+       *
+       * 2. внутренний scroll уже дошёл
+       *    до верхней / нижней границы.
        */
-      event.preventDefault();
+
+      e.preventDefault();
 
       if (locked.current) {
         return;
@@ -109,16 +120,27 @@ export default function useWheel({ next, prev }) {
 
       accumulator.current += delta;
 
+      /*
+       * Следующий слайд
+       */
       if (accumulator.current >= THRESHOLD) {
         accumulator.current = 0;
-        lockNavigation();
+
+        lock();
+
         next();
+
         return;
       }
 
+      /*
+       * Предыдущий слайд
+       */
       if (accumulator.current <= -THRESHOLD) {
         accumulator.current = 0;
-        lockNavigation();
+
+        lock();
+
         prev();
       }
     };
@@ -129,10 +151,6 @@ export default function useWheel({ next, prev }) {
 
     return () => {
       window.removeEventListener("wheel", handleWheel);
-
-      if (unlockTimer.current) {
-        clearTimeout(unlockTimer.current);
-      }
     };
   }, [next, prev]);
 }

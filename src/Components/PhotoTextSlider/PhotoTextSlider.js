@@ -3,7 +3,7 @@ import styles from "./PhotoTextSlider.module.css";
 
 export default function PhotoTextSlider({
   slides = [],
-  height = 560, // ✅ выше
+  height = "100%",
   radius = 18,
   wheelThresholdMs = 420,
   showOverlayOnTouch = true,
