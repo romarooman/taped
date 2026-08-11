@@ -47,14 +47,19 @@ const ImagesListColumn = ({ fimage }) => {
           initial="hidden"
           animate="show"
         >
-          <span className={styles.nowrap}>
-            <span>Hello, We’re </span>
-            <img className={styles.tapedWord} src={tapedPng} alt="taped" />
-            <span>— a studio </span>
-          </span>
-          <span>
-            specializing in actor headshots, self-tape videos, and reels.
-          </span>
+          <div className={styles.textBlock}>
+            <div className={styles.firstLine}>
+              <span>Hello, We’re </span>
+
+              <img className={styles.tapedWord} src={tapedPng} alt="taped" />
+
+              <span>— a studio</span>
+            </div>
+
+            <div className={styles.secondLine}>
+              specializing in actor headshots, self-tape videos, and reels.
+            </div>
+          </div>
         </motion.div>
       </motion.div>
 

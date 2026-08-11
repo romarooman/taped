@@ -73,7 +73,7 @@ and personal branding`}
           bg="#DAFF3E"
           textOn="second"
           fimage={Three}
-          subtitleSize="clamp(4px,3.5vw,20px)"
+          subtitleSize="clamp(32px, 4vw, 60px)"
         />
       </Page>
 
@@ -126,7 +126,7 @@ in front of the camera.`}
       </Page>
 
       <Page id="community" direction="horizontal">
-        <GiftCard enabled={false}/>
+        <GiftCard enabled={false} />
 
         <ExpertCommunity
           title="yes, we have a taped. community"

@@ -45,36 +45,61 @@
   inset: 0;
 
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 
   width: 100%;
-  max-width: 100%;
 
-  padding: 20px clamp(80px, 15vw, 400px);
-
+  padding: 20px 46px;
   box-sizing: border-box;
 
-  text-align: center;
   pointer-events: none;
 
   font-family: "DM Sans", sans-serif;
   font-weight: 900;
-
-  /* вместо фиксированных 60px */
   font-size: clamp(32px, 4vw, 60px);
-
   line-height: 110%;
   text-transform: lowercase;
 
   overflow: hidden;
 }
 
+.textBlock {
+  display: flex;
+  flex-direction: column;
 
+  width: 80%;
+  max-width: 100%;
+
+  align-items: center;
+
+  text-align: center;
+
+  gap: 0;
+}
+
+.firstLine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  white-space: nowrap;
+
+  line-height: 1;
+}
+
+.secondLine {
+  width: 100%;
+
+  text-align: center;
+
+  line-height: 1.1;
+}
 
 .imgCenterText.dark {
-  color: #000000;
+  color: #303030;
 }
 
 /* PNG со словом "taped" */
@@ -87,10 +112,10 @@
   vertical-align: bottom;
 
   /* 🔥 наслаивание */
-  margin-left: -0.15em;
+  margin-left: 0.1em;
   margin-right: -0.15em;
 
-  transform: translateY(0.42em);
+  /* transform: translateY(0.42em); */
 }
 
 /* кнопки справа снизу */
@@ -196,7 +221,7 @@
 
     font-family: "DM Sans", sans-serif;
     font-weight: 900;
-    font-size: clamp(10px, 4vw, 34px);
+      font-size: clamp(18px, 6vw, 32px);
     line-height: 110%;
     text-transform: lowercase;
 
