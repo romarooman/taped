@@ -61,7 +61,6 @@
 
 .bottom {
   position: sticky;
-  top: 80px;
 
   z-index: 50;
 
@@ -217,5 +216,145 @@
   .bookBtn {
     font-size: 30px;
     width: 100%;
+  }
+}
+
+.optionsWrap {
+  position: relative;
+
+  width: 100%;
+  max-width: 478px;
+
+  margin-bottom: 28px;
+
+  z-index: 100;
+}
+
+.optionsButton {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border: none;
+  border-radius: 18px;
+
+  padding: 24px 32px;
+
+  background: #d7ff2f;
+
+  font-family: "DM Sans", sans-serif;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 100%;
+
+  color: #303030;
+
+  cursor: pointer;
+}
+
+.optionsArrow {
+  width: 0;
+  height: 0;
+
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 22px solid #303030;
+
+  transition: transform 0.25s ease;
+}
+
+.optionsArrowOpen {
+  transform: rotate(180deg);
+}
+
+.optionsMenu {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  top: calc(100% + 6px);
+
+  padding: 18px 32px 28px;
+
+  background: #d7ff2f;
+
+  border-radius: 18px;
+
+  box-sizing: border-box;
+
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+}
+
+.optionItem {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border: none;
+  border-bottom: 2px solid #303030;
+
+  background: transparent;
+
+  padding: 18px 0 12px;
+
+  font-family: "DM Sans", sans-serif;
+  font-weight: 900;
+  font-size: 34px;
+  line-height: 100%;
+
+  color: #303030;
+
+  cursor: pointer;
+
+  text-align: left;
+}
+
+.optionItem:last-child {
+  border-bottom: none;
+}
+
+.optionItem:hover {
+  opacity: 0.7;
+}
+
+.optionItemActive {
+  opacity: 0.65;
+}
+
+@media (max-width: 1024px) {
+  .optionsWrap {
+    max-width: 100%;
+
+    margin-bottom: 18px;
+  }
+
+  .optionsButton {
+    padding: 18px 20px;
+
+    border-radius: 14px;
+
+    font-size: 26px;
+  }
+
+  .optionsArrow {
+    border-left-width: 14px;
+    border-right-width: 14px;
+    border-top-width: 16px;
+  }
+
+  .optionsMenu {
+    padding: 12px 20px 18px;
+
+    border-radius: 14px;
+  }
+
+  .optionItem {
+    padding: 14px 0 10px;
+
+    font-size: 24px;
   }
 }

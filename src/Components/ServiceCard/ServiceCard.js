@@ -12,7 +12,6 @@ import PhotoSlider from "../PhotoSlider/PhotoSlider";
 
 import Two from "../../images/2.png";
 import Three from "../../images/3.png";
-
 import Five from "../../images/5.png";
 import Six from "../../images/6.png";
 
@@ -26,20 +25,55 @@ const photos = [
   { id: 7, src: Six, alt: "photo 3" },
 ];
 
+const serviceOptions = [
+  {
+    id: "quick-shot",
+    label: "quick shot",
+    description:
+      "short and focused headshot session for getting a strong result quickly.",
+    price: "200$",
+    duration: "30 min",
+  },
+  {
+    id: "session",
+    label: "the session",
+    description:
+      "a full headshot studio session with enough time for different looks and setups.",
+    price: "340$",
+    duration: "1 hour",
+  },
+  {
+    id: "half-day",
+    label: "half day",
+    description:
+      "an extended session with more time for different looks, setups and creative directions.",
+    price: "1000$",
+    duration: "4 hours",
+  },
+  {
+    id: "all-in",
+    label: "all in",
+    description:
+      "a complete package with maximum shooting time and flexibility for different types of content.",
+    price: "1500$",
+    duration: "full day",
+  },
+];
+
 export default function ServiceCard({
   breadcrumbs = "main / services / headshots",
-  title = "headshot studio session",
-  description = `is an actor from barcelona, now based in new york. 
-he brings an understanding of performance and how to make people feel comfortable in front of the camera.`,
-  price = "60$",
-  duration = "1 hour",
   image,
   onBook,
 }) {
-  const words = title.split(" ");
-
   const bottomRef = useRef(null);
+
   const [stuck, setStuck] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const [selectedId, setSelectedId] = useState("session");
+
+  const selectedService =
+    serviceOptions.find((item) => item.id === selectedId) || serviceOptions[0];
 
   useEffect(() => {
     window.scrollTo({
@@ -62,52 +96,90 @@ he brings an understanding of performance and how to make people feel comfortabl
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleSelect = (id) => {
+    setSelectedId(id);
+    setDropdownOpen(false);
+  };
+
   return (
     <>
       <section className={styles.section}>
         <div className={styles.container}>
-          {/* TOP */}
           <div className={styles.top}>
             <div className={styles.left}>
               <div className={styles.breadcrumbs}>{breadcrumbs}</div>
 
+              <div className={styles.optionsWrap}>
+                <button
+                  type="button"
+                  className={styles.optionsButton}
+                  onClick={() => setDropdownOpen((value) => !value)}
+                >
+                  <span>headshot options</span>
+
+                  <span
+                    className={`${styles.optionsArrow} ${
+                      dropdownOpen ? styles.optionsArrowOpen : ""
+                    }`}
+                  />
+                </button>
+
+                {dropdownOpen && (
+                  <div className={styles.optionsMenu}>
+                    {serviceOptions.map((item) => (
+                      <button
+                        key={item.id}
+                        type="button"
+                        className={`${styles.optionItem} ${
+                          selectedId === item.id ? styles.optionItemActive : ""
+                        }`}
+                        onClick={() => handleSelect(item.id)}
+                      >
+                        <span>{item.label}</span>
+                        <span>{item.price}</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+
               <h1 className={styles.title}>
-                <span className={styles.mobileTitleFirstLine}>
-                  {words.slice(0, 2).join(" ")}
-                </span>
-                <span className={styles.titleLine}>
-                  {words.slice(2).join(" ")}
-                </span>
+                <span className={styles.titleLine}>headshot</span>
+                <span className={styles.titleLine}>studio</span>
+                <span className={styles.titleLine}>session</span>
               </h1>
             </div>
 
             <div className={styles.right}>
-              <img src={image} alt={title} />
+              <img src={image} alt={selectedService.title} />
             </div>
           </div>
         </div>
       </section>
-      {/* BOTTOM */}
+
       <div
         ref={bottomRef}
         className={`${styles.bottom} ${stuck ? styles.stickyActive : ""}`}
       >
         <div className={styles.infoBlock}>
           <div className={styles.label}>what is it?</div>
-          <div className={styles.text}>{description}</div>
+
+          <div className={styles.text}>{selectedService.description}</div>
         </div>
 
         <div className={styles.metaBlock}>
           <div className={styles.metaItem}>
             <div className={styles.label}>what’s the price?</div>
-            <div className={styles.value}>{price}</div>
+
+            <div className={styles.value}>{selectedService.price}</div>
           </div>
         </div>
 
         <div className={styles.metaBlock}>
           <div className={styles.metaItem}>
             <div className={styles.label}>duration</div>
-            <div className={styles.value}>{duration}</div>
+
+            <div className={styles.value}>{selectedService.duration}</div>
           </div>
         </div>
 
@@ -115,10 +187,15 @@ he brings an understanding of performance and how to make people feel comfortabl
           book
         </button>
       </div>
+
       <PhotoSlider title="how it goes:" photos={photos} />
+
       <TableIncluded />
+
       <VimeoTeaser preview={One} />
+
       <ContactForm />
+
       <Location image={locationImg} mapImage={mapImg} />
     </>
   );
