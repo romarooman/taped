@@ -7,7 +7,7 @@ export default function PhotoTextSlider({
   radius = 18,
   wheelThresholdMs = 420,
   showOverlayOnTouch = true,
-  slideWidth = 52, // ✅ % ширины контейнера (половина + чуть)
+  slideWidth = 70, // ✅ % ширины контейнера (половина + чуть)
   gap = 12, // ✅ gap в px
 }) {
   const isReady = slides && slides.length > 0;
