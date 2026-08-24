@@ -35,6 +35,11 @@ import locationImg from "./images/building.png";
 import mapImg from "./images/map.png";
 
 import ServiceCard from "./Components/ServiceCard/ServiceCard";
+import GridOfExpertsCommunity from "./Components/Pages/ListOfExpertsCommunity/GridOfExpertsCommunity";
+import ExpertsMore from "./Components/Pages/ExpertsMore/ExpertsMore";
+import ExhibitionCard from "./Components/Pages/ExhibitionCard/ExhibitionCard";
+import { expertsData } from "./data/expertsData";
+import { communityData } from "./data/communityData";
 
 function Home() {
   const slides = [
@@ -176,6 +181,32 @@ function App() {
           <Route path="/community" element={<Home />} />
 
           <Route path="/contacts" element={<Home />} />
+
+          <Route
+            path="/experts/grid"
+            element={
+              <GridOfExpertsCommunity title="experts" items={expertsData} />
+            }
+          />
+          <Route
+            path="/community/grid"
+            element={
+              <GridOfExpertsCommunity
+                title="community"
+                items={communityData}
+                basePath="/community"
+              />
+            }
+          />
+          <Route
+            path="/experts/:slug"
+            element={<ExpertsMore items={expertsData} />}
+          />
+
+          <Route
+            path="/community/:slug"
+            element={<ExhibitionCard items={communityData} />}
+          />
 
           <Route path="/service/card" element={<ServiceCard image={Img1} />} />
         </Routes>

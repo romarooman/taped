@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import PageSliderContext from "../PageSliderContext";
 
-
 export default function usePageAnimation() {
-  const { animationKey } = useContext(PageSliderContext);
+  const context = useContext(PageSliderContext);
 
-  return animationKey;
+  if (!context) {
+    return "standalone";
+  }
+
+  return context.animationKey || "standalone";
 }
