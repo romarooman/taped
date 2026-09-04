@@ -12,7 +12,11 @@ export default function GridOfExpertsCommunity({
     <section className={styles.wrapper}>
       <Breadcrumbs
         className={styles.breadcrumbs}
-        items={[{ label: "main", to: "/" }, { label: title }]}
+        items={[
+          { label: "main", to: "/" },
+          { label: title, to: basePath },
+          { label: "more" },
+        ]}
       />
 
       <h2 className={styles.title}>{title}</h2>

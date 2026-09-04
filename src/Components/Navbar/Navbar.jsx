@@ -56,7 +56,7 @@ export default function Navbar() {
       </div>
 
       <ul className="nav-list">
-        {navigation.map((item) => {
+        {navigation.filter((item) => item.showInMenu !== false).map((item) => {
           const isActive = isItemActive(item);
 
           return (
@@ -74,7 +74,7 @@ export default function Navbar() {
       </ul>
 
       <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
-        {navigation.map((item) => {
+        {navigation.filter((item) => item.showInMenu !== false).map((item) => {
           const isActive = isItemActive(item);
 
           return (

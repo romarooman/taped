@@ -15,7 +15,7 @@ const ExpertCommunity = ({
   desc = `is a director from moscow who based in new york. he works in narrative
 film and photography and brings a calm, focused eye to the work.`,
   moreText = "more ↗",
-  moreTo = "/community",
+  moreTo = "/community/more",
   bg = "#FFFFFF",
 }) => {
   const isImageFirst = order === "image-first";

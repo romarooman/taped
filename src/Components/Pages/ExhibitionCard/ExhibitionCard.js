@@ -16,7 +16,7 @@ export default function ExhibitionCard({ items = [] }) {
   }, [slug]);
 
   if (!item) {
-    return <Navigate to="/community/grid" replace />;
+    return <Navigate to="/community/more" replace />;
   }
 
   const data = item.more || {};
@@ -28,6 +28,7 @@ export default function ExhibitionCard({ items = [] }) {
         items={[
           { label: "main", to: "/" },
           { label: "community", to: "/community" },
+          { label: "more", to: "/community/more" },
           { label: data.title || item.name },
         ]}
       />

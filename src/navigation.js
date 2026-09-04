@@ -24,6 +24,15 @@ const navigation = [
   },
 
   {
+    id: "experts",
+    title: "experts",
+    path: "/experts",
+    pageIndex: 9,
+    horizontalIndex: 0,
+    showInMenu: false,
+  },
+
+  {
     id: "location",
     title: "contacts",
     path: "/contacts",

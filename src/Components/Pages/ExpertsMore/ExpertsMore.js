@@ -25,7 +25,7 @@ export default function ExpertsMore({ items = [] }) {
   }, [slug]);
 
   if (!expert) {
-    return <Navigate to="/experts/grid" replace />;
+    return <Navigate to="/experts/more" replace />;
   }
 
   return (

@@ -149,7 +149,7 @@ in front of the camera.`}
         <ExpertCommunity
           title="yes, we have a taped. community"
           fimage={Seven}
-          moreTo="/community/grid"
+          moreTo="/community/more"
         />
       </Page>
 
@@ -159,7 +159,7 @@ in front of the camera.`}
           title="our dialogues with famous experts"
           fimage={Seven}
           order="image-first"
-          moreTo="/experts/grid"
+          moreTo="/experts/more"
         />
       </Page>
 
@@ -181,16 +181,18 @@ function App() {
 
           <Route path="/community" element={<Home />} />
 
+          <Route path="/experts" element={<Home />} />
+
           <Route path="/contacts" element={<Home />} />
 
           <Route
-            path="/experts/grid"
+            path="/experts/more"
             element={
               <GridOfExpertsCommunity title="experts" items={expertsData} />
             }
           />
           <Route
-            path="/community/grid"
+            path="/community/more"
             element={
               <GridOfExpertsCommunity
                 title="community"
@@ -209,7 +211,10 @@ function App() {
             element={<ExhibitionCard items={communityData} />}
           />
 
-          <Route path="/service/card" element={<ServiceCard image={Img1} />} />
+          <Route
+            path="/service/headshots"
+            element={<ServiceCard image={Img1} />}
+          />
         </Routes>
       </div>
     </BrowserRouter>

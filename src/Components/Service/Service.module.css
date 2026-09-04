@@ -40,8 +40,10 @@
 .top {
   font-family: "DM Sans", sans-serif;
   font-weight: 500;
-  font-size: 16px;
+  font-style: normal;
+  font-size: 40px;
   line-height: 100%;
+  letter-spacing: 0;
   color: #fff;
   text-transform: lowercase;
 
