@@ -1,10 +1,20 @@
-.imageWrapper {
- 
+.sliderSection {
+  position: relative;
+}
 
-  padding-bottom: 30px;
-  padding-top: 0;
+.breadcrumbs {
+  position: absolute;
+  top: 24px;
+  left: 48px;
+  z-index: 10;
+  font-size: clamp(12px, 0.9vw, 18px);
+  color: #8d8d8d;
+}
 
-  width: 97%;
-  height: 100%;
-  box-sizing: border-box;
+@media (max-width: 768px) {
+  .breadcrumbs {
+    top: 12px;
+    left: 16px;
+    font-size: 12px;
+  }
 }

@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import { useParams, Navigate } from "react-router-dom";
 
-import styles from "./ExpertsMore.module.css";
-
 import locationImg from "../../../images/building.webp";
 import mapImg from "../../../images/map.webp";
 import One from "../../../images/1.webp";
 
 import ContactForm from "../../ContactForm/ContactForm";
+import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs";
 import VimeoTeaser from "../../ServiceCard/VimeoTeaser";
 import Location from "../../Location/Location";
-import ImagesListRow from "../../ImagesListRow/ImagesListRow";
+import ExpertsHorizontalSlider from "./ExpertsHorizontalSlider";
+import styles from "./ExpertsMore.module.css";
 
 export default function ExpertsMore({ items = [] }) {
   const { slug } = useParams();
@@ -30,20 +30,19 @@ export default function ExpertsMore({ items = [] }) {
 
   return (
     <>
-      {expert.sections.map((section, index) => (
-        <div className={styles.imageWrapper} key={index}>
-          <ImagesListRow
-            textOn="first"
-            fimage={section.image}
-            padding={0}
-            bg="#FFFFFF"
-            order="bg-first"
-            title={section.title}
-            subtitle={section.subtitle}
-            subtitleSize="clamp(4px, 3.5vw, 20px)"
-          />
-        </div>
-      ))}
+      <div className={styles.sliderSection}>
+        <Breadcrumbs
+          className={styles.breadcrumbs}
+          items={[
+            { label: "main", to: "/" },
+            { label: "experts", to: "/experts" },
+            { label: "more", to: "/experts/more" },
+            { label: expert.name },
+          ]}
+        />
+
+        <ExpertsHorizontalSlider sections={expert.sections} />
+      </div>
 
       <VimeoTeaser
         title="watch a video version:"
