@@ -3,9 +3,9 @@ import { useParams, Navigate } from "react-router-dom";
 
 import styles from "./ExpertsMore.module.css";
 
-import locationImg from "../../../images/building.png";
-import mapImg from "../../../images/map.png";
-import One from "../../../images/1.png";
+import locationImg from "../../../images/building.webp";
+import mapImg from "../../../images/map.webp";
+import One from "../../../images/1.webp";
 
 import ContactForm from "../../ContactForm/ContactForm";
 import VimeoTeaser from "../../ServiceCard/VimeoTeaser";

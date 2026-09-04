@@ -2,18 +2,18 @@ import React, { useEffect, useRef, useState } from "react";
 
 import styles from "./ServiceCard.module.css";
 import Location from "../Location/Location";
-import locationImg from "../../images/building.png";
-import mapImg from "../../images/map.png";
+import locationImg from "../../images/building.webp";
+import mapImg from "../../images/map.webp";
 import TableIncluded from "./TableIncluded";
 import VimeoTeaser from "./VimeoTeaser";
-import One from "../../images/1.png";
+import One from "../../images/1.webp";
 import ContactForm from "../ContactForm/ContactForm";
 import PhotoSlider from "../PhotoSlider/PhotoSlider";
 
-import Two from "../../images/2.png";
-import Three from "../../images/3.png";
-import Five from "../../images/5.png";
-import Six from "../../images/6.png";
+import Two from "../../images/2.webp";
+import Three from "../../images/3.webp";
+import Five from "../../images/5.webp";
+import Six from "../../images/6.webp";
 
 const photos = [
   { id: 1, src: One, alt: "photo 1" },

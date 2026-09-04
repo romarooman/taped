@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import Three from "../../images/3.png";
+import Three from "../../images/3.webp";
 import styles from "./GiftCard.module.css";
 import Arrow_list from "../../images/arrow_list.png";
 // import {  useLocation } from "react-router-dom";

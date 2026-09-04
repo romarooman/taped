@@ -15,7 +15,13 @@ const ImagesOnly = ({ one, brands }) => {
         <MobileCta targetId="book" />
       </div>
 
-      <img className={styles.heroBg} src={one} alt="" />
+      <img
+        className={styles.heroBg}
+        src={one}
+        alt=""
+        decoding="async"
+        fetchPriority="high"
+      />
 
       <motion.div
         key={`${animationKey}-title`}

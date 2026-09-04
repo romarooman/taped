@@ -22,11 +22,11 @@ export default function Location({
 
       <div className={styles.grid}>
         <div className={styles.imageWrap}>
-          <img src={image} alt="location" />
+          <img src={image} alt="location" loading="lazy" decoding="async" />
         </div>
 
         <div className={styles.mapWrap}>
-          <img src={mapImage} alt="map" />
+          <img src={mapImage} alt="map" loading="lazy" decoding="async" />
           <div className={styles.dot} />
         </div>
       </div>

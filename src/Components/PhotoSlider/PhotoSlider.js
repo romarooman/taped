@@ -91,6 +91,8 @@ const PhotoSlider = ({ title = "how it goes:", photos = [] }) => {
                   src={photo.src}
                   alt={photo.alt || "photo"}
                   className={styles.image}
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>

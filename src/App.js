@@ -18,21 +18,21 @@ import Location from "./Components/Location/Location";
 import QA from "./Components/QA/QA";
 import PhotoTextSlider from "./Components/PhotoTextSlider/PhotoTextSlider";
 
-import One from "./images/1.png";
-import Two from "./images/2.png";
-import Three from "./images/3.png";
-import Four from "./images/4.png";
-import Five from "./images/5.png";
-import Six from "./images/6.png";
-import Seven from "./images/7.png";
+import One from "./images/1.webp";
+import Two from "./images/2.webp";
+import Three from "./images/3.webp";
+import Four from "./images/4.webp";
+import Five from "./images/5.webp";
+import Six from "./images/6.webp";
+import Seven from "./images/7.webp";
 
-import Img1 from "./images/8.png";
-import Img2 from "./images/9.png";
+import Img1 from "./images/8.webp";
+import Img2 from "./images/9.webp";
 
 import brands from "./images/brands.png";
 
-import locationImg from "./images/building.png";
-import mapImg from "./images/map.png";
+import locationImg from "./images/building.webp";
+import mapImg from "./images/map.webp";
 
 import ServiceCard from "./Components/ServiceCard/ServiceCard";
 import GridOfExpertsCommunity from "./Components/Pages/ListOfExpertsCommunity/GridOfExpertsCommunity";

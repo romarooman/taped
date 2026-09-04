@@ -21,7 +21,13 @@ export default function GridOfExpertsCommunity({
             key={item.id}
           >
             <div className={styles.imageWrap}>
-              <img src={item.image} alt={item.name} className={styles.image} />
+              <img
+                src={item.image}
+                alt={item.name}
+                className={styles.image}
+                loading="lazy"
+                decoding="async"
+              />
 
               {item.label && (
                 <div

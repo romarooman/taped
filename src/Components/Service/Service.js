@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Service.module.css";
-import bg from "../../images/service.png";
+import bg from "../../images/service.webp";
 import usePageAnimation from "../PageSlider/hooks/usePageAnimation";
 import { motion } from "framer-motion";
 import { fadeLeft } from "../PageSlider/hooks/PageAnimations";

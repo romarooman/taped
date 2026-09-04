@@ -19,7 +19,13 @@ feel comfortable in front of the camera.`,
       <div className={styles.teaser}>
         {!play ? (
           <>
-            <img src={preview} alt="preview" className={styles.preview} />
+            <img
+              src={preview}
+              alt="preview"
+              className={styles.preview}
+              loading="lazy"
+              decoding="async"
+            />
 
             <div className={styles.overlay}>
               <button

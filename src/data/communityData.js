@@ -1,7 +1,7 @@
 // src/data/communityData.js
 
-import One from "../images/1.png";
-import Two from "../images/2.png";
+import One from "../images/1.webp";
+import Two from "../images/2.webp";
 
 export const communityData = [
   {

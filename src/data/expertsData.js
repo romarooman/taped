@@ -1,8 +1,8 @@
 // src/data/expertsData.js
 
-import One from "../images/1.png";
-import Two from "../images/2.png";
-import Five from "../images/5.png";
+import One from "../images/1.webp";
+import Two from "../images/2.webp";
+import Five from "../images/5.webp";
 
 export const expertsData = [
   {
