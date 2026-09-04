@@ -69,6 +69,7 @@ const ImagesListRow = ({
             className={`${styles.imgCard} ${styles.bgCard}`}
             initial="hidden"
             animate="show"
+            style={{ background: bg }}
           >
             {TextBlock}
           </div>

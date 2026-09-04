@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./QA.module.css";
 
-export default function QA({ items = defaultItems, height = 720 }) {
+export default function QA({ items = defaultItems, height }) {
   const [openIndex, setOpenIndex] = useState(-1);
   const listRef = useRef(null);
 
@@ -76,9 +76,14 @@ export default function QA({ items = defaultItems, height = 720 }) {
           ref={listRef}
           className={styles.list}
           data-inner-scroll="true"
-          style={{
-            maxHeight: typeof height === "number" ? `${height}px` : height,
-          }}
+          style={
+            height
+              ? {
+                  maxHeight:
+                    typeof height === "number" ? `${height}px` : height,
+                }
+              : undefined
+          }
         >
           {items.map((it, idx) => {
             const open = idx === openIndex;

@@ -105,6 +105,7 @@ and beautifully crafted.`}
           fimage={Four}
           bg="#DAFF3E"
           order="bg-first"
+          subtitleSize="clamp(32px, 4vw, 60px)"
         />
       </Page>
 
