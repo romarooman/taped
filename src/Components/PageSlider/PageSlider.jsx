@@ -1,7 +1,7 @@
-import React, { useEffect, useMemo, useReducer, useState } from "react";
+import React, { useEffect, useMemo, useReducer, useRef, useState } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import styles from "./PageSlider.module.css";
 
@@ -65,6 +65,8 @@ export default function PageSlider({ children, header = null }) {
   }));
 
   const location = useLocation();
+  const navigate = useNavigate();
+  const syncingFromUrl = useRef(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -97,8 +99,34 @@ export default function PageSlider({ children, header = null }) {
       return;
     }
 
+    syncingFromUrl.current = true;
     goTo(navigationItem.pageIndex, navigationItem.horizontalIndex || 0);
   }, [location.pathname, goTo]);
+
+  useEffect(() => {
+    if (syncingFromUrl.current) {
+      syncingFromUrl.current = false;
+      return;
+    }
+
+    const navigationItem = navigation.find((item) => {
+      const horizontalIndex = item.horizontalIndex || 0;
+
+      return (
+        item.pageIndex === state.pageIndex &&
+        horizontalIndex === state.horizontalIndex
+      );
+    });
+
+    if (navigationItem && navigationItem.path !== location.pathname) {
+      navigate(navigationItem.path, { replace: true });
+    }
+  }, [
+    location.pathname,
+    navigate,
+    state.horizontalIndex,
+    state.pageIndex,
+  ]);
 
   const navHeight =
     viewport.width <= MOBILE_BREAKPOINT

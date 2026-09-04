@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import styles from "./ExhibitionCard.module.css";
+import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs";
 
 export default function ExhibitionCard({ items = [] }) {
   const { slug } = useParams();
@@ -22,7 +23,14 @@ export default function ExhibitionCard({ items = [] }) {
 
   return (
     <section className={styles.wrapper}>
-      <div className={styles.breadcrumbs}>main / community</div>
+      <Breadcrumbs
+        className={styles.breadcrumbs}
+        items={[
+          { label: "main", to: "/" },
+          { label: "community", to: "/community" },
+          { label: data.title || item.name },
+        ]}
+      />
 
       <h1 className={styles.mobileTitle}>{data.title || item.name}</h1>
 

@@ -9,6 +9,7 @@ import VimeoTeaser from "./VimeoTeaser";
 import One from "../../images/1.webp";
 import ContactForm from "../ContactForm/ContactForm";
 import PhotoSlider from "../PhotoSlider/PhotoSlider";
+import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 
 import Two from "../../images/2.webp";
 import Three from "../../images/3.webp";
@@ -64,8 +65,14 @@ const serviceOptions = [
   },
 ];
 
+const defaultBreadcrumbs = [
+  { label: "main", to: "/" },
+  { label: "services", to: "/service" },
+  { label: "headshots" },
+];
+
 export default function ServiceCard({
-  breadcrumbs = "main / services / headshots",
+  breadcrumbs = defaultBreadcrumbs,
   image,
   onBook,
 }) {
@@ -113,7 +120,10 @@ export default function ServiceCard({
         <div className={styles.container}>
           <div className={styles.top}>
             <div className={styles.left}>
-              <div className={styles.breadcrumbs}>{breadcrumbs}</div>
+              <Breadcrumbs
+                className={styles.breadcrumbs}
+                items={breadcrumbs}
+              />
 
               <div className={styles.optionsWrap}>
                 <button

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./GridOfExpertsCommunity.module.css";
+import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs";
 
 export default function GridOfExpertsCommunity({
   title = "experts",
@@ -9,7 +10,10 @@ export default function GridOfExpertsCommunity({
 }) {
   return (
     <section className={styles.wrapper}>
-      <div className={styles.breadcrumbs}>main / {title}</div>
+      <Breadcrumbs
+        className={styles.breadcrumbs}
+        items={[{ label: "main", to: "/" }, { label: title }]}
+      />
 
       <h2 className={styles.title}>{title}</h2>
 
