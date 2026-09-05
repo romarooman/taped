@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import { useParams, Navigate } from "react-router-dom";
 
 import locationImg from "../../../images/building.webp";
@@ -17,11 +17,13 @@ export default function ExpertsMore({ items = [] }) {
 
   const expert = items.find((item) => item.slug === slug);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      left: 0,
+      behavior: "instant",
     });
+    document.body.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [slug]);
 
   if (!expert) {
@@ -41,7 +43,7 @@ export default function ExpertsMore({ items = [] }) {
           ]}
         />
 
-        <ExpertsHorizontalSlider sections={expert.sections} />
+        <ExpertsHorizontalSlider key={slug} sections={expert.sections} />
       </div>
 
       <VimeoTeaser

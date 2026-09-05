@@ -13,8 +13,6 @@
 
 @media (max-width: 768px) {
   .breadcrumbs {
-    top: 12px;
-    left: 16px;
-    font-size: 12px;
+    display: none;
   }
 }

@@ -17,6 +17,7 @@ const ImagesListRow = ({
   title,
   subtitle,
   order = "image-first",
+  mobileOrder,
   subtitleSize = "clamp(24px, 3.5vw, 24px)",
 }) => {
   const isImageFirst = order === "image-first";
@@ -39,7 +40,10 @@ const ImagesListRow = ({
   );
 
   return (
-    <div className={styles.imagesRow} key={animationKey}>
+    <div
+      className={`${styles.imagesRow} ${mobileOrder === "image-first" ? styles.mobileImageFirst : ""}`}
+      key={animationKey}
+    >
       <div className={styles.mobileCtaWrap}>
         <MobileCta targetId="book" />
       </div>

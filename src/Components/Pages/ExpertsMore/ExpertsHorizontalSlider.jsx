@@ -13,6 +13,9 @@ export default function ExpertsHorizontalSlider({ sections = [] }) {
   const wheelDeltaRef = useRef(0);
   const lockedRef = useRef(false);
   const touchStartYRef = useRef(null);
+  const transitionTimerRef = useRef(null);
+
+  useEffect(() => () => window.clearTimeout(transitionTimerRef.current), []);
 
   useEffect(() => {
     const isSliderAtTop = () => {
@@ -37,7 +40,8 @@ export default function ExpertsHorizontalSlider({ sections = [] }) {
         ),
       );
 
-      window.setTimeout(() => {
+      wheelDeltaRef.current = 0;
+      transitionTimerRef.current = window.setTimeout(() => {
         lockedRef.current = false;
       }, TRANSITION_TIME);
     };
@@ -45,6 +49,11 @@ export default function ExpertsHorizontalSlider({ sections = [] }) {
     const handleWheel = (event) => {
       if (!isSliderAtTop() || Math.abs(event.deltaY) < 1) {
         wheelDeltaRef.current = 0;
+        return;
+      }
+
+      if (lockedRef.current) {
+        event.preventDefault();
         return;
       }
 
@@ -58,10 +67,6 @@ export default function ExpertsHorizontalSlider({ sections = [] }) {
 
       event.preventDefault();
 
-      if (lockedRef.current) {
-        return;
-      }
-
       wheelDeltaRef.current += event.deltaY;
 
       if (wheelDeltaRef.current >= WHEEL_THRESHOLD) {
@@ -74,6 +79,7 @@ export default function ExpertsHorizontalSlider({ sections = [] }) {
     };
 
     const handleTouchStart = (event) => {
+      touchStartYRef.current = null;
       if (event.touches.length === 1 && isSliderAtTop()) {
         touchStartYRef.current = event.touches[0].clientY;
       }
@@ -88,7 +94,7 @@ export default function ExpertsHorizontalSlider({ sections = [] }) {
       const canMoveForward = delta > 0 && activeIndex < sections.length - 1;
       const canMoveBack = delta < 0 && activeIndex > 0;
 
-      if (canMoveForward || canMoveBack) {
+      if (lockedRef.current || canMoveForward || canMoveBack) {
         event.preventDefault();
       }
     };
@@ -113,16 +119,22 @@ export default function ExpertsHorizontalSlider({ sections = [] }) {
       }
     };
 
+    const handleTouchCancel = () => {
+      touchStartYRef.current = null;
+    };
+
     window.addEventListener("wheel", handleWheel, { passive: false });
     window.addEventListener("touchstart", handleTouchStart, { passive: true });
     window.addEventListener("touchmove", handleTouchMove, { passive: false });
     window.addEventListener("touchend", handleTouchEnd, { passive: true });
+    window.addEventListener("touchcancel", handleTouchCancel, { passive: true });
 
     return () => {
       window.removeEventListener("wheel", handleWheel);
       window.removeEventListener("touchstart", handleTouchStart);
       window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleTouchEnd);
+      window.removeEventListener("touchcancel", handleTouchCancel);
     };
   }, [activeIndex, sections.length]);
 
@@ -151,6 +163,7 @@ export default function ExpertsHorizontalSlider({ sections = [] }) {
               fimage={section.image}
               bg="#FFFFFF"
               order="bg-first"
+              mobileOrder="image-first"
               title={section.title}
               subtitle={section.subtitle}
               subtitleSize="clamp(4px, 3.5vw, 20px)"

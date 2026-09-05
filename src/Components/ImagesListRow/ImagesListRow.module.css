@@ -92,6 +92,10 @@
 
 /* ===== Mobile: stack layout ===== */
 @media (max-width: 600px) {
+  .mobileImageFirst .bgCard {
+    order: 1;
+  }
+
   .mobileCtaWrap {
     display: block;
 
