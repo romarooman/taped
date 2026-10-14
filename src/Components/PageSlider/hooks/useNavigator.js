@@ -18,7 +18,7 @@ export default function useNavigator(state, dispatch, pages) {
   const goTo = useCallback(
     (pageIndex, horizontalIndex = 0) => {
       if (
-        typeof pageIndex !== "number" ||
+        !Number.isInteger(pageIndex) ||
         pageIndex < 0 ||
         pageIndex >= pages.length
       ) {
@@ -34,7 +34,7 @@ export default function useNavigator(state, dispatch, pages) {
 
         safeHorizontalIndex = Math.max(
           0,
-          Math.min(horizontalIndex, lastSlideIndex),
+          Math.min(Number.isInteger(horizontalIndex) ? horizontalIndex : 0, lastSlideIndex),
         );
       }
 

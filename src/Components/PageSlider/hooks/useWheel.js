@@ -57,6 +57,7 @@ export default function useWheel({ next, prev }) {
     };
 
     const handleWheel = (e) => {
+      if (e.defaultPrevented) return;
       const delta = e.deltaY;
 
       if (Math.abs(delta) < 1) {

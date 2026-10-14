@@ -42,7 +42,6 @@ const ChatPill = () => {
         initial="hidden"
         animate="show"
         className="chatWrap"
-        ref={wrapRef}
       >
         <button
           className={`chatSvgBtn ${open ? "hidden" : ""}`}
@@ -71,7 +70,7 @@ const ChatPill = () => {
               rows={2}
             />
 
-            <button className="chatSendIcon" type="button" onClick={send}>
+            <button className="chatSendIcon" type="button" onClick={send} aria-label="Send message">
               <img src={sendIcon} alt="" />
             </button>
           </div>

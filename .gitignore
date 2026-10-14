@@ -7,6 +7,14 @@
 
 # testing
 /coverage
+/test-results.log
+/build-results.log
+/playwright-report/
+/test-results/
+/browser-results.json
+/browser-run.log
+/.playwright-browsers/
+/browser-evidence/
 
 # production
 /build

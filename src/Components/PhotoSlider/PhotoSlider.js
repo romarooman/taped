@@ -1,11 +1,17 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styles from "./PhotoSlider.module.css";
 
 const PhotoSlider = ({ title = "how it goes:", photos = [] }) => {
   const [startIndex, setStartIndex] = useState(0);
   const touchStartX = React.useRef(0);
-  const visibleCount = 3;
+  const [visibleCount, setVisibleCount] = useState(() => window.innerWidth <= 600 ? 1 : 3);
+  useEffect(() => {
+    const resize = () => setVisibleCount(window.innerWidth <= 600 ? 1 : 3);
+    window.addEventListener('resize', resize);
+    return () => window.removeEventListener('resize', resize);
+  }, []);
   const maxIndex = Math.max(0, photos.length - visibleCount);
+  useEffect(() => setStartIndex(index => Math.min(index, maxIndex)), [maxIndex]);
 
   const isPrevDisabled = startIndex === 0;
   const isNextDisabled = startIndex >= maxIndex;

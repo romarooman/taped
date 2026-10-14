@@ -93,8 +93,6 @@ export default function ServiceCard({
     });
   }, []);
 
-  console.log(bottomRef);
-
   useEffect(() => {
     const handleScroll = () => {
       if (!bottomRef.current) return;
