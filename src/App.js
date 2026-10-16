@@ -18,21 +18,8 @@ import Location from "./Components/Location/Location";
 import QA from "./Components/QA/QA";
 import PhotoTextSlider from "./Components/PhotoTextSlider/PhotoTextSlider";
 
-import One from "./images/1.webp";
-import Two from "./images/2.webp";
-import Three from "./images/3.webp";
-import Four from "./images/4.webp";
-import Five from "./images/5.webp";
-import Six from "./images/6.webp";
-import Seven from "./images/7.webp";
-
-import Img1 from "./images/8.webp";
-import Img2 from "./images/9.webp";
-
-import brands from "./images/brands.png";
-
-import locationImg from "./images/building.webp";
-import mapImg from "./images/map.webp";
+import { homeImages, homeSlides } from "./data/homeData";
+import { studioImages } from "./data/studioData";
 
 import ServiceCard from "./Components/ServiceCard/ServiceCard";
 import GridOfExpertsCommunity from "./Components/Pages/ListOfExpertsCommunity/GridOfExpertsCommunity";
@@ -42,41 +29,14 @@ import { expertsData } from "./data/expertsData";
 import { communityData } from "./data/communityData";
 
 function Home() {
-  const slides = [
-    {
-      id: 1,
-      image: Img1,
-      quote: "is an actor from barcelona, now based in new york.",
-      name: "mateu parellada",
-    },
-    {
-      id: 2,
-      image: Img2,
-      quote: "is an actor from barcelona, now based in new york.",
-      name: "mateu parellada",
-    },
-    {
-      id: 3,
-      image: Img1,
-      quote: "is an actor from barcelona, now based in new york.",
-      name: "mateu parellada",
-    },
-    {
-      id: 4,
-      image: Img2,
-      quote: "is an actor from barcelona, now based in new york.",
-      name: "mateu parellada",
-    },
-  ];
-
   return (
     <PageSlider header={<Navbar />}>
       <Page id="hero">
-        <ImagesOnly one={One} brands={brands} />
+        <ImagesOnly one={homeImages.hero} brands={homeImages.brands} />
       </Page>
 
       <Page id="column">
-        <ImagesListColumn fimage={Two} />
+        <ImagesListColumn fimage={homeImages.introduction} />
       </Page>
 
       <Page id="mission">
@@ -89,7 +49,7 @@ presentation
 and personal branding`}
           bg="#DAFF3E"
           textOn="second"
-          fimage={Three}
+          fimage={homeImages.mission}
           subtitleSize="clamp(32px, 4vw, 60px)"
         />
       </Page>
@@ -102,7 +62,7 @@ tools and content
 that are useful
 and beautifully crafted.`}
           textOn="first"
-          fimage={Four}
+          fimage={homeImages.about}
           bg="#DAFF3E"
           order="bg-first"
           subtitleSize="clamp(32px, 4vw, 60px)"
@@ -112,7 +72,7 @@ and beautifully crafted.`}
       <Page id="expert">
         <ImagesListRow
           textOn="first"
-          fimage={Five}
+          fimage={homeImages.expert}
           bg="#FFFFFF"
           title="Max Ishchenko"
           subtitle={`is a director from Moscow
@@ -128,7 +88,7 @@ and photography.`}
           subtitle={`is an actor from Barcelona, now
 based in New York. He brings an understanding of performance and how to make people feel comfortable
 in front of the camera.`}
-          fimage={Six}
+          fimage={homeImages.actor}
           bg="#FFFFFF"
         />
 
@@ -140,7 +100,7 @@ in front of the camera.`}
       </Page>
 
       <Page id="photo">
-        <PhotoTextSlider slides={slides} />
+        <PhotoTextSlider slides={homeSlides} />
       </Page>
 
       <Page id="community" direction="horizontal">
@@ -148,7 +108,7 @@ in front of the camera.`}
 
         <ExpertCommunity
           title="yes, we have a taped. community"
-          fimage={Seven}
+          fimage={homeImages.community}
           moreTo="/community/more"
         />
       </Page>
@@ -157,14 +117,14 @@ in front of the camera.`}
         <ExpertCommunity
           kicker="experts"
           title="our dialogues with famous experts"
-          fimage={Seven}
+          fimage={homeImages.community}
           order="image-first"
           moreTo="/experts/more"
         />
       </Page>
 
       <Page id="location">
-        <Location image={locationImg} mapImage={mapImg} />
+        <Location {...studioImages} />
       </Page>
     </PageSlider>
   );
@@ -213,7 +173,7 @@ function App() {
 
           <Route
             path="/service/headshots"
-            element={<ServiceCard image={Img1} />}
+            element={<ServiceCard />}
           />
         </Routes>
       </div>

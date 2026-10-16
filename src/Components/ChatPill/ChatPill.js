@@ -1,7 +1,8 @@
+import Image from "../Image/Image";
 import React, { useEffect, useRef, useState } from "react";
 import "./ChatPill.css";
-import sendIcon from "../../images/arrow.png";
-import ChatSvg from "../../images/cloud.svg";
+import sendIcon from "../../images/icons/send.png";
+import ChatSvg from "../../images/icons/chat-bubble.svg";
 import usePageAnimation from "../PageSlider/hooks/usePageAnimation";
 import { motion } from "framer-motion";
 import { fadeLeft } from "../PageSlider/hooks/PageAnimations";
@@ -49,7 +50,7 @@ const ChatPill = () => {
           onClick={() => setOpen(true)}
           aria-label="Open chat"
         >
-          <img className="chatSvgBg" src={ChatSvg} alt="" />
+          <Image className="chatSvgBg" src={ChatSvg} alt="" />
           <span className="chatSvgLabel">or let’s chat.</span>
         </button>
       </motion.div>
@@ -71,7 +72,7 @@ const ChatPill = () => {
             />
 
             <button className="chatSendIcon" type="button" onClick={send} aria-label="Send message">
-              <img src={sendIcon} alt="" />
+              <Image src={sendIcon} alt="" />
             </button>
           </div>
         </div>

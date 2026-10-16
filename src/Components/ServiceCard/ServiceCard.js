@@ -1,69 +1,16 @@
+import { studioImages } from "../../data/studioData";
+import Image from "../Image/Image";
 import React, { useEffect, useRef, useState } from "react";
 
 import styles from "./ServiceCard.module.css";
 import Location from "../Location/Location";
-import locationImg from "../../images/building.webp";
-import mapImg from "../../images/map.webp";
 import TableIncluded from "./TableIncluded";
 import VimeoTeaser from "./VimeoTeaser";
-import One from "../../images/1.webp";
 import ContactForm from "../ContactForm/ContactForm";
 import PhotoSlider from "../PhotoSlider/PhotoSlider";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 
-import Two from "../../images/2.webp";
-import Three from "../../images/3.webp";
-import Five from "../../images/5.webp";
-import Six from "../../images/6.webp";
-
-const photos = [
-  { id: 1, src: One, alt: "photo 1" },
-  { id: 2, src: Two, alt: "photo 2" },
-  { id: 3, src: Three, alt: "photo 3" },
-  { id: 4, src: Five, alt: "photo 5" },
-  { id: 5, src: Six, alt: "photo 6" },
-  { id: 6, src: Two, alt: "photo 2" },
-  { id: 7, src: Six, alt: "photo 3" },
-];
-
-const serviceOptions = [
-  {
-    id: "quick-shot",
-    label: "quick shot",
-    title: ["headshot", "quick", "shot"],
-    description:
-      "short and focused headshot session for getting a strong result quickly.",
-    price: "200$",
-    duration: "30 min",
-  },
-  {
-    id: "session",
-    label: "the session",
-    title: ["headshot", "studio", "session"],
-    description:
-      "a full headshot studio session with enough time for different looks and setups.",
-    price: "340$",
-    duration: "1 hour",
-  },
-  {
-    id: "half-day",
-    label: "half day",
-    title: ["headshot", "half", "day"],
-    description:
-      "an extended session with more time for different looks, setups and creative directions.",
-    price: "1000$",
-    duration: "4 hours",
-  },
-  {
-    id: "all-in",
-    label: "all in",
-    title: ["headshot", "all", "in"],
-    description:
-      "a complete package with maximum shooting time and flexibility for different types of content.",
-    price: "1500$",
-    duration: "full day",
-  },
-];
+import { headshotsService } from "../../data/servicesData";
 
 const defaultBreadcrumbs = [
   { label: "main", to: "/" },
@@ -73,7 +20,7 @@ const defaultBreadcrumbs = [
 
 export default function ServiceCard({
   breadcrumbs = defaultBreadcrumbs,
-  image,
+  image = headshotsService.image,
   onBook,
 }) {
   const bottomRef = useRef(null);
@@ -84,7 +31,7 @@ export default function ServiceCard({
   const [selectedId, setSelectedId] = useState("session");
 
   const selectedService =
-    serviceOptions.find((item) => item.id === selectedId) || serviceOptions[0];
+    headshotsService.options.find((item) => item.id === selectedId) || headshotsService.options[0];
 
   useEffect(() => {
     window.scrollTo({
@@ -140,7 +87,7 @@ export default function ServiceCard({
 
                 {dropdownOpen && (
                   <div className={styles.optionsMenu}>
-                    {serviceOptions.map((item) => (
+                    {headshotsService.options.map((item) => (
                       <button
                         key={item.id}
                         type="button"
@@ -167,7 +114,7 @@ export default function ServiceCard({
             </div>
 
             <div className={styles.right}>
-              <img src={image} alt={selectedService.title} />
+              <Image src={image} alt={selectedService.title} />
             </div>
           </div>
         </div>
@@ -204,15 +151,15 @@ export default function ServiceCard({
         </button>
       </div>
 
-      <PhotoSlider title="how it goes:" photos={photos} />
+      <PhotoSlider title="how it goes:" photos={headshotsService.photos} />
 
       <TableIncluded />
 
-      <VimeoTeaser preview={One} />
+      <VimeoTeaser preview={headshotsService.preview} />
 
       <ContactForm />
 
-      <Location image={locationImg} mapImage={mapImg} />
+      <Location {...studioImages} />
     </>
   );
 }

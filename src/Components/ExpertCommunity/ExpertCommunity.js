@@ -1,3 +1,4 @@
+import Image from "../Image/Image";
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./ExpertCommunity.module.css";
@@ -30,7 +31,7 @@ film and photography and brings a calm, focused eye to the work.`,
         {!!desc && <p className={styles.desc}>{desc}</p>}
 
         <div className={styles.mobileImageWrap}>
-          <img className={styles.mobileImg} src={fimage} alt="community" />
+          <Image className={styles.mobileImg} src={fimage} alt="community" />
         </div>
       </div>
 
@@ -42,7 +43,7 @@ film and photography and brings a calm, focused eye to the work.`,
 
   const ImageCard = (
     <div className={`${styles.card} ${styles.imageCard}`}>
-      <img className={styles.img} src={fimage} alt="community" />
+      <Image className={styles.img} src={fimage} alt="community" />
     </div>
   );
 

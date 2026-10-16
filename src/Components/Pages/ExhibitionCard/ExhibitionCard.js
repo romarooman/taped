@@ -1,3 +1,4 @@
+import Image from "../../Image/Image";
 import React, { useEffect } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import styles from "./ExhibitionCard.module.css";
@@ -62,7 +63,7 @@ export default function ExhibitionCard({ items = [] }) {
 
         <div className={styles.right}>
           <div className={styles.imageWrap}>
-            <img
+            <Image
               src={item.image}
               alt={data.title || item.name}
               className={styles.image}

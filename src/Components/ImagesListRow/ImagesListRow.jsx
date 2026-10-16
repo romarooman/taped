@@ -1,3 +1,4 @@
+import Image from "../Image/Image";
 import React from "react";
 import styles from "./ImagesListRow.module.css";
 import ChatPill from "../ChatPill/ChatPill";
@@ -32,7 +33,7 @@ const ImagesListRow = ({
     >
       {title && <div className={styles.titleText}>{title}</div>}
       {subtitle && (
-        <div style={{ fontSize: subtitleSize }} className={styles.subtitleText}>
+        <div style={{ "--subtitle-size": subtitleSize }} className={styles.subtitleText}>
           {subtitle}
         </div>
       )}
@@ -57,7 +58,7 @@ const ImagesListRow = ({
             initial="hidden"
             animate="show"
           >
-            <img className={styles.img} src={fimage} alt="img" />
+            <Image className={styles.img} src={fimage} alt="img" />
           </motion.div>
 
           <div
@@ -85,7 +86,7 @@ const ImagesListRow = ({
             initial="hidden"
             animate="show"
           >
-            <img className={styles.img} src={fimage} alt="img" />
+            <Image className={styles.img} src={fimage} alt="img" />
           </motion.div>
         </>
       )}

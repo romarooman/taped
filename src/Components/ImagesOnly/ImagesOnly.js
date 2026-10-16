@@ -1,3 +1,4 @@
+import Image from "../Image/Image";
 import React from "react";
 import styles from "./ImagesOnly.module.css";
 import ChatPill from "../ChatPill/ChatPill";
@@ -15,7 +16,7 @@ const ImagesOnly = ({ one, brands }) => {
         <MobileCta targetId="book" />
       </div>
 
-      <img
+      <Image
         className={styles.heroBg}
         src={one}
         alt=""
@@ -37,7 +38,7 @@ const ImagesOnly = ({ one, brands }) => {
         </div>
 
         <div className={styles.heroRowBottom}>
-          <img className={styles.heroBadge} src={brands} alt="" />
+          <Image className={styles.heroBadge} src={brands} alt="" />
         </div>
       </motion.div>
 

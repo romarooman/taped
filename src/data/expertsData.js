@@ -1,15 +1,13 @@
-// src/data/expertsData.js
+import { imagePlaceholders } from "./imagePlaceholders";
 
-import One from "../images/1.webp";
-import Two from "../images/2.webp";
-import Five from "../images/5.webp";
+// src/data/expertsData.js
 
 export const expertsData = [
   {
     id: 1,
     slug: "anton-volodin-upcoming",
-    image: One,
-    heroImage: Five,
+    image: imagePlaceholders.hero,
+    heroImage: imagePlaceholders.expert,
     label: "upcoming",
     name: "anton volodin exibition",
     description:
@@ -20,27 +18,27 @@ export const expertsData = [
         title: "Max Ishchenko",
         subtitle:
           "is a director from Moscow who based in New York. He works in narrative film and photography and brings a calm, focused eye to the work.",
-        image: Five,
+        image: imagePlaceholders.expert,
       },
       {
         title: "What’s your goal?",
         subtitle:
           "is a director from Moscow who based in New York. He works in narrative film and photography and brings a calm, focused eye to the work.",
-        image: Five,
+        image: imagePlaceholders.expert,
       },
       {
         title: "What music do you usually listen to?",
         subtitle:
           "is a director from Moscow who based in New York. He works in narrative film and photography and brings a calm, focused eye to the work.",
-        image: Five,
+        image: imagePlaceholders.expert,
       },
     ],
   },
   {
     id: 2,
     slug: "anton-volodin-past",
-    image: Two,
-    heroImage: Five,
+    image: imagePlaceholders.introduction,
+    heroImage: imagePlaceholders.expert,
     label: "past",
     name: "anton volodin exibition",
     description:
@@ -50,7 +48,7 @@ export const expertsData = [
       {
         title: "Anton Volodin",
         subtitle: "detailed information about this expert.",
-        image: Five,
+        image: imagePlaceholders.expert,
       },
     ],
   },

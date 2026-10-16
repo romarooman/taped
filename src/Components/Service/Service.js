@@ -1,7 +1,8 @@
+import Image from "../Image/Image";
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Service.module.css";
-import bg from "../../images/service.webp";
+import { servicesOverviewImage } from "../../data/servicesData";
 import usePageAnimation from "../PageSlider/hooks/usePageAnimation";
 import { motion } from "framer-motion";
 import { fadeLeft } from "../PageSlider/hooks/PageAnimations";
@@ -23,7 +24,7 @@ const Service = () => {
     <section id="service" className={styles.hero}>
       <div className={styles.mobileTitle}>what we do</div>
       <div className={styles.imageWrap}>
-        <img className={styles.bg} src={bg} alt="services background" />
+        <Image className={styles.bg} src={servicesOverviewImage} alt="services background" />
       </div>
 
       <div className={styles.inner}>

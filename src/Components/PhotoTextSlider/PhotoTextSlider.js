@@ -1,3 +1,4 @@
+import Image from "../Image/Image";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./PhotoTextSlider.module.css";
 
@@ -220,7 +221,7 @@ export default function PhotoTextSlider({
               onMouseEnter={() => setHoverRealIndex(ri)}
               onMouseLeave={() => setHoverRealIndex(-1)}
             >
-              <img className={styles.img} src={s.image} alt={s.alt ?? ""} />
+              <Image className={styles.img} src={s.image} alt={s.alt ?? ""} />
 
               <div
                 className={`${styles.overlay} ${

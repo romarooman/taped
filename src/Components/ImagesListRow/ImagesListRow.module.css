@@ -64,7 +64,10 @@
 .subtitleText {
   font-family: "DM Sans", sans-serif;
   font-weight: 900; /* Black */
-  font-size: clamp(4px, 3.5vw, 20px);
+  font-size: var(--subtitle-size, clamp(4px, 3.5vw, 20px));
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  flex-shrink: 0;
   line-height: 108%;
   letter-spacing: 0%;
   text-transform: lowercase;
@@ -130,10 +133,10 @@
   .imgCenterText {
     padding-left: 16px;
     padding-right: 16px;
-    padding-top: 24px;
-    padding-bottom: 24px;
+    padding-top: 12px;
+    padding-bottom: 12px;
 
-    gap: 12px;
+    gap: 8px;
   }
 
   .titleText {

@@ -1,3 +1,4 @@
+import Image from "../Image/Image";
 import React from "react";
 import styles from "./Location.module.css";
 
@@ -22,11 +23,11 @@ export default function Location({
 
       <div className={styles.grid}>
         <div className={styles.imageWrap}>
-          <img src={image} alt="location" loading="lazy" decoding="async" />
+          <Image src={image} alt="location" loading="lazy" decoding="async" />
         </div>
 
         <div className={styles.mapWrap}>
-          <img src={mapImage} alt="map" loading="lazy" decoding="async" />
+          <Image src={mapImage} alt="map" loading="lazy" decoding="async" />
           <div className={styles.dot} />
         </div>
       </div>

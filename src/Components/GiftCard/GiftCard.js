@@ -1,7 +1,9 @@
+import { imagePlaceholders } from "../../data/imagePlaceholders";
+import Image from "../Image/Image";
 import React, { useMemo, useState } from "react";
-import Three from "../../images/3.webp";
 import styles from "./GiftCard.module.css";
-import Arrow_list from "../../images/arrow_list.png";
+import Arrow_list from "../../images/icons/list-arrow.png";
+
 // import {  useLocation } from "react-router-dom";
 
 export default function GiftCard() {
@@ -83,7 +85,7 @@ export default function GiftCard() {
             <ul className={styles.list}>
               {active.bullets.map((t, i) => (
                 <li key={i} className={styles.listItem}>
-                  <img src={Arrow_list} alt="" className={styles.bulletIcon} />
+                  <Image src={Arrow_list} alt="" className={styles.bulletIcon} />
                   <span>{t}</span>
                 </li>
               ))}
@@ -94,7 +96,7 @@ export default function GiftCard() {
         {/* RIGHT */}
         <section className={styles.right}>
           <div className={styles.imageBox}>
-            <img src={Three} alt="Preview" className={styles.image} />
+            <Image src={imagePlaceholders.mission} alt="Preview" className={styles.image} />
           </div>
 
           <button type="button" className={styles.buyBtn}>

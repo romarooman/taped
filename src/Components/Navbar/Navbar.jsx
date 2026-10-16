@@ -1,8 +1,9 @@
+import Image from "../Image/Image";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import navigation from "../../navigation";
-import tapedImg from "../../images/logoT.png";
+import tapedImg from "../../images/brand/logo.png";
 
 import { usePageSlider } from "../PageSlider/PageSliderContext";
 
@@ -41,7 +42,7 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-mobile">
-        <img src={tapedImg} alt="taped" className="taped-label" />
+        <Image src={tapedImg} alt="taped" className="taped-label" />
 
         <button
           type="button"
@@ -67,7 +68,7 @@ export default function Navbar() {
             >
               {item.title}
 
-              {isActive && <img src={tapedImg} alt="taped" className="taped" />}
+              {isActive && <Image src={tapedImg} alt="taped" className="taped" />}
             </li>
           );
         })}

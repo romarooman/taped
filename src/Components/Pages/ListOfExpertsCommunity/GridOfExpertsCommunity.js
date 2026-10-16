@@ -1,3 +1,4 @@
+import Image from "../../Image/Image";
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./GridOfExpertsCommunity.module.css";
@@ -29,7 +30,7 @@ export default function GridOfExpertsCommunity({
             key={item.id}
           >
             <div className={styles.imageWrap}>
-              <img
+              <Image
                 src={item.image}
                 alt={item.name}
                 className={styles.image}

@@ -1,3 +1,4 @@
+import Image from "../Image/Image";
 import React, { useState } from "react";
 import styles from "./VimeoTeaser.module.css";
 
@@ -19,7 +20,7 @@ feel comfortable in front of the camera.`,
       <div className={styles.teaser}>
         {!play ? (
           <>
-            <img
+            <Image
               src={preview}
               alt="preview"
               className={styles.preview}

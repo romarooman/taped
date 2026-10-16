@@ -1,9 +1,7 @@
+import { studioImages } from "../../../data/studioData";
+import { imagePlaceholders } from "../../../data/imagePlaceholders";
 import React, { useLayoutEffect } from "react";
 import { useParams, Navigate } from "react-router-dom";
-
-import locationImg from "../../../images/building.webp";
-import mapImg from "../../../images/map.webp";
-import One from "../../../images/1.webp";
 
 import ContactForm from "../../ContactForm/ContactForm";
 import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs";
@@ -48,12 +46,12 @@ export default function ExpertsMore({ items = [] }) {
 
       <VimeoTeaser
         title="watch a video version:"
-        preview={expert.image || One}
+        preview={expert.image || imagePlaceholders.hero}
       />
 
       <ContactForm />
 
-      <Location image={locationImg} mapImage={mapImg} />
+      <Location {...studioImages} />
     </>
   );
 }

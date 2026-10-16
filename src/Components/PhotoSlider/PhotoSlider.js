@@ -1,3 +1,4 @@
+import Image from "../Image/Image";
 import React, { useEffect, useMemo, useState } from "react";
 import styles from "./PhotoSlider.module.css";
 
@@ -93,9 +94,10 @@ const PhotoSlider = ({ title = "how it goes:", photos = [] }) => {
           {extendedPhotos.map((photo) => (
             <div className={styles.slide} key={photo.innerId}>
               <div className={styles.card}>
-                <img
+                <Image
                   src={photo.src}
                   alt={photo.alt || "photo"}
+                  objectPosition={photo.objectPosition}
                   className={styles.image}
                   loading="lazy"
                   decoding="async"
